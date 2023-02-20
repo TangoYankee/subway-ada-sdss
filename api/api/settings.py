@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    
+    'django_filters',
+    'rest_framework',
+    'rest_framework_gis',
     'world'
 ]
 

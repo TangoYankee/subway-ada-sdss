@@ -1,7 +1,19 @@
 ## Python Django env
-From root directory
-```source venv/bin/activate```
+From root directory  
+`source venv/bin/activate`  
 
 ## Docker
-`docker build -t postgis .`
-`docker run -p 5432:5432 postgis`
+From root directory  
+`docker build -t postgis .`  
+`docker run -p 5432:5432 postgis`  
+
+## Seed data
+From top api directory  
+`python manage.py migrate`
+`python manage.py shell`  
+`from world import load`  
+`load.run()`
+
+## Admin user
+From top api directory  
+`python manage.py createsuperuser`  
