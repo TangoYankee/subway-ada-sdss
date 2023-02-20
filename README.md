@@ -17,3 +17,8 @@ From top api directory
 ## Admin user
 From top api directory  
 `python manage.py createsuperuser`  
+
+## Nextjs client
+From client directory
+```pnpm i```
+```pnpm dev```
