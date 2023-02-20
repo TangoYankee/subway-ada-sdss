@@ -1,5 +1,5 @@
 import { Box, Text } from "@chakra-ui/react";
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, {Source, Layer } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MapPage = () => (
@@ -12,7 +12,9 @@ const MapPage = () => (
       }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
-    />
+    >
+      <Source id="algera-border" type="geojson" data={"http://localhost:8000/world/border/2"}></Source>
+    </ReactMapGL>
   </Box>
 );
 
