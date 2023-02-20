@@ -11,6 +11,7 @@ specifiers:
   '@types/node': ^18.0.0
   '@types/react': ^18.0.0
   '@types/react-dom': ^18.0.0
+  '@types/react-map-gl': ^6.1.3
   '@typescript-eslint/eslint-plugin': ^5.52.0
   '@typescript-eslint/parser': ^5.52.0
   eslint: ^8.34.0
@@ -35,6 +36,7 @@ dependencies:
   '@chakra-ui/theme-tools': 2.0.16_es2flcfvdj7o2v4vs237ptvmhy
   '@emotion/react': 11.10.6_pmekkgnqduwlme35zpnqhenc34
   '@emotion/styled': 11.10.6_oouaibmszuch5k64ms7uxp2aia
+  '@types/react-map-gl': 6.1.3
   framer-motion: 6.5.1_biqbaboplfbrettd7655fr4n2y
   mapbox-gl: 2.12.1
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
@@ -1669,6 +1671,15 @@ packages:
       '@types/react': 18.0.28
     dev: true
 
+  /@types/react-map-gl/6.1.3:
+    resolution: {integrity: sha512-22R7vE/XT/S+Nwu7245llMW+vO8ITPQJHaiRCO9RxmUUdV2kio7mQWaL8M5ko3XMt+7Hyz5ComNI4AopXZsxMA==}
+    dependencies:
+      '@types/geojson': 7946.0.10
+      '@types/mapbox-gl': 2.7.10
+      '@types/react': 18.0.28
+      '@types/viewport-mercator-project': 6.1.2
+    dev: false
+
   /@types/react/18.0.28:
     resolution: {integrity: sha512-RD0ivG1kEztNBdoAK7lekI9M+azSnitIn85h4iOiaLjaTrMjzslhaqCGaI4IyCJ1RljWiLCEu4jyrLLgqxBTew==}
     dependencies:
@@ -1682,6 +1693,12 @@ packages:
   /@types/semver/7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
     dev: true
+
+  /@types/viewport-mercator-project/6.1.2:
+    resolution: {integrity: sha512-21U4s61ZMUx95F2Uc9DpXBlcSKlrkeChM+hbGWmpz8HtL+zwl/zP5pJarJmxKv/764iR9xf5870jYZ8Mby5xuQ==}
+    dependencies:
+      gl-matrix: 3.4.3
+    dev: false
 
   /@typescript-eslint/eslint-plugin/5.52.0_6cfvjsbua5ptj65675bqcn6oza:
     resolution: {integrity: sha512-lHazYdvYVsBokwCdKOppvYJKaJ4S41CgKBcPvyd0xjZNbvQdhn/pnJlGtQksQ/NhInzdaeaSarlBjDXHuclEbg==}
