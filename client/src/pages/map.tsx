@@ -13,7 +13,7 @@ const MapPage = () => (
       mapStyle="mapbox://styles/mapbox/streets-v9"
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
     >
-      <Source id="algera-border" type="geojson" data={"http://localhost:8000/world/border/2"}></Source>
+      <Source id="algera-border" type="geojson" data={"http://localhost:8000/world/border/2?format=json"}></Source>
     </ReactMapGL>
   </Box>
 );
