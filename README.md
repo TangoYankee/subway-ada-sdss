@@ -1,6 +1,8 @@
 ## Python Django env
 From root directory  
+`python -m venv venv`
 `source venv/bin/activate`  
+`pip install -r requirements.txt`
 
 ## Docker
 From root directory  
