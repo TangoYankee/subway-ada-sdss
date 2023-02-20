@@ -1,9 +1,9 @@
-import { Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 const MapPage = () => (
-    <Text color = "text">
-        Map page
-    </Text>
+  <Box height="100%" flex="1">
+    <Text color="text" height="100%">Map page</Text>
+  </Box>
 );
 
 export default MapPage;
