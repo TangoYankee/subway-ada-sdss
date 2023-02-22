@@ -26,7 +26,7 @@ const MapPage = () => (
       <Source
         id="algeria-border"
         type="geojson"
-        data={"http://localhost:8000/world/border/2/?format=json"}
+        data={"http://localhost:8000/world/border/2"}
       >
         <Layer {...algeriaBorderLayerStyle} />
       </Source>
