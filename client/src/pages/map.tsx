@@ -1,6 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import ReactMapGL, { Source, Layer } from "react-map-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
+import maplibregl from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
 
 const algeriaBorderLayerStyle = {
   id: "algeria-border",
@@ -15,13 +16,13 @@ const algeriaBorderLayerStyle = {
 const MapPage = () => (
   <Box height="100%" flex="1">
     <ReactMapGL
+      mapLib={maplibregl}
       initialViewState={{
         longitude: 2.632,
         latitude: 28.163,
         zoom: 4,
       }}
-      mapStyle="mapbox://styles/mapbox/streets-v9"
-      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
+      mapStyle={`https://api.maptiler.com/maps/basic/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
     >
       <Source
         id="algeria-border"

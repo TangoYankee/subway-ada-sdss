@@ -19,7 +19,8 @@ specifiers:
   eslint-config-prettier: ^8.6.0
   eslint-plugin-prettier: ^4.2.1
   framer-motion: ^6.3.0
-  mapbox-gl: ^2.12.1
+  mapbox-gl: npm:empty-npm-package@1.0.0
+  maplibre-gl: ^2.4.0
   next: latest
   npm-run-all: ^4.1.5
   prettier: ^2.8.4
@@ -38,11 +39,12 @@ dependencies:
   '@emotion/styled': 11.10.6_oouaibmszuch5k64ms7uxp2aia
   '@types/react-map-gl': 6.1.3
   framer-motion: 6.5.1_biqbaboplfbrettd7655fr4n2y
-  mapbox-gl: 2.12.1
+  mapbox-gl: /empty-npm-package/1.0.0
+  maplibre-gl: 2.4.0
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-map-gl: 7.0.21_boipu4w7clhllxbftb5pofkimy
+  react-map-gl: 7.0.21_6eczaga5xxiwzxtfiyk6fioasq
 
 devDependencies:
   '@types/node': 18.14.0
@@ -1654,12 +1656,28 @@ packages:
       '@types/geojson': 7946.0.10
     dev: false
 
+  /@types/mapbox__point-geometry/0.1.2:
+    resolution: {integrity: sha512-D0lgCq+3VWV85ey1MZVkE8ZveyuvW5VAfuahVTQRpXFQTxw03SuIf1/K4UQ87MMIXVKzpFjXFiFMZzLj2kU+iA==}
+    dev: false
+
+  /@types/mapbox__vector-tile/1.3.0:
+    resolution: {integrity: sha512-kDwVreQO5V4c8yAxzZVQLE5tyWF+IPToAanloQaSnwfXmIcJ7cyOrv8z4Ft4y7PsLYmhWXmON8MBV8RX0Rgr8g==}
+    dependencies:
+      '@types/geojson': 7946.0.10
+      '@types/mapbox__point-geometry': 0.1.2
+      '@types/pbf': 3.0.2
+    dev: false
+
   /@types/node/18.14.0:
     resolution: {integrity: sha512-5EWrvLmglK+imbCJY0+INViFWUHg1AHel1sq4ZVSfdcNqGy9Edv3UB9IIzzg+xPaUcAgZYcfVs2fBcwDeZzU0A==}
     dev: true
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
+    dev: false
+
+  /@types/pbf/3.0.2:
+    resolution: {integrity: sha512-EDrLIPaPXOZqDjrkzxxbX7UlJSeQVgah3i0aA4pOSzmK9zq3BIh7/MZIQxED7slJByvKM4Gc6Hypyu2lJzh3SQ==}
     dev: false
 
   /@types/prop-types/15.7.5:
@@ -2215,6 +2233,10 @@ packages:
   /emoji-regex/9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
     dev: true
+
+  /empty-npm-package/1.0.0:
+    resolution: {integrity: sha512-q4Mq/+XO7UNDdMiPpR/LIBIW1Zl4V0Z6UT9aKGqIAnBCtCb3lvZJM1KbDbdzdC8fKflwflModfjR29Nt0EpcwA==}
+    dev: false
 
   /enhanced-resolve/5.12.0:
     resolution: {integrity: sha512-QHTXI/sZQmko1cbDoNAa3mJ5qhWUUNAq3vR0/YiD379fWQrcfuoX1+HW2S0MTt7XmoPLapdaDKUtelUSPic7hQ==}
@@ -2847,6 +2869,15 @@ packages:
       path-is-absolute: 1.0.1
     dev: true
 
+  /global-prefix/3.0.0:
+    resolution: {integrity: sha512-awConJSVCHVGND6x3tmMaKcQvwXLhjdkmomy2W+Goaui8YPgYgXJZewhg3fWC+DlfqqQuWg8AwqjGTD2nAPVWg==}
+    engines: {node: '>=6'}
+    dependencies:
+      ini: 1.3.8
+      kind-of: 6.0.3
+      which: 1.3.1
+    dev: false
+
   /globals/13.20.0:
     resolution: {integrity: sha512-Qg5QtVkCy/kv3FUSlu4ukeZDVf9ee0iXLAUYX13gbR17bnejFTzr4iS9bY7kwCf1NztRNm1t91fjOiyx4CSwPQ==}
     engines: {node: '>=8'}
@@ -2905,10 +2936,6 @@ packages:
   /grapheme-splitter/1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
-
-  /grid-index/1.1.0:
-    resolution: {integrity: sha512-HZRwumpOGUrHyxO5bqKZL0B0GlUpwtCAzZ42sgxUPniu33R1LSFH5yrIcBCHjkctCAh3mtWKcKd9J4vDDdeVHA==}
-    dev: false
 
   /has-bigints/1.0.2:
     resolution: {integrity: sha512-tSvCKtBr9lkF0Ex0aQiP9N+OpV4zi2r/Nee5VkRDbaqv35RLYMzbwQfFSZZH0kR+Rd6302UJZ2p/bJCEoR3VoQ==}
@@ -2997,6 +3024,10 @@ packages:
   /inherits/2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
     dev: true
+
+  /ini/1.3.8:
+    resolution: {integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==}
+    dev: false
 
   /internal-slot/1.0.5:
     resolution: {integrity: sha512-Y+R5hJrzs52QCG2laLn4udYVnxsfny9CpOhNhUvk/SSSVyF6T27FzRbF0sroPidSu3X8oEAkOn2K804mjpt6UQ==}
@@ -3180,7 +3211,6 @@ packages:
 
   /isexe/2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
-    dev: true
 
   /js-sdsl/4.3.0:
     resolution: {integrity: sha512-mifzlm2+5nZ+lEcLJMoBK0/IH/bDg8XnJfd/Wq6IP+xoCjLZsTOnV2QpxlVbX9bMnkl5PdEjNtBJ9Cj1NjifhQ==}
@@ -3229,6 +3259,11 @@ packages:
 
   /kdbush/3.0.0:
     resolution: {integrity: sha512-hRkd6/XW4HTsA9vjVpY9tuXJYLSlelnkTmVFu4M9/7MIYQtFcHpbugAU7UbOfjOiVSVYl2fqgBuJ32JUmRo5Ew==}
+    dev: false
+
+  /kind-of/6.0.3:
+    resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
+    engines: {node: '>=0.10.0'}
     dev: false
 
   /language-subtag-registry/0.3.22:
@@ -3291,8 +3326,9 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /mapbox-gl/2.12.1:
-    resolution: {integrity: sha512-45LVQauimFGX/fkCJzK3O2KpQQrIB0fGlg8sERu4NH0xWiBw9JsLOLYD2xAgD5SPramQvsjzM7vYWIkGxpGYNQ==}
+  /maplibre-gl/2.4.0:
+    resolution: {integrity: sha512-csNFylzntPmHWidczfgCZpvbTSmhaWvLRj9e1ezUDBEPizGgshgm3ea1T5TCNEEBq0roauu7BPuRZjA3wO4KqA==}
+    requiresBuild: true
     dependencies:
       '@mapbox/geojson-rewind': 0.5.2
       '@mapbox/jsonlint-lines-primitives': 2.0.2
@@ -3302,16 +3338,19 @@ packages:
       '@mapbox/unitbezier': 0.0.1
       '@mapbox/vector-tile': 1.3.1
       '@mapbox/whoots-js': 3.1.0
+      '@types/geojson': 7946.0.10
+      '@types/mapbox__point-geometry': 0.1.2
+      '@types/mapbox__vector-tile': 1.3.0
+      '@types/pbf': 3.0.2
       csscolorparser: 1.0.3
       earcut: 2.2.4
       geojson-vt: 3.2.1
       gl-matrix: 3.4.3
-      grid-index: 1.1.0
+      global-prefix: 3.0.0
       murmurhash-js: 1.0.0
       pbf: 3.2.1
-      potpack: 2.0.0
+      potpack: 1.0.2
       quickselect: 2.0.0
-      rw: 1.3.3
       supercluster: 7.1.5
       tinyqueue: 2.0.3
       vt-pbf: 3.1.3
@@ -3648,8 +3687,8 @@ packages:
       source-map-js: 1.0.2
     dev: false
 
-  /potpack/2.0.0:
-    resolution: {integrity: sha512-Q+/tYsFU9r7xoOJ+y/ZTtdVQwTWfzjbiXBDMM/JKUux3+QPP02iUuIoeBQ+Ot6oEDlC+/PGjB/5A3K7KKb7hcw==}
+  /potpack/1.0.2:
+    resolution: {integrity: sha512-choctRBIV9EMT9WGAZHn3V7t0Z2pMQyl0EZE6pFc/6ml3ssw7Dlf/oAOvFwjm1HVsqfQN8GfeFyJ+d8tRzqueQ==}
     dev: false
 
   /prelude-ls/1.2.1:
@@ -3739,14 +3778,14 @@ packages:
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
-  /react-map-gl/7.0.21_boipu4w7clhllxbftb5pofkimy:
+  /react-map-gl/7.0.21_6eczaga5xxiwzxtfiyk6fioasq:
     resolution: {integrity: sha512-Cmokphv6VHfRJsHVjCtn7nw5mf8rl89CHdvPSaif0OWZZqe+pxM2/5hEr4EvPWeTokRPCo1XTrBpGbShkEuktQ==}
     peerDependencies:
       mapbox-gl: '*'
       react: '>=16.3.0'
     dependencies:
       '@types/mapbox-gl': 2.7.10
-      mapbox-gl: 2.12.1
+      mapbox-gl: /empty-npm-package/1.0.0
       react: 18.2.0
     dev: false
 
@@ -3879,10 +3918,6 @@ packages:
     dependencies:
       queue-microtask: 1.2.3
     dev: true
-
-  /rw/1.3.3:
-    resolution: {integrity: sha512-PdhdWy89SiZogBLaw42zdeqtRJ//zFd2PgQavcICDUgJT5oW10QCRKbJ6bg4r0/UY2M6BWd5tkxuGFRvCkgfHQ==}
-    dev: false
 
   /safe-regex-test/1.0.0:
     resolution: {integrity: sha512-JBUUzyOgEwXQY1NuPtvcj/qcBDbDmEvWufhlnXZIm75DEHp+afM1r1ujJpJsV/gSM4t59tpDyPi1sd6ZaPFfsA==}
@@ -4308,7 +4343,6 @@ packages:
     hasBin: true
     dependencies:
       isexe: 2.0.0
-    dev: true
 
   /which/2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
