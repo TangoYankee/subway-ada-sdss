@@ -1,9 +1,8 @@
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
-from ada_stations.models import BusRoutes
+from ada_stations.models import BusRoute
 
-class BusRoutesSerializer(GeoFeatureModelSerializer):
+class BusRouteSerializer(GeoFeatureModelSerializer):
     class Meta:
-        model = BusRoutes
-        geo_field ='geom'
-        auto_bbox = True
-        fields = ('__all__')
+        model = BusRoute
+        fields = "__all__"
+        geo_field = "geom"
