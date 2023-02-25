@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'rest_framework',
     
     'rest_framework_gis',
-    'world'
+    'world',
+    'ada_stations',
 ]
 
 MIDDLEWARE = [

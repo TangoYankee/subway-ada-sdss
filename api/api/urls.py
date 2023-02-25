@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from world.views import WorldBorderViewSet
+from ada_stations.views import BusRoutesViewSet
 
 router = routers.DefaultRouter()
 router.register('border', WorldBorderViewSet)
+router.register('bus-routes', BusRoutesViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('world/', include(router.urls))
+    path('api/v1/', include(router.urls))
 ]
