@@ -16,8 +16,8 @@ To start and stop existing container:
 From top api directory  
 `python manage.py migrate`
 `python manage.py shell`  
-`from world import load`  
-`load.run()`
+`from ada_stations import load_busroute`  
+`load_busroute.run()`
 
 ## Admin user
 From top api directory  
