@@ -3,7 +3,9 @@ import ReactMapGL, { Source, Layer } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-const algeriaBorderLayerStyle = {
+const DOMAIN = "http://localhost:8000"
+
+const busRouteLayerStyle = {
   id: "bus-routes",
   source: "bus-routes",
   type: "line" as "line",
@@ -12,6 +14,17 @@ const algeriaBorderLayerStyle = {
     "line-opacity": 0.5,
   },
 };
+
+const busStopLayerStyle = {
+  id: "bus-stops",
+  source: "bus-stops",
+  type: "circle" as "circle",
+  paint: {
+    "circle-color": "#222823",
+    "circle-radius": 1.5,
+    "circle-opacity": 0.5
+  }
+}
 
 const MapPage = () => (
   <Box height="100%" flex="1">
@@ -29,7 +42,14 @@ const MapPage = () => (
         type="geojson"
         data={"http://localhost:8000/api/v1/bus-routes"}
       >
-        <Layer {...algeriaBorderLayerStyle} />
+        <Layer {...busRouteLayerStyle} />
+      </Source>
+      <Source
+        id="bus-stops"
+        type="geojson"
+        data={`${DOMAIN}/api/v1/bus-stops`}
+      >
+        <Layer {...busStopLayerStyle} />
       </Source>
     </ReactMapGL>
   </Box>
