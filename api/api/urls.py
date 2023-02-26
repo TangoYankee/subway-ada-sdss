@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from ada_stations.views import BusRouteViewSet
+from ada_stations.views import BusRouteViewSet, BusStopViewSet, BusRouteExpressViewSet, BusStopExpressViewSet
 
 router = routers.DefaultRouter()
 router.register('bus-routes', BusRouteViewSet)
+router.register('bus-stops', BusStopViewSet)
+router.register('bus-routes-express', BusRouteExpressViewSet)
+router.register('bus-stops-express', BusStopExpressViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
