@@ -24,3 +24,15 @@ class BusStop(models.Model):
 
     def __str__(self):
         return self.stop_name
+
+class BusStopExpress(models.Model):
+    stop_id = models.IntegerField()
+    stop_name = models.CharField(max_length=80)
+    stop_lat = models.FloatField()
+    stop_lon = models.FloatField()
+    geoid = models.CharField(max_length=80)
+    namelsad = models.CharField(max_length=80)
+    geom = models.PointField(srid=4326)
+
+    def __str__(self):
+        return self.stop_name
