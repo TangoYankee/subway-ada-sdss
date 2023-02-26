@@ -36,6 +36,17 @@ const busRouteExpressLayerStyle = {
   },
 };
 
+const busStopExpressLayerStyle = {
+  id: "bus-stops-express",
+  source: "bus-stops-express",
+  type: "circle" as const,
+  paint: {
+    "circle-color": "#81C0DE",
+    "circle-radius": 2,
+    "circle-opacity": 0.75,
+  },
+};
+
 const MapPage = () => (
   <Box height="100%" flex="1">
     <ReactMapGL
@@ -63,6 +74,13 @@ const MapPage = () => (
         data={`${DOMAIN}/api/v1/bus-routes-express`}
       >
         <Layer {...busRouteExpressLayerStyle} />
+      </Source>
+      <Source
+        id="bus-stops-express"
+        type="geojson"
+        data={`${DOMAIN}/api/v1/bus-stops-express`}
+      >
+        <Layer {...busStopExpressLayerStyle} />
       </Source>
     </ReactMapGL>
   </Box>
