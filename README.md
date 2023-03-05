@@ -4,7 +4,7 @@ From root directory
 `source venv/bin/activate`  
 `pip install -r requirements.txt`
 
-`gunicorn api.wsgi --daemon`
+`gunicorn api.wsgi -b :8001 -daemon`
 
 ## Docker
 From root directory  
@@ -29,3 +29,11 @@ From top api directory
 From client directory
 ```pnpm i```
 ```pnpm dev```
+
+```pm2 start npm --name "client" -- start```
+
+
+```sudo semanage port --add --type http_port_t --proto tcp 8001```
+```sudo semanage port --list```
+
+

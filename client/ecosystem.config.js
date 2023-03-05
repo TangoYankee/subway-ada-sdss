@@ -1,8 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'next',
-      cwd: '/home/<USERNAME>/<PROJECT-FOLDER>',
+      name: 'subway-ada-sdss-client',
       script: 'pnpm',
       args: 'start',
       env: {

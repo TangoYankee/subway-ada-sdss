@@ -21,6 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:80",
+    "http://localhost",
+    "tangled.city",
 ]
 
 # SECURITY WARNING: keep the secret key used in production secret!
