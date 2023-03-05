@@ -2,6 +2,8 @@
 From root directory  
 `python -m venv venv`
 `source venv/bin/activate`  
+## fedora requirements
+```sudo dnf install libpq-devel python3-devel gcc gdal```
 `pip install -r requirements.txt`
 
 ## Servers
@@ -9,7 +11,9 @@ From top api directory
 #### Dev
 ```python manage.py runserver 8001```
 #### Prod
-`gunicorn api.wsgi -b :8001 -daemon`
+`gunicorn api.wsgi -b :8001 --daemon`
+`ps ax|grep gunicorn`
+`pkill gunicorn`
 
 ## Docker
 From db directory
@@ -39,5 +43,14 @@ Prod server
 ```pm2 start npm --name "client" -- start```
 
 ## Port permissions on device
+```dnf provides semanage```
+```setsebool -P httpd_can_network_connect 1```
 ```sudo semanage port --add --type http_port_t --proto tcp 8001```
 ```sudo semanage port --list```
+
+## Nginx config
+```systemctl status nginx```
+```systemctl start nginx```
+copy tangled_city.conf to `/etc/nginx/conf.d`
+```sudo nginx -t```
+```sudo nginx -s reload```
