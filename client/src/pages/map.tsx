@@ -3,7 +3,7 @@ import ReactMapGL, { Source, Layer } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-const DOMAIN = "http://localhost:8000";
+const DOMAIN = "http://localhost:8001";
 
 const busRouteLayerStyle = {
   id: "bus-routes",
