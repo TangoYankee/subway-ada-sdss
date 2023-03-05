@@ -27,3 +27,11 @@ From top api directory
 From client directory
 ```pnpm i```
 ```pnpm dev```
+
+## Serving commands
+Client:
+- `npm run build`  
+- `npm run start`
+
+Api:
+`gunicorn api.wsgi`

@@ -20,14 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost:3000", "http://tangled.city"
 ]
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-jc*(y4k8d9w1k0=i*uz8ep2o@kso+q7+d&nq!o76p&2^_qd8oe'
-
-# Disable collect static for heroku build
-DISABLE_COLLECTSTATIC=1
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
