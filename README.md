@@ -4,6 +4,8 @@ From root directory
 `source venv/bin/activate`  
 `pip install -r requirements.txt`
 
+`gunicorn api.wsgi --daemon`
+
 ## Docker
 From root directory  
 `docker build -t postgis .`  
