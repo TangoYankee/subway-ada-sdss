@@ -47,3 +47,17 @@ class BusStopExpress(models.Model):
 
     def __str__(self):
         return self.stop_name
+
+class School(models.Model):
+    system_code = models.CharField(max_length=80)
+    location_code = models.CharField(max_length=80)
+    location_name = models.CharField(max_length=80)
+    managed_by_name = models.CharField(max_length=80)
+    location_type_description = models.CharField(max_length=80)
+    location_category_description = models.CharField(max_length=80)
+    status_descriptions = models.CharField(max_length=80)
+    primary_address_line_1 = models.CharField(max_length=80)
+    geom = models.PointField(srid=4326)
+
+    def __str__(self):
+        return self.location_name
