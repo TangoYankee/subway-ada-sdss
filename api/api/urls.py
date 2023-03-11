@@ -24,6 +24,7 @@ from ada_stations.views import (
     HospitalViewSet,
     ParkViewSet,
     SchoolViewSet,
+    SubwayRouteViewSet,
 )
 
 router = routers.DefaultRouter()
@@ -34,5 +35,6 @@ router.register("bus-stops-express", BusStopExpressViewSet)
 router.register("hospitals", HospitalViewSet)
 router.register("parks", ParkViewSet)
 router.register("schools", SchoolViewSet)
+router.register("subway-routes", SubwayRouteViewSet)
 
 urlpatterns = [path("admin/", admin.site.urls), path("api/v1/", include(router.urls))]

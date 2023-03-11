@@ -87,3 +87,15 @@ class School(models.Model):
 
     def __str__(self):
         return self.location_name
+
+
+class SubwayRoute(models.Model):
+    route_id = models.CharField(max_length=80)
+    route_shor = models.CharField(max_length=80)
+    route_long = models.CharField(max_length=80)
+    color = models.CharField(max_length=80)
+    group = models.CharField(max_length=80)
+    geom = models.MultiLineStringField(srid=4326)
+
+    def __str__(self):
+        return self.route_id
