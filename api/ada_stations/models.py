@@ -53,6 +53,15 @@ class BusStopExpress(models.Model):
         return self.stop_name
 
 
+class Hospital(models.Model):
+    facility_type = models.CharField(max_length=80)
+    facility_name = models.CharField(max_length=80)
+    geom = models.PointField(srid=4326)
+
+    def __str__(self):
+        return self.facility_name
+
+
 class Park(models.Model):
     acres = models.CharField(max_length=80)
     location = models.CharField(max_length=100)
