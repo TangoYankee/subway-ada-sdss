@@ -16,15 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from ada_stations.views import BusRouteViewSet, BusStopViewSet, BusRouteExpressViewSet, BusStopExpressViewSet
+from ada_stations.views import (
+    BusRouteViewSet,
+    BusStopViewSet,
+    BusRouteExpressViewSet,
+    BusStopExpressViewSet,
+    SchoolViewSet,
+)
 
 router = routers.DefaultRouter()
-router.register('bus-routes', BusRouteViewSet)
-router.register('bus-stops', BusStopViewSet)
-router.register('bus-routes-express', BusRouteExpressViewSet)
-router.register('bus-stops-express', BusStopExpressViewSet)
+router.register("bus-routes", BusRouteViewSet)
+router.register("bus-stops", BusStopViewSet)
+router.register("bus-routes-express", BusRouteExpressViewSet)
+router.register("bus-stops-express", BusStopExpressViewSet)
+router.register("schools", SchoolViewSet)
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/v1/', include(router.urls))
-]
+urlpatterns = [path("admin/", admin.site.urls), path("api/v1/", include(router.urls))]
