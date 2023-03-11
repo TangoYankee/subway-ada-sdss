@@ -28,8 +28,6 @@ CORS_ALLOWED_ORIGINS = (
     if IS_PROD
     else [
         "http://localhost:3000",
-        "http://localhost:80",
-        "http://localhost",
     ]
 )
 
