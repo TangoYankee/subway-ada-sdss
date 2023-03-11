@@ -4,6 +4,7 @@ from ada_stations.serializers import (
     BusStopSerializer,
     BusRouteExpressSerializer,
     BusStopExpressSerializer,
+    HospitalSerializer,
     ParkSerializer,
     SchoolSerializer,
 )
@@ -12,6 +13,7 @@ from ada_stations.models import (
     BusStop,
     BusRouteExpress,
     BusStopExpress,
+    Hospital,
     Park,
     School,
 )
@@ -35,6 +37,11 @@ class BusRouteExpressViewSet(viewsets.ModelViewSet):
 class BusStopExpressViewSet(viewsets.ModelViewSet):
     queryset = BusStopExpress.objects.all()
     serializer_class = BusStopExpressSerializer
+
+
+class HospitalViewSet(viewsets.ModelViewSet):
+    queryset = Hospital.objects.all()
+    serializer_class = HospitalSerializer
 
 
 class ParkViewSet(viewsets.ModelViewSet):

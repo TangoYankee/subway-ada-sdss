@@ -21,6 +21,7 @@ from ada_stations.views import (
     BusStopViewSet,
     BusRouteExpressViewSet,
     BusStopExpressViewSet,
+    HospitalViewSet,
     ParkViewSet,
     SchoolViewSet,
 )
@@ -30,6 +31,7 @@ router.register("bus-routes", BusRouteViewSet)
 router.register("bus-stops", BusStopViewSet)
 router.register("bus-routes-express", BusRouteExpressViewSet)
 router.register("bus-stops-express", BusStopExpressViewSet)
+router.register("hospitals", HospitalViewSet)
 router.register("parks", ParkViewSet)
 router.register("schools", SchoolViewSet)
 
