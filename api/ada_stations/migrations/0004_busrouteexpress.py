@@ -5,22 +5,32 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('ada_stations', '0003_busstopexpress'),
+        ("ada_stations", "0003_busstopexpress"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='BusRouteExpress',
+            name="BusRouteExpress",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('route_id', models.CharField(max_length=80)),
-                ('route_dir', models.CharField(max_length=80)),
-                ('route_shor', models.CharField(max_length=80)),
-                ('route_long', models.CharField(max_length=80)),
-                ('color', models.CharField(max_length=80)),
-                ('geom', django.contrib.gis.db.models.fields.MultiLineStringField(srid=4326)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("route_id", models.CharField(max_length=80)),
+                ("route_dir", models.CharField(max_length=80)),
+                ("route_shor", models.CharField(max_length=80)),
+                ("route_long", models.CharField(max_length=80)),
+                ("color", models.CharField(max_length=80)),
+                (
+                    "geom",
+                    django.contrib.gis.db.models.fields.MultiLineStringField(srid=4326),
+                ),
             ],
         ),
     ]
