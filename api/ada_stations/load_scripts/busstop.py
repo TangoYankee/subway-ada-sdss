@@ -1,6 +1,6 @@
 from pathlib import Path
 from django.contrib.gis.utils import LayerMapping
-from .models import BusStop
+from ..models import BusStop
 
 # Auto-generated `LayerMapping` dictionary for BusStop model
 busstop_mapping = {
@@ -13,7 +13,7 @@ busstop_mapping = {
     'geom': 'POINT',
 }
 
-busstop_shp = Path(__file__).resolve().parent / 'data' / 'bus_stops_nyc_nov2020'/ 'bus_stops_nyc_nov2020.shp'
+busstop_shp = Path(__file__).resolve().parent.parent / 'data' / 'bus_stops_nyc_nov2020'/ 'bus_stops_nyc_nov2020.shp'
 
 def run(verbose=True):
     lm = LayerMapping(BusStop, busstop_shp, busstop_mapping, transform=True)

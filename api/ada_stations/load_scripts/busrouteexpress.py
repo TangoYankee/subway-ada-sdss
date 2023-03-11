@@ -1,6 +1,6 @@
 from pathlib import Path
 from django.contrib.gis.utils import LayerMapping
-from .models import BusRouteExpress
+from ..models import BusRouteExpress
 
 # Auto-generated `LayerMapping` dictionary for BusRouteExpress model
 busrouteexpress_mapping = {
@@ -12,7 +12,7 @@ busrouteexpress_mapping = {
     'geom': 'MULTILINESTRING',
 }
 
-busrouteexpress_shp = Path(__file__).resolve().parent / 'data' / 'express_bus_routes_nyc_nov2020'/ 'express_bus_routes_nyc_nov2020.shp'
+busrouteexpress_shp = Path(__file__).resolve().parent.parent / 'data' / 'express_bus_routes_nyc_nov2020'/ 'express_bus_routes_nyc_nov2020.shp'
 
 def run(verbose=True):
     lm = LayerMapping(BusRouteExpress, busrouteexpress_shp, busrouteexpress_mapping, transform=True)
