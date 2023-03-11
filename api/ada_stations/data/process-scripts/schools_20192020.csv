@@ -1,4 +1,4 @@
-system_code,location_code,location_name,Managed_by_name,location_type_description,Location_Category_Description,Status_descriptions,primary_address_line_1,X,Y
+system_code,location_code,location_name,Managed_by_name,location_type_description,Location_Category_Description,Status_descriptions,primary_address_line_1,lon,lat
 15K001,K001,P.S. 001 The Bergen,DOE,General Academic,Elementary,Open,309 47 STREET,-74.01142,40.648959
 17K002,K002,Parkside Preparatory Academy,DOE,General Academic,Junior High-Intermediate-Middle,Open,655 PARKSIDE AVENUE,-73.951575,40.656423
 13K003,K003,P.S. 003 The Bedford Village,DOE,General Academic,Elementary,Open,50 JEFFERSON AVENUE,-73.955219,40.682311
@@ -1117,7 +1117,6 @@ system_code,location_code,location_name,Managed_by_name,location_type_descriptio
 84M709,M709,Harlem Village Academy West Charter School,Charter,General Academic,K-12 all grades,Open,244 WEST 144 STREET,-73.941111,40.821208
 75M721,M721,P.S. M721 - Manhattan Occupational Training Center,DOE,Special Education,Secondary School,Open,250 WEST HOUSTON STREET,-74.006155,40.729052
 75M721,M721,P.S. M721 - Manhattan Occupational Training Center,DOE,Special Education,Secondary School,Open,250 WEST HOUSTON STREET,-74.006155,40.729052
-75M723,M723,Manhattan Transition Center,DOE,Special Education,Ungraded,Closed,135 CONVENT ROAD,0,0
 84M726,M726,KIPP STAR College Prep Charter School,Charter,General Academic,K-12 all grades,Open,433 WEST 123 STREET,-73.955722,40.810793
 84M726,M726,KIPP STAR College Prep Charter School,Charter,General Academic,K-12 all grades,Open,433 WEST 123 STREET,-73.955722,40.810793
 75M751,M751,Manhattan School for Career Development,DOE,Special Education,High school,Open,113 EAST  4TH STREET,-73.987791,40.725892
@@ -1381,7 +1380,6 @@ system_code,location_code,location_name,Managed_by_name,location_type_descriptio
 27Q253,Q253,P.S. 253,DOE,General Academic,Elementary,Open,1307 CENTRAL AVENUE,-73.748799,40.607247
 27Q254,Q254,P.S. 254 - The Rosa Parks School,DOE,General Academic,Elementary,Open,84-40 101 STREET,-73.847886,40.6972
 75Q255,Q255,P.S. Q255,DOE,Special Education,K-12 all grades,Open,158-40 76 ROAD,-73.80938,40.724195
-75Q256,Q256,P.S. Q256,DOE,Special Education,K-12 all grades,Open,525 CONVENT ROAD,NULL,NULL
 30Q258,Q258,Energy Tech High School,DOE,Career Technical,High school,Open,36-41 28 STREET,-73.932628,40.756471
 29Q259,Q259,Pathways College Preparatory School: A College Boa,DOE,General Academic,Secondary School,Open,109-89 204 STREET,-73.752885,40.705989
 27Q260,Q260,Frederick Douglass Academy VI High School,DOE,General Academic,High school,Open,8-21 BAY 25 STREET,-73.763995,40.601537
@@ -1398,7 +1396,6 @@ system_code,location_code,location_name,Managed_by_name,location_type_descriptio
 27Q273,Q273,P.S. 273,DOE,General Academic,Elementary,Open,88-07 102ND STREET,-73.844335,40.693613
 29Q274,Q274,Langston Hughes High School For Communication Arts,DOE,General Academic,High school,Closed,143-10 SPRINGFIELD BOULEVARD,-73.7569,40.6682
 75Q277,Q277,The Riverview School,DOE,Special Education,K-12 all grades,Open,50-15 44TH STREET,-73.921346,40.73668
-27Q279,Q279,Cypress Hills Collegiate Preparatory School,DOE,General Academic,High school,Closed,94-06 104TH STREET,0,0
 30Q280,Q280,P.S. 280,DOE,General Academic,Elementary,Open,34-20 94TH STREET,-73.874109,40.753345
 25Q281,Q281,East-West School of International Studies,DOE,General Academic,Secondary School,Open,46-21 COLDEN STREET,-73.821402,40.74943
 27Q282,Q282,Knowledge and Power Preparatory Academy VI,DOE,General Academic,Junior High-Intermediate-Middle,Open,8-21 BAY 25 STREET,-73.763995,40.601537
@@ -1686,7 +1683,6 @@ system_code,location_code,location_name,Managed_by_name,location_type_descriptio
 12X057,X057,P.S. 057 Crescent,DOE,General Academic,Elementary,Open,2111 CROTONA AVENUE,-73.888987,40.848748
 09X058,X058,P.S. 058,DOE,General Academic,Elementary,Open,459 EAST 176 STREET,-73.898826,40.846383
 10X059,X059,P.S. 059 The Community School of Technology,DOE,General Academic,Elementary,Open,2185 BATHGATE AVENUE,-73.893639,40.853141
-08X060,X060,PS 060 George L Gallego,DOE,General Academic,Elementary,Closed,888 REV J A POLITE AVE,0,0
 12X061,X061,P.S. 061 Francisco Oller,DOE,General Academic,Elementary,Open,1550 CROTONA PARK EAST,-73.892784,40.836156
 08X062,X062,P.S. 062 Inocensio Casanova,DOE,General Academic,Elementary,Open,660 FOX STREET,-73.900161,40.813736
 09X063,X063,P.S. 063 Author's Academy,DOE,General Academic,Elementary,Open,1260 FRANKLIN AVENUE,-73.901859,40.83093
@@ -2067,7 +2063,6 @@ system_code,location_code,location_name,Managed_by_name,location_type_descriptio
 84X496,X496,Icahn Charter School 4,Charter,General Academic,K-8,Open,1500 PELHAM PARKWAY SOUTH,-73.843013,40.856531
 84X497,X497,Storefront Academy Charter School,Charter,General Academic,Elementary,Open,609 JACKSON AVENUE,-73.908773,40.814952
 11X498,X498,P.S./M.S. 11X498 - Van Nest Academy,DOE,General Academic,K-8,Open,1640 BRONXDALE AVE,-73.857989,40.845023
-84X499,X499,Kingsbridge Innovative Design Charter School (KIDC,Charter,General Academic,Elementary,Closed,295 WEST  231 STREET,0,0
 07X500,X500,Hostos-Lincoln Academy of Science,DOE,General Academic,Secondary School,Open,600 SAINT ANN'S AVENUE,-73.912038,40.814857
 09X501,X501,District 9 HS#1,DOE,General Academic,High school,"Initiated, never opened",240 EAST 172 STREET,-73.911366,40.839307
 09X505,X505,"Bronx School for Law, Government and Justice",DOE,General Academic,Secondary School,Open,244 EAST 163 STREET,-73.919024,40.827461
@@ -2131,7 +2126,6 @@ system_code,location_code,location_name,Managed_by_name,location_type_descriptio
 10X577,X577,East Fordham College & Career Preparatory High Sch,DOE,General Academic,High school,"Initiated, never opened",500 EAST FORDHAM ROAD,-73.888625,40.859466
 11X578,X578,NORTH BRONX ACADEMY,DOE,General Academic,Junior High-Intermediate-Middle,"Initiated, never opened",3750 BAYCHESTER AVENUE,-73.839682,40.886002
 84X579,X579,Bronx Charter School for Excellence II,Charter,General Academic,Elementary,Open,1804 HOLLAND AVENUE,-73.864154,40.845897
-79X580,X580,Literacy Center - Bronx,DOE,Alternative,High school,Closed,1010 REV POLITE AVENUE,0,0
 84X581,X581,South Bronx Community Charter School,Charter,General Academic,High school,Open,730 CONCOURSE VILLAGE WEST,-73.922366,40.821828
 08X583,X583,P.S. 583,DOE,General Academic,Elementary,Open,1028 WHITE PLAINS ROAD,-73.859622,40.826949
 07X584,X584,I.S. 584,DOE,General Academic,Junior High-Intermediate-Middle,Open,600 SAINT ANN'S AVENUE,-73.912038,40.814857
