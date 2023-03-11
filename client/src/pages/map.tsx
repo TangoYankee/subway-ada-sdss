@@ -3,7 +3,8 @@ import ReactMapGL, { Source, Layer } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-const DOMAIN = "http://localhost:8001";
+const API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN ?? "localhost:8001";
+const API_BASE_URL = `http://${API_DOMAIN}`;
 
 const busRouteLayerStyle = {
   id: "bus-routes",
@@ -61,24 +62,28 @@ const MapPage = () => (
       <Source
         id="bus-routes"
         type="geojson"
-        data={`${DOMAIN}/api/v1/bus-routes`}
+        data={`${API_BASE_URL}/api/v1/bus-routes`}
       >
         <Layer {...busRouteLayerStyle} />
       </Source>
-      <Source id="bus-stops" type="geojson" data={`${DOMAIN}/api/v1/bus-stops`}>
+      <Source
+        id="bus-stops"
+        type="geojson"
+        data={`${API_BASE_URL}/api/v1/bus-stops`}
+      >
         <Layer {...busStopLayerStyle} />
       </Source>
       <Source
         id="bus-routes-express"
         type="geojson"
-        data={`${DOMAIN}/api/v1/bus-routes-express`}
+        data={`${API_BASE_URL}/api/v1/bus-routes-express`}
       >
         <Layer {...busRouteExpressLayerStyle} />
       </Source>
       <Source
         id="bus-stops-express"
         type="geojson"
-        data={`${DOMAIN}/api/v1/bus-stops-express`}
+        data={`${API_BASE_URL}/api/v1/bus-stops-express`}
       >
         <Layer {...busStopExpressLayerStyle} />
       </Source>

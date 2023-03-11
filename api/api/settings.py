@@ -19,24 +19,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
-
+IS_PROD = env('ENVIRONMENT') == 'prod'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-CORS_ALLOWED_ORIGINS = [
+CORS_ALLOWED_ORIGINS = ['tangled.city'] if IS_PROD else [
     "http://localhost:3000",
     "http://localhost:80",
     "http://localhost",
-    "http://tangled.city",
 ]
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False if IS_PROD else True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tangled.city'] if IS_PROD else []
 
 # Application definition
 
