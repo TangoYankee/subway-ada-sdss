@@ -4,6 +4,7 @@ from ada_stations.models import (
     BusStop,
     BusRouteExpress,
     BusStopExpress,
+    Park,
     School,
 )
 
@@ -32,6 +33,13 @@ class BusRouteExpressSerializer(GeoFeatureModelSerializer):
 class BusStopExpressSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = BusStopExpress
+        fields = "__all__"
+        geo_field = "geom"
+
+
+class ParkSerializer(GeoFeatureModelSerializer):
+    class Meta:
+        model = Park
         fields = "__all__"
         geo_field = "geom"
 
