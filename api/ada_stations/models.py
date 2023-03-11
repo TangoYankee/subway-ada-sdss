@@ -53,6 +53,18 @@ class BusStopExpress(models.Model):
         return self.stop_name
 
 
+class Park(models.Model):
+    acres = models.CharField(max_length=80)
+    location = models.CharField(max_length=100)
+    signname = models.CharField(max_length=80)
+    typecategory = models.CharField(max_length=80)
+    waterfront = models.CharField(max_length=80, blank=True, null=True)
+    geom = models.MultiPolygonField(srid=4326)
+
+    def __str__(self):
+        return self.location
+
+
 class School(models.Model):
     system_code = models.CharField(max_length=80)
     location_code = models.CharField(max_length=80)
