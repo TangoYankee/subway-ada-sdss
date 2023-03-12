@@ -24,7 +24,7 @@ IS_PROD = env("ENVIRONMENT") == "prod"
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 CORS_ALLOWED_ORIGINS = (
-    ["tangled.city"]
+        ["http://tangled.city"]
     if IS_PROD
     else [
         "http://localhost:3000",
