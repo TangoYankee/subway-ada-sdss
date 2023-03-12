@@ -99,3 +99,11 @@ class SubwayRoute(models.Model):
 
     def __str__(self):
         return self.route_id
+
+class SubwayStation(models.Model):
+    complex_id = models.CharField(max_length=80)
+    complex_nm = models.CharField(max_length=80)
+    trains = models.CharField(max_length=80)
+    station_ct = models.CharField(max_length=80)
+    tot2019 = models.CharField(max_length=80)
+    geom = models.PointField(srid=4326)
