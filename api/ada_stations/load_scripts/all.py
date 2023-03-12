@@ -1,4 +1,15 @@
-import busroute, busrouteexpress, busstop, busstopexpress, hospitals, parks, schools, subwayroutes
+from . import (
+    busroute,
+    busrouteexpress,
+    busstop,
+    busstopexpress,
+    hospitals,
+    parks,
+    schools,
+    subwayentrances,
+    subwayroutes,
+    subwaystations,
+)
 
 
 def run():
@@ -10,4 +21,6 @@ def run():
     hospitals.run()
     parks.run()
     schools.run()
+    subwayentrances.run()
     subwayroutes.run()
+    subwaystations.run()
