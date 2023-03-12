@@ -7,7 +7,9 @@ from ada_stations.models import (
     Hospital,
     Park,
     School,
+    SubwayEntrance,
     SubwayRoute,
+    SubwayStation,
 )
 
 
@@ -60,8 +62,22 @@ class SchoolSerializer(GeoFeatureModelSerializer):
         geo_field = "geom"
 
 
+class SubwayEntranceSerializer(GeoFeatureModelSerializer):
+    class Meta:
+        model = SubwayEntrance
+        fields = "__all__"
+        geo_field = "geom"
+
+
 class SubwayRouteSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = SubwayRoute
+        fields = "__all__"
+        geo_field = "geom"
+
+
+class SubwayStationSerializer(GeoFeatureModelSerializer):
+    class Meta:
+        model = SubwayStation
         fields = "__all__"
         geo_field = "geom"
