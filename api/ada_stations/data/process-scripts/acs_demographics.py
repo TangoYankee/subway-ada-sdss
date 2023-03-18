@@ -40,4 +40,6 @@ nyc_geoids = nyc_tracts.reindex(
 
 demographic_tracts = nyc_geoids.join(demographics.set_index('GEOID'), on="GEOID")
 
+demographic_tracts.to_file("tract_demographics_acs_2020.geojson", driver = "GeoJSON")
+
 print(demographic_tracts.head())
