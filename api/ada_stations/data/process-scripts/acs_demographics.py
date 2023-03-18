@@ -34,12 +34,8 @@ demographics.columns = [
     "65_and_over_ambulatory",
 ]
 
-nyc_geoids = nyc_tracts.reindex(
-    ["GEOID", "geometry"], axis=1
-)
+nyc_geoids = nyc_tracts.reindex(["GEOID", "geometry"], axis=1)
 
-demographic_tracts = nyc_geoids.join(demographics.set_index('GEOID'), on="GEOID")
+demographic_tracts = nyc_geoids.join(demographics.set_index("GEOID"), on="GEOID")
 
-demographic_tracts.to_file("tract_demographics_acs_2020.geojson", driver = "GeoJSON")
-
-print(demographic_tracts.head())
+demographic_tracts.to_file("tract_demographics_acs_2020.geojson", driver="GeoJSON")
