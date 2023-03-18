@@ -7,7 +7,7 @@ disability = gpd.read_file("nyc_acs_2020_disability.csv")
 
 demographics = gpd.GeoDataFrame(
     [
-        map(lambda x: x.split('US')[1], age_sex.GEO_ID),
+        map(lambda x: x.split("US")[1], age_sex.GEO_ID),
         age_sex.S0101_C01_001E,
         age_sex.S0101_C01_002E,
         age_sex.S0101_C01_030E,
@@ -16,9 +16,10 @@ demographics = gpd.GeoDataFrame(
         poverty.S1701_C01_010E,
         disability.S1810_C01_048E,
         disability.S1810_C01_049E,
-        disability.S1810_C01_052E
+        disability.S1810_C01_052E,
     ]
 ).transpose()
+
 
 demographics.columns = [
     "GEOID",
@@ -33,4 +34,10 @@ demographics.columns = [
     "65_and_over_ambulatory",
 ]
 
-print(demographics.head())
+nyc_geoids = nyc_tracts.reindex(
+    ["GEOID", "geometry"], axis=1
+)
+
+demographic_tracts = nyc_geoids.join(demographics.set_index('GEOID'), on="GEOID")
+
+print(demographic_tracts.head())
