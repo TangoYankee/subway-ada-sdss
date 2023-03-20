@@ -163,6 +163,7 @@ class SubwayStation(models.Model):
     def __str__(self):
         return f"{self.complex_nm}-{self.trains}"
 
+
 class TractDemographic(models.Model):
     geoid = models.CharField(max_length=80)
     total = models.IntegerField()
@@ -175,3 +176,6 @@ class TractDemographic(models.Model):
     over_eighteen_under_sixty_five_ambulatory = models.IntegerField()
     sixty_five_and_over_ambulatory = models.IntegerField()
     geom = models.MultiPolygonField(srid=4326)
+
+    def __str__(self):
+        return self.geoid
