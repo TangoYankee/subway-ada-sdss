@@ -12,7 +12,7 @@
 - parks
 - schools
 
-## [Census data explorer](https://opendata.cityofnewyork.us/)
+## [Census data explorer](https://data.census.gov)
 - Age
 - Economic
 - Mobility

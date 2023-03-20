@@ -10,6 +10,7 @@ from .models import (
     SubwayEntrance,
     SubwayRoute,
     SubwayStation,
+    TractDemographic,
 )
 
 admin.site.register(BusRoute, admin.ModelAdmin)
@@ -22,3 +23,4 @@ admin.site.register(School, admin.ModelAdmin)
 admin.site.register(SubwayEntrance, admin.ModelAdmin)
 admin.site.register(SubwayRoute, admin.ModelAdmin)
 admin.site.register(SubwayStation, admin.ModelAdmin)
+admin.site.register(TractDemographic, admin.ModelAdmin)
