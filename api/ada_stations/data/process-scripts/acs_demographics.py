@@ -1,4 +1,6 @@
 import geopandas as gpd
+from shapely.geometry.polygon import Polygon
+from shapely.geometry.multipolygon import MultiPolygon
 
 nyc_tracts = gpd.read_file("nyc_2020_tracts_shoreline/nyct2020.shp")
 age_sex = gpd.read_file("nyc_acs_2020_age_sex.csv")
@@ -35,6 +37,11 @@ demographics.columns = [
 ]
 
 nyc_geoids = nyc_tracts.reindex(["GEOID", "geometry"], axis=1)
+nyc_geoids = nyc_geoids.to_crs(4326)
+nyc_geoids["geometry"] = [
+    MultiPolygon([feature]) if isinstance(feature, Polygon) else feature
+    for feature in nyc_geoids["geometry"]
+]
 
 demographic_tracts = nyc_geoids.join(demographics.set_index("GEOID"), on="GEOID")
 
