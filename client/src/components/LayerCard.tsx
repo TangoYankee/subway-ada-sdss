@@ -1,5 +1,5 @@
 import { Card, CardBody, Checkbox, Flex } from "@chakra-ui/react";
-import { ChangeEvent, Children, useEffect } from "react";
+import { ChangeEvent } from "react";
 import { useMap } from "react-map-gl";
 
 interface LayerCardProps {
@@ -38,7 +38,12 @@ export const LayerCard = ({
       <CardBody>
         <Flex direction="column">
           {children}
-          <Checkbox onChange={setLayerVisibility} defaultChecked={isSourceLoaded}>Show</Checkbox>
+          <Checkbox
+            onChange={setLayerVisibility}
+            defaultChecked={isSourceLoaded}
+          >
+            Show
+          </Checkbox>
         </Flex>
       </CardBody>
     </Card>

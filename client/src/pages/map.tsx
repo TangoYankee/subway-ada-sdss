@@ -9,9 +9,11 @@ import cloneDeep from "lodash.clonedeep";
 const API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN ?? "localhost:8001";
 const API_BASE_URL = `http://${API_DOMAIN}`;
 
+const busRoutesSourceId = "bus-routes";
+const busRoutesLayerId = busRoutesSourceId;
 const busRouteLayerStyle = {
-  id: "bus-routes",
-  source: "bus-routes",
+  id: busRoutesLayerId,
+  source: busRoutesSourceId,
   type: "line" as const,
   paint: {
     "line-color": ["get", "color"] as unknown,
@@ -30,7 +32,7 @@ const busStopLayerStyle = {
   },
 };
 
-const busRoutesExpressSourceId  = "bus-routes-express";
+const busRoutesExpressSourceId = "bus-routes-express";
 const busRoutesExpressLayerId = busRoutesExpressSourceId;
 const busRouteExpressLayerStyle = {
   id: busRoutesExpressLayerId,
@@ -42,7 +44,7 @@ const busRouteExpressLayerStyle = {
   },
 };
 
-const busStopsExpressSourceId = 'bus-stops-express';
+const busStopsExpressSourceId = "bus-stops-express";
 const busStopsExpressLayerId = busStopsExpressSourceId;
 const busStopExpressLayerStyle = {
   id: busStopsExpressLayerId,
@@ -56,7 +58,9 @@ const busStopExpressLayerStyle = {
 };
 
 const MapPage = () => {
-  const [loadedSources, setLoadedSources] = useState<Set<string>>(new Set());
+  const [loadedSources, setLoadedSources] = useState<Set<string>>(
+    new Set([busRoutesExpressSourceId])
+  );
 
   const addToLoadedSources = (source: string) => {
     const _loadedSources = cloneDeep(loadedSources);
@@ -77,21 +81,25 @@ const MapPage = () => {
           }}
           mapStyle={`https://api.maptiler.com/maps/basic/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
         >
+          {loadedSources.has(busRoutesSourceId) ? (
+            <Source
+              id="bus-routes"
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/bus-routes`}
+            >
+              <Layer {...busRouteLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
           {/* <Source
-        id="bus-routes"
-        type="geojson"
-        data={`${API_BASE_URL}/api/v1/bus-routes`}
-      >
-        <Layer {...busRouteLayerStyle} />
-      </Source>
-      <Source
-        id="bus-stops"
-        type="geojson"
-        data={`${API_BASE_URL}/api/v1/bus-stops`}
-      >
-        <Layer {...busStopLayerStyle} />
-      </Source> */}
-          {loadedSources.has("bus-routes-express") ? (
+            id="bus-stops"
+            type="geojson"
+            data={`${API_BASE_URL}/api/v1/bus-stops`}
+          >
+            <Layer {...busStopLayerStyle} />
+          </Source> */}
+          {loadedSources.has(busRoutesExpressSourceId) ? (
             <Source
               id="bus-routes-express"
               type="geojson"
@@ -122,9 +130,18 @@ const MapPage = () => {
           // borderWidth='1px'
         >
           <LayerCard
-            addToLoadedSources={() => addToLoadedSources(busRoutesExpressSourceId)}
-            isSourceLoaded={loadedSources.has(busRoutesExpressSourceId)}
+            layerId={busRoutesLayerId}
+            isSourceLoaded={loadedSources.has(busRoutesSourceId)}
+            addToLoadedSources={() => addToLoadedSources(busRoutesSourceId)}
+          >
+            Bus Routes
+          </LayerCard>
+          <LayerCard
             layerId={busRoutesExpressLayerId}
+            addToLoadedSources={() =>
+              addToLoadedSources(busRoutesExpressSourceId)
+            }
+            isSourceLoaded={loadedSources.has(busRoutesExpressSourceId)}
           >
             Express Bus Routes
           </LayerCard>
