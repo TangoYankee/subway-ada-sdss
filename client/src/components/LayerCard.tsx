@@ -38,7 +38,7 @@ export const LayerCard = ({
       <CardBody>
         <Flex direction="column">
           {children}
-          <Checkbox onChange={setLayerVisibility}>Show</Checkbox>
+          <Checkbox onChange={setLayerVisibility} defaultChecked={isSourceLoaded}>Show</Checkbox>
         </Flex>
       </CardBody>
     </Card>
