@@ -3,6 +3,8 @@ import ReactMapGL, { Source, Layer, MapProvider } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { LayerCard } from "../components/LayerCard";
+import { useEffect, useState } from "react";
+import cloneDeep from "lodash.clonedeep";
 
 const API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN ?? "localhost:8001";
 const API_BASE_URL = `http://${API_DOMAIN}`;
@@ -50,6 +52,22 @@ const busStopExpressLayerStyle = {
 };
 
 const MapPage = () => {
+  const [loadedSources, setLoadedSources] = useState<Set<string>>(new Set());
+
+  const addToLoadedSources = (source: string) =>{
+    console.log('source', source);
+    // const _loadedSoures = new Set(loadedSources);
+    // const _loadedSources: Set<string> = cloneDeep(loadedSources);
+    const _loadedSources= cloneDeep(loadedSources);
+    _loadedSources.add(source);
+    console.log('added loaded sources',loadedSources);
+    setLoadedSources(_loadedSources);
+  }
+
+  useEffect(() => {
+    console.log('loadedSources', loadedSources);
+  }, [loadedSources])
+
   return (
     <Box height="100%" flex="1">
       <MapProvider>
@@ -77,13 +95,17 @@ const MapPage = () => {
       >
         <Layer {...busStopLayerStyle} />
       </Source> */}
-          <Source
-            id="bus-routes-express"
-            type="geojson"
-            data={`${API_BASE_URL}/api/v1/bus-routes-express`}
-          >
-            <Layer {...busRouteExpressLayerStyle} />
-          </Source>
+          {loadedSources.has("bus-routes-express") ? (
+            <Source
+              id="bus-routes-express"
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/bus-routes-express`}
+            >
+              <Layer {...busRouteExpressLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
           {/* <Source
             id="bus-stops-express"
             type="geojson"
@@ -103,7 +125,7 @@ const MapPage = () => {
           // borderColor='blackAlpha.700'
           // borderWidth='1px'
         >
-          <LayerCard />
+          <LayerCard addToLoadedSources={addToLoadedSources} isSourceLoaded={loadedSources.has('bus-routes-express')}/>
         </Flex>
       </MapProvider>
     </Box>

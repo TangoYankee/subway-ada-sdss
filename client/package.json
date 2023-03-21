@@ -17,6 +17,7 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.9.0",
     "framer-motion": "^6.3.0",
+    "lodash.clonedeep": "^4.5.0",
     "mapbox-gl": "npm:empty-npm-package@1.0.0",
     "maplibre-gl": "^2.4.0",
     "next": "latest",
@@ -25,6 +26,7 @@
     "react-map-gl": "^7.0.21"
   },
   "devDependencies": {
+    "@types/lodash.clonedeep": "^4.5.7",
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
