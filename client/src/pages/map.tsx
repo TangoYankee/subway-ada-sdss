@@ -3,7 +3,7 @@ import ReactMapGL, { Source, Layer, MapProvider } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { LayerCard } from "../components/LayerCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import cloneDeep from "lodash.clonedeep";
 
 const API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN ?? "localhost:8001";
@@ -30,9 +30,11 @@ const busStopLayerStyle = {
   },
 };
 
+const busRoutesExpressSourceId  = "bus-routes-express";
+const busRoutesExpressLayerId = busRoutesExpressSourceId;
 const busRouteExpressLayerStyle = {
-  id: "bus-routes-express",
-  source: "bus-routes-express",
+  id: busRoutesExpressLayerId,
+  source: busRoutesExpressSourceId,
   type: "line" as const,
   paint: {
     "line-color": ["get", "color"] as unknown,
@@ -40,9 +42,11 @@ const busRouteExpressLayerStyle = {
   },
 };
 
+const busStopsExpressSourceId = 'bus-stops-express';
+const busStopsExpressLayerId = busStopsExpressSourceId;
 const busStopExpressLayerStyle = {
-  id: "bus-stops-express",
-  source: "bus-stops-express",
+  id: busStopsExpressLayerId,
+  source: busStopsExpressSourceId,
   type: "circle" as const,
   paint: {
     "circle-color": "#81C0DE",
@@ -54,19 +58,11 @@ const busStopExpressLayerStyle = {
 const MapPage = () => {
   const [loadedSources, setLoadedSources] = useState<Set<string>>(new Set());
 
-  const addToLoadedSources = (source: string) =>{
-    console.log('source', source);
-    // const _loadedSoures = new Set(loadedSources);
-    // const _loadedSources: Set<string> = cloneDeep(loadedSources);
-    const _loadedSources= cloneDeep(loadedSources);
+  const addToLoadedSources = (source: string) => {
+    const _loadedSources = cloneDeep(loadedSources);
     _loadedSources.add(source);
-    console.log('added loaded sources',loadedSources);
     setLoadedSources(_loadedSources);
-  }
-
-  useEffect(() => {
-    console.log('loadedSources', loadedSources);
-  }, [loadedSources])
+  };
 
   return (
     <Box height="100%" flex="1">
@@ -125,7 +121,13 @@ const MapPage = () => {
           // borderColor='blackAlpha.700'
           // borderWidth='1px'
         >
-          <LayerCard addToLoadedSources={addToLoadedSources} isSourceLoaded={loadedSources.has('bus-routes-express')}/>
+          <LayerCard
+            addToLoadedSources={() => addToLoadedSources(busRoutesExpressSourceId)}
+            isSourceLoaded={loadedSources.has(busRoutesExpressSourceId)}
+            layerId={busRoutesExpressLayerId}
+          >
+            Express Bus Routes
+          </LayerCard>
         </Flex>
       </MapProvider>
     </Box>
