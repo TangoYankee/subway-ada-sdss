@@ -72,6 +72,19 @@ const hospitalsLayerStyle = {
   }
 }
 
+const parksSourceId ="parks";
+const parksLayerId = parksSourceId;
+const parksLayerStyle = {
+  id: parksLayerId,
+  source: parksSourceId,
+  type: "fill" as const,
+  paint: {
+    "fill-color": "#25855A",
+    "fill-outline-color": "#E2E8F0",
+    "fill-opacity": 0.5,
+  }
+}
+
 const subwayRoutesSourceId = "subway-routes";
 const subwayRoutesLayerId = subwayRoutesSourceId;
 const subwayRoutesLayerStyle = {
@@ -154,6 +167,17 @@ const MapPage = () => {
           ) : (
             <></>
           )}
+          {loadedSources.has(parksSourceId) ? (
+            <Source
+              id={parksSourceId}
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/parks`}
+            >
+              <Layer {...parksLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
           {loadedSources.has(busRoutesSourceId) ? (
             <Source
               id={busRoutesSourceId}
@@ -232,6 +256,13 @@ const MapPage = () => {
             addToLoadedSources={() => addToLoadedSources(hospitalsSourceId)}
           >
             Hospitals
+          </LayerCard>
+          <LayerCard
+            layerId={parksLayerId}
+            isSourceLoaded={loadedSources.has(parksSourceId)}
+            addToLoadedSources={() => addToLoadedSources(parksSourceId)}
+          >
+            Parks
           </LayerCard>
           <LayerCard
             layerId={busRoutesLayerId}
