@@ -28,7 +28,7 @@ const busStopLayerStyle = {
   source: busStopSourceId,
   type: "circle" as const,
   paint: {
-    "circle-color": "#222823",
+    "circle-color": "#1A202C",
     "circle-radius": 1.5,
     "circle-opacity": 0.5,
   },
@@ -53,7 +53,7 @@ const busStopExpressLayerStyle = {
   source: busStopsExpressSourceId,
   type: "circle" as const,
   paint: {
-    "circle-color": "#81C0DE",
+    "circle-color": "#00933C",
     "circle-radius": 2,
     "circle-opacity": 0.75,
   },
@@ -82,6 +82,19 @@ const parksLayerStyle = {
     "fill-color": "#25855A",
     "fill-outline-color": "#E2E8F0",
     "fill-opacity": 0.5,
+  }
+}
+
+const schoolsSourceId ="schools";
+const schoolsLayerId = schoolsSourceId;
+const schoolsLayerStyle = {
+  id: schoolsLayerId,
+  source: schoolsSourceId,
+  type: "circle" as const,
+  paint: {
+    "circle-color": "#ECC94B",
+    "circle-radius": 3,
+    "circle-opacity": 0.75,
   }
 }
 
@@ -178,6 +191,17 @@ const MapPage = () => {
           ) : (
             <></>
           )}
+          {loadedSources.has(schoolsSourceId) ? (
+            <Source
+              id={schoolsSourceId}
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/schools`}
+            >
+              <Layer {...schoolsLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
           {loadedSources.has(busRoutesSourceId) ? (
             <Source
               id={busRoutesSourceId}
@@ -263,6 +287,13 @@ const MapPage = () => {
             addToLoadedSources={() => addToLoadedSources(parksSourceId)}
           >
             Parks
+          </LayerCard>
+          <LayerCard
+            layerId={schoolsLayerId}
+            isSourceLoaded={loadedSources.has(schoolsSourceId)}
+            addToLoadedSources={() => addToLoadedSources(schoolsSourceId)}
+          >
+            Schools
           </LayerCard>
           <LayerCard
             layerId={busRoutesLayerId}
