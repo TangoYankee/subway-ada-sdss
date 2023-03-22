@@ -21,7 +21,7 @@ const busRouteLayerStyle = {
   },
 };
 
-const busStopSourceId = 'bus-stops';
+const busStopSourceId = "bus-stops";
 const busStopLayerId = busStopSourceId;
 const busStopLayerStyle = {
   id: busStopLayerId,
@@ -94,15 +94,17 @@ const MapPage = () => {
           ) : (
             <></>
           )}
-          {loadedSources.has(busStopSourceId)
-            ? <Source
-            id={busStopSourceId}
-            type="geojson"
-            data={`${API_BASE_URL}/api/v1/bus-stops`}
-          >
-            <Layer {...busStopLayerStyle} />
-          </Source>
-          : <></>}
+          {loadedSources.has(busStopSourceId) ? (
+            <Source
+              id={busStopSourceId}
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/bus-stops`}
+            >
+              <Layer {...busStopLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
           {loadedSources.has(busRoutesExpressSourceId) ? (
             <Source
               id={busRoutesExpressSourceId}
@@ -114,13 +116,14 @@ const MapPage = () => {
           ) : (
             <></>
           )}
-          {/* <Source
-            id="bus-stops-express"
+          {loadedSources.has(busStopsExpressSourceId) ? <Source
+            id={busStopsExpressSourceId}
             type="geojson"
             data={`${API_BASE_URL}/api/v1/bus-stops-express`}
           >
             <Layer {...busStopExpressLayerStyle} />
-          </Source> */}
+          </Source>
+          : <></>}
         </ReactMapGL>
         <Flex
           pos="absolute"
@@ -155,6 +158,15 @@ const MapPage = () => {
             isSourceLoaded={loadedSources.has(busRoutesExpressSourceId)}
           >
             Express Bus Routes
+          </LayerCard>
+          <LayerCard
+            layerId={busStopsExpressLayerId}
+            addToLoadedSources={() =>
+              addToLoadedSources(busStopsExpressSourceId)
+            }
+            isSourceLoaded={loadedSources.has(busStopsExpressSourceId)}
+          >
+            Express Bus Stops
           </LayerCard>
         </Flex>
       </MapProvider>
