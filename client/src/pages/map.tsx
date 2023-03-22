@@ -21,9 +21,11 @@ const busRouteLayerStyle = {
   },
 };
 
+const busStopSourceId = 'bus-stops';
+const busStopLayerId = busStopSourceId;
 const busStopLayerStyle = {
-  id: "bus-stops",
-  source: "bus-stops",
+  id: busStopLayerId,
+  source: busStopSourceId,
   type: "circle" as const,
   paint: {
     "circle-color": "#222823",
@@ -83,7 +85,7 @@ const MapPage = () => {
         >
           {loadedSources.has(busRoutesSourceId) ? (
             <Source
-              id="bus-routes"
+              id={busRoutesSourceId}
               type="geojson"
               data={`${API_BASE_URL}/api/v1/bus-routes`}
             >
@@ -92,16 +94,18 @@ const MapPage = () => {
           ) : (
             <></>
           )}
-          {/* <Source
-            id="bus-stops"
+          {loadedSources.has(busStopSourceId)
+            ? <Source
+            id={busStopSourceId}
             type="geojson"
             data={`${API_BASE_URL}/api/v1/bus-stops`}
           >
             <Layer {...busStopLayerStyle} />
-          </Source> */}
+          </Source>
+          : <></>}
           {loadedSources.has(busRoutesExpressSourceId) ? (
             <Source
-              id="bus-routes-express"
+              id={busRoutesExpressSourceId}
               type="geojson"
               data={`${API_BASE_URL}/api/v1/bus-routes-express`}
             >
@@ -135,6 +139,13 @@ const MapPage = () => {
             addToLoadedSources={() => addToLoadedSources(busRoutesSourceId)}
           >
             Bus Routes
+          </LayerCard>
+          <LayerCard
+            layerId={busStopSourceId}
+            isSourceLoaded={loadedSources.has(busStopLayerId)}
+            addToLoadedSources={() => addToLoadedSources(busStopSourceId)}
+          >
+            Bus Stops
           </LayerCard>
           <LayerCard
             layerId={busRoutesExpressLayerId}
