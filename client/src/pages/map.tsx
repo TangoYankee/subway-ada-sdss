@@ -1,14 +1,19 @@
-import { Box } from "@chakra-ui/react";
-import ReactMapGL, { Source, Layer } from "react-map-gl";
+import { Box, Flex } from "@chakra-ui/react";
+import ReactMapGL, { Source, Layer, MapProvider } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { LayerCard } from "../components/LayerCard";
+import { useState } from "react";
+import cloneDeep from "lodash.clonedeep";
 
 const API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN ?? "localhost:8001";
 const API_BASE_URL = `http://${API_DOMAIN}`;
 
+const busRoutesSourceId = "bus-routes";
+const busRoutesLayerId = busRoutesSourceId;
 const busRouteLayerStyle = {
-  id: "bus-routes",
-  source: "bus-routes",
+  id: busRoutesLayerId,
+  source: busRoutesSourceId,
   type: "line" as const,
   paint: {
     "line-color": ["get", "color"] as unknown,
@@ -16,9 +21,11 @@ const busRouteLayerStyle = {
   },
 };
 
+const busStopSourceId = "bus-stops";
+const busStopLayerId = busStopSourceId;
 const busStopLayerStyle = {
-  id: "bus-stops",
-  source: "bus-stops",
+  id: busStopLayerId,
+  source: busStopSourceId,
   type: "circle" as const,
   paint: {
     "circle-color": "#222823",
@@ -27,9 +34,11 @@ const busStopLayerStyle = {
   },
 };
 
+const busRoutesExpressSourceId = "bus-routes-express";
+const busRoutesExpressLayerId = busRoutesExpressSourceId;
 const busRouteExpressLayerStyle = {
-  id: "bus-routes-express",
-  source: "bus-routes-express",
+  id: busRoutesExpressLayerId,
+  source: busRoutesExpressSourceId,
   type: "line" as const,
   paint: {
     "line-color": ["get", "color"] as unknown,
@@ -37,9 +46,11 @@ const busRouteExpressLayerStyle = {
   },
 };
 
+const busStopsExpressSourceId = "bus-stops-express";
+const busStopsExpressLayerId = busStopsExpressSourceId;
 const busStopExpressLayerStyle = {
-  id: "bus-stops-express",
-  source: "bus-stops-express",
+  id: busStopsExpressLayerId,
+  source: busStopsExpressSourceId,
   type: "circle" as const,
   paint: {
     "circle-color": "#81C0DE",
@@ -48,47 +59,185 @@ const busStopExpressLayerStyle = {
   },
 };
 
-const MapPage = () => (
-  <Box height="100%" flex="1">
-    <ReactMapGL
-      mapLib={maplibregl}
-      initialViewState={{
-        longitude: -74.0,
-        latitude: 40.74,
-        zoom: 10,
-      }}
-      mapStyle={`https://api.maptiler.com/maps/basic/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
-    >
-      <Source
-        id="bus-routes"
-        type="geojson"
-        data={`${API_BASE_URL}/api/v1/bus-routes`}
-      >
-        <Layer {...busRouteLayerStyle} />
-      </Source>
-      <Source
-        id="bus-stops"
-        type="geojson"
-        data={`${API_BASE_URL}/api/v1/bus-stops`}
-      >
-        <Layer {...busStopLayerStyle} />
-      </Source>
-      <Source
-        id="bus-routes-express"
-        type="geojson"
-        data={`${API_BASE_URL}/api/v1/bus-routes-express`}
-      >
-        <Layer {...busRouteExpressLayerStyle} />
-      </Source>
-      <Source
-        id="bus-stops-express"
-        type="geojson"
-        data={`${API_BASE_URL}/api/v1/bus-stops-express`}
-      >
-        <Layer {...busStopExpressLayerStyle} />
-      </Source>
-    </ReactMapGL>
-  </Box>
-);
+const subwayRoutesSourceId = "subway-routes";
+const subwayRoutesLayerId = subwayRoutesSourceId;
+const subwayRoutesLayerStyle = {
+  id: subwayRoutesLayerId,
+  source: subwayRoutesSourceId,
+  type: "line" as const,
+  paint: {
+    "line-color": ["get", "color"] as unknown,
+    "line-opacity": 0.75,
+  },
+};
+
+const subwayStationsSourceId = "subway-stations";
+const subwayStationLayerId = subwayStationsSourceId;
+const subwayStationLayerStyle = {
+  id: subwayStationLayerId,
+  source: subwayStationsSourceId,
+  type: "circle" as const,
+  paint: {
+    "circle-color": "#222834",
+    "circle-radius": 3,
+    "circle-opacity": 0.75,
+  },
+};
+
+const MapPage = () => {
+  const [loadedSources, setLoadedSources] = useState<Set<string>>(
+    new Set([subwayStationsSourceId, subwayRoutesSourceId])
+  );
+
+  const addToLoadedSources = (source: string) => {
+    const _loadedSources = cloneDeep(loadedSources);
+    _loadedSources.add(source);
+    setLoadedSources(_loadedSources);
+  };
+
+  return (
+    <Box height="100%" flex="1">
+      <MapProvider>
+        <ReactMapGL
+          id="sdssMap"
+          mapLib={maplibregl}
+          initialViewState={{
+            longitude: -74.0,
+            latitude: 40.74,
+            zoom: 10,
+          }}
+          mapStyle={`https://api.maptiler.com/maps/basic/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
+        >
+          {loadedSources.has(subwayStationsSourceId) ? (
+            <Source
+              id={subwayStationsSourceId}
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/subway-stations`}
+            >
+              <Layer {...subwayStationLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
+          {loadedSources.has(subwayRoutesSourceId) ? (
+            <Source
+              id={subwayRoutesSourceId}
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/subway-routes`}
+            >
+              <Layer {...subwayRoutesLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
+          {loadedSources.has(busRoutesSourceId) ? (
+            <Source
+              id={busRoutesSourceId}
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/bus-routes`}
+            >
+              <Layer {...busRouteLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
+          {loadedSources.has(busStopSourceId) ? (
+            <Source
+              id={busStopSourceId}
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/bus-stops`}
+            >
+              <Layer {...busStopLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
+          {loadedSources.has(busRoutesExpressSourceId) ? (
+            <Source
+              id={busRoutesExpressSourceId}
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/bus-routes-express`}
+            >
+              <Layer {...busRouteExpressLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
+          {loadedSources.has(busStopsExpressSourceId) ? (
+            <Source
+              id={busStopsExpressSourceId}
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/bus-stops-express`}
+            >
+              <Layer {...busStopExpressLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
+        </ReactMapGL>
+        <Flex
+          pos="absolute"
+          top="1rem"
+          left="1rem"
+          direction="column"
+          backgroundColor="whiteAlpha.700"
+          borderRadius="1px"
+          borderStyle="solid"
+          borderColor="blackAlpha.700"
+          borderWidth="1px"
+        >
+          <LayerCard
+            layerId={subwayStationLayerId}
+            isSourceLoaded={loadedSources.has(subwayStationsSourceId)}
+            addToLoadedSources={() =>
+              addToLoadedSources(subwayStationsSourceId)
+            }
+          >
+            Subway Stations
+          </LayerCard>
+          <LayerCard
+            layerId={subwayRoutesLayerId}
+            isSourceLoaded={loadedSources.has(subwayRoutesSourceId)}
+            addToLoadedSources={() => addToLoadedSources(subwayRoutesSourceId)}
+          >
+            Subway Routes
+          </LayerCard>
+          <LayerCard
+            layerId={busRoutesLayerId}
+            isSourceLoaded={loadedSources.has(busRoutesSourceId)}
+            addToLoadedSources={() => addToLoadedSources(busRoutesSourceId)}
+          >
+            Bus Routes
+          </LayerCard>
+          <LayerCard
+            layerId={busStopSourceId}
+            isSourceLoaded={loadedSources.has(busStopLayerId)}
+            addToLoadedSources={() => addToLoadedSources(busStopSourceId)}
+          >
+            Bus Stops
+          </LayerCard>
+          <LayerCard
+            layerId={busRoutesExpressLayerId}
+            addToLoadedSources={() =>
+              addToLoadedSources(busRoutesExpressSourceId)
+            }
+            isSourceLoaded={loadedSources.has(busRoutesExpressSourceId)}
+          >
+            Express Bus Routes
+          </LayerCard>
+          <LayerCard
+            layerId={busStopsExpressLayerId}
+            addToLoadedSources={() =>
+              addToLoadedSources(busStopsExpressSourceId)
+            }
+            isSourceLoaded={loadedSources.has(busStopsExpressSourceId)}
+          >
+            Express Bus Stops
+          </LayerCard>
+        </Flex>
+      </MapProvider>
+    </Box>
+  );
+};
 
 export default MapPage;
