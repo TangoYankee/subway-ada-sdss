@@ -59,6 +59,19 @@ const busStopExpressLayerStyle = {
   },
 };
 
+const hospitalsSourceId ="hospitals";
+const hospitalsLayerId = hospitalsSourceId;
+const hospitalsLayerStyle = {
+  id: hospitalsLayerId,
+  source: hospitalsSourceId,
+  type: "circle" as const,
+  paint: {
+    "circle-color": "#E53E3E",
+    "circle-radius": 3,
+    "circle-opacity": 0.75,
+  }
+}
+
 const subwayRoutesSourceId = "subway-routes";
 const subwayRoutesLayerId = subwayRoutesSourceId;
 const subwayRoutesLayerStyle = {
@@ -79,7 +92,7 @@ const subwayStationLayerStyle = {
   type: "circle" as const,
   paint: {
     "circle-color": "#222834",
-    "circle-radius": 3,
+    "circle-radius": 3.5,
     "circle-opacity": 0.75,
   },
 };
@@ -126,6 +139,17 @@ const MapPage = () => {
               data={`${API_BASE_URL}/api/v1/subway-routes`}
             >
               <Layer {...subwayRoutesLayerStyle} />
+            </Source>
+          ) : (
+            <></>
+          )}
+          {loadedSources.has(hospitalsSourceId) ? (
+            <Source
+              id={hospitalsSourceId}
+              type="geojson"
+              data={`${API_BASE_URL}/api/v1/hospitals`}
+            >
+              <Layer {...hospitalsLayerStyle} />
             </Source>
           ) : (
             <></>
@@ -201,6 +225,13 @@ const MapPage = () => {
             addToLoadedSources={() => addToLoadedSources(subwayRoutesSourceId)}
           >
             Subway Routes
+          </LayerCard>
+          <LayerCard
+            layerId={hospitalsLayerId}
+            isSourceLoaded={loadedSources.has(hospitalsSourceId)}
+            addToLoadedSources={() => addToLoadedSources(hospitalsSourceId)}
+          >
+            Hospitals
           </LayerCard>
           <LayerCard
             layerId={busRoutesLayerId}
