@@ -252,7 +252,7 @@ const MapPage = () => {
           pos="absolute"
           top="2vh"
           left="2vh"
-          maxHeight="96vh"
+          maxHeight="92vh"
           direction="column"
         >
           <Box>
