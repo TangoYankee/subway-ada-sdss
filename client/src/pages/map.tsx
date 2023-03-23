@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex } from "@chakra-ui/react";
 import ReactMapGL, { Source, Layer, MapProvider } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -59,7 +59,7 @@ const busStopExpressLayerStyle = {
   },
 };
 
-const hospitalsSourceId ="hospitals";
+const hospitalsSourceId = "hospitals";
 const hospitalsLayerId = hospitalsSourceId;
 const hospitalsLayerStyle = {
   id: hospitalsLayerId,
@@ -69,10 +69,10 @@ const hospitalsLayerStyle = {
     "circle-color": "#E53E3E",
     "circle-radius": 3,
     "circle-opacity": 0.75,
-  }
-}
+  },
+};
 
-const parksSourceId ="parks";
+const parksSourceId = "parks";
 const parksLayerId = parksSourceId;
 const parksLayerStyle = {
   id: parksLayerId,
@@ -82,10 +82,10 @@ const parksLayerStyle = {
     "fill-color": "#25855A",
     "fill-outline-color": "#E2E8F0",
     "fill-opacity": 0.5,
-  }
-}
+  },
+};
 
-const schoolsSourceId ="schools";
+const schoolsSourceId = "schools";
 const schoolsLayerId = schoolsSourceId;
 const schoolsLayerStyle = {
   id: schoolsLayerId,
@@ -95,8 +95,8 @@ const schoolsLayerStyle = {
     "circle-color": "#ECC94B",
     "circle-radius": 3,
     "circle-opacity": 0.75,
-  }
-}
+  },
+};
 
 const subwayRoutesSourceId = "subway-routes";
 const subwayRoutesLayerId = subwayRoutesSourceId;
@@ -127,6 +127,7 @@ const MapPage = () => {
   const [loadedSources, setLoadedSources] = useState<Set<string>>(
     new Set([subwayStationsSourceId, subwayRoutesSourceId])
   );
+  const [showPanel, setShowPanel] = useState(true);
 
   const addToLoadedSources = (source: string) => {
     const _loadedSources = cloneDeep(loadedSources);
@@ -249,84 +250,97 @@ const MapPage = () => {
         </ReactMapGL>
         <Flex
           pos="absolute"
-          top="1rem"
-          left="1rem"
+          top="2vh"
+          left="2vh"
+          maxHeight="96vh"
           direction="column"
-          backgroundColor="whiteAlpha.700"
-          borderRadius="1px"
-          borderStyle="solid"
-          borderColor="blackAlpha.700"
-          borderWidth="1px"
         >
-          <LayerCard
-            layerId={subwayStationLayerId}
-            isSourceLoaded={loadedSources.has(subwayStationsSourceId)}
-            addToLoadedSources={() =>
-              addToLoadedSources(subwayStationsSourceId)
-            }
+          <Box>
+            <Button
+              colorScheme="teal"
+              size="md"
+              onClick={() => setShowPanel(!showPanel)}
+            >
+              {showPanel ? "Hide" : "Show"} Panel
+            </Button>
+          </Box>
+          <Flex
+            direction="column"
+            overflow="scroll"
+            display={showPanel ? "flex" : "none"}
           >
-            Subway Stations
-          </LayerCard>
-          <LayerCard
-            layerId={subwayRoutesLayerId}
-            isSourceLoaded={loadedSources.has(subwayRoutesSourceId)}
-            addToLoadedSources={() => addToLoadedSources(subwayRoutesSourceId)}
-          >
-            Subway Routes
-          </LayerCard>
-          <LayerCard
-            layerId={hospitalsLayerId}
-            isSourceLoaded={loadedSources.has(hospitalsSourceId)}
-            addToLoadedSources={() => addToLoadedSources(hospitalsSourceId)}
-          >
-            Hospitals
-          </LayerCard>
-          <LayerCard
-            layerId={parksLayerId}
-            isSourceLoaded={loadedSources.has(parksSourceId)}
-            addToLoadedSources={() => addToLoadedSources(parksSourceId)}
-          >
-            Parks
-          </LayerCard>
-          <LayerCard
-            layerId={schoolsLayerId}
-            isSourceLoaded={loadedSources.has(schoolsSourceId)}
-            addToLoadedSources={() => addToLoadedSources(schoolsSourceId)}
-          >
-            Schools
-          </LayerCard>
-          <LayerCard
-            layerId={busRoutesLayerId}
-            isSourceLoaded={loadedSources.has(busRoutesSourceId)}
-            addToLoadedSources={() => addToLoadedSources(busRoutesSourceId)}
-          >
-            Bus Routes
-          </LayerCard>
-          <LayerCard
-            layerId={busStopSourceId}
-            isSourceLoaded={loadedSources.has(busStopLayerId)}
-            addToLoadedSources={() => addToLoadedSources(busStopSourceId)}
-          >
-            Bus Stops
-          </LayerCard>
-          <LayerCard
-            layerId={busRoutesExpressLayerId}
-            addToLoadedSources={() =>
-              addToLoadedSources(busRoutesExpressSourceId)
-            }
-            isSourceLoaded={loadedSources.has(busRoutesExpressSourceId)}
-          >
-            Express Bus Routes
-          </LayerCard>
-          <LayerCard
-            layerId={busStopsExpressLayerId}
-            addToLoadedSources={() =>
-              addToLoadedSources(busStopsExpressSourceId)
-            }
-            isSourceLoaded={loadedSources.has(busStopsExpressSourceId)}
-          >
-            Express Bus Stops
-          </LayerCard>
+            <LayerCard
+              layerId={subwayStationLayerId}
+              isSourceLoaded={loadedSources.has(subwayStationsSourceId)}
+              addToLoadedSources={() =>
+                addToLoadedSources(subwayStationsSourceId)
+              }
+            >
+              Subway Stations
+            </LayerCard>
+            <LayerCard
+              layerId={subwayRoutesLayerId}
+              isSourceLoaded={loadedSources.has(subwayRoutesSourceId)}
+              addToLoadedSources={() =>
+                addToLoadedSources(subwayRoutesSourceId)
+              }
+            >
+              Subway Routes
+            </LayerCard>
+            <LayerCard
+              layerId={hospitalsLayerId}
+              isSourceLoaded={loadedSources.has(hospitalsSourceId)}
+              addToLoadedSources={() => addToLoadedSources(hospitalsSourceId)}
+            >
+              Hospitals
+            </LayerCard>
+            <LayerCard
+              layerId={parksLayerId}
+              isSourceLoaded={loadedSources.has(parksSourceId)}
+              addToLoadedSources={() => addToLoadedSources(parksSourceId)}
+            >
+              Parks
+            </LayerCard>
+            <LayerCard
+              layerId={schoolsLayerId}
+              isSourceLoaded={loadedSources.has(schoolsSourceId)}
+              addToLoadedSources={() => addToLoadedSources(schoolsSourceId)}
+            >
+              Schools
+            </LayerCard>
+            <LayerCard
+              layerId={busRoutesLayerId}
+              isSourceLoaded={loadedSources.has(busRoutesSourceId)}
+              addToLoadedSources={() => addToLoadedSources(busRoutesSourceId)}
+            >
+              Bus Routes
+            </LayerCard>
+            <LayerCard
+              layerId={busStopSourceId}
+              isSourceLoaded={loadedSources.has(busStopLayerId)}
+              addToLoadedSources={() => addToLoadedSources(busStopSourceId)}
+            >
+              Bus Stops
+            </LayerCard>
+            <LayerCard
+              layerId={busRoutesExpressLayerId}
+              addToLoadedSources={() =>
+                addToLoadedSources(busRoutesExpressSourceId)
+              }
+              isSourceLoaded={loadedSources.has(busRoutesExpressSourceId)}
+            >
+              Express Bus Routes
+            </LayerCard>
+            <LayerCard
+              layerId={busStopsExpressLayerId}
+              addToLoadedSources={() =>
+                addToLoadedSources(busStopsExpressSourceId)
+              }
+              isSourceLoaded={loadedSources.has(busStopsExpressSourceId)}
+            >
+              Express Bus Stops
+            </LayerCard>
+          </Flex>
         </Flex>
       </MapProvider>
     </Box>
