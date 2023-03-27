@@ -5,6 +5,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { LayerCard } from "../components/LayerCard";
 import { useState } from "react";
 import cloneDeep from "lodash.clonedeep";
+import { ContentPanel } from "../components/ContentPanel";
 
 const API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN ?? "localhost:8001";
 const API_BASE_URL = `http://${API_DOMAIN}`;
@@ -138,6 +139,7 @@ const MapPage = () => {
   return (
     <Box height="100%" flex="1">
       <MapProvider>
+        <ContentPanel/>
         <ReactMapGL
           id="sdssMap"
           mapLib={maplibregl}
@@ -248,7 +250,7 @@ const MapPage = () => {
             <></>
           )}
         </ReactMapGL>
-        <Flex
+        {/* <Flex
           pos="relative"
           top="2vh"
           left="2vh"
@@ -342,7 +344,7 @@ const MapPage = () => {
               Express Bus Stops
             </LayerCard>
           </Flex>
-        </Flex>
+        </Flex> */}
       </MapProvider>
     </Box>
   );
