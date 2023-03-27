@@ -249,11 +249,12 @@ const MapPage = () => {
           )}
         </ReactMapGL>
         <Flex
-          pos="absolute"
+          pos="relative"
           top="2vh"
           left="2vh"
           maxHeight="92vh"
           direction="column"
+          display="none"
         >
           <Box>
             <Button
