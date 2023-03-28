@@ -13,14 +13,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [contentPanel, setContentPanel] = useState(ContentPanels.Map);
   return (
     <ChakraProvider theme={theme}>
-      <ContentPanelsContext.Provider
-        value={{ contentPanel, setContentPanel }}
-      />
-      <Flex height="100vh" width="100vw" direction="column">
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
-      </Flex>
+      <ContentPanelsContext.Provider value={{ contentPanel, setContentPanel }}>
+        <Flex height="100vh" width="100vw" direction="column">
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </Flex>
+      </ContentPanelsContext.Provider>
     </ChakraProvider>
   );
 }
