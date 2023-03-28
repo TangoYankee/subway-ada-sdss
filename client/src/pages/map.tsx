@@ -139,7 +139,7 @@ const MapPage = () => {
   return (
     <Box height="100%" flex="1">
       <MapProvider>
-        <ContentPanel/>
+        <ContentPanel />
         <ReactMapGL
           id="sdssMap"
           mapLib={maplibregl}

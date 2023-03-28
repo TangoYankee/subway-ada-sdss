@@ -1,5 +1,6 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
+  Box,
   IconButton,
   Menu,
   MenuButton,
@@ -7,22 +8,33 @@ import {
   MenuList,
   MenuOptionGroup,
 } from "@chakra-ui/react";
+import { useContext } from "react";
+import { ContentPanelsContext } from "../context/ContentPanelsContext";
+import { ContentPanels } from "../types.d";
 
-export const SiteMenu = () => (
-  <Menu>
-    <MenuButton
-      as={IconButton}
-      aria-label="Options"
-      icon={<HamburgerIcon />}
-      variant="outline"
-    />
-    <MenuList>
-      <MenuOptionGroup defaultValue="map">
-        <MenuItemOption value="map">Map</MenuItemOption>
-        <MenuItemOption value="about">About</MenuItemOption>
-        <MenuItemOption value="data">Data</MenuItemOption>
-        <MenuItemOption value="results">Results</MenuItemOption>
-      </MenuOptionGroup>
-    </MenuList>
-  </Menu>
-);
+export const SiteMenu = () => {
+  const { contentPanel, setContentPanel } = useContext(ContentPanelsContext);
+
+  return (
+    <Box zIndex={2}>
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          aria-label="Options"
+          icon={<HamburgerIcon />}
+          variant="outline"
+        />
+        <MenuList>
+          <MenuOptionGroup defaultValue={contentPanel} onChange={setContentPanel}>
+            <MenuItemOption value={ContentPanels.Map}>Map</MenuItemOption>
+            <MenuItemOption value={ContentPanels.About}>About</MenuItemOption>
+            <MenuItemOption value={ContentPanels.Data}>Data</MenuItemOption>
+            <MenuItemOption value={ContentPanels.Results}>
+              Results
+            </MenuItemOption>
+          </MenuOptionGroup>
+        </MenuList>
+      </Menu>
+    </Box>
+  );
+};
