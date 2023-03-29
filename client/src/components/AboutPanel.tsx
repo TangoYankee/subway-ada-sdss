@@ -1,4 +1,4 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 
 export const AboutPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => (
   <Flex
@@ -7,14 +7,14 @@ export const AboutPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => (
     bg="whiteAlpha.900"
     display={shouldDisplay ? "flex" : "none"}
     direction="column"
-    padding="10px"
+    padding={2.5}
   >
     <Heading>About</Heading>
-    <p>
+    <Text>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt obcaecati
       doloribus asperiores natus, vitae nobis sapiente, quod perspiciatis
       aspernatur quas, beatae ipsum blanditiis voluptates quia suscipit animi
       maiores inventore esse.
-    </p>
+    </Text>
   </Flex>
 );

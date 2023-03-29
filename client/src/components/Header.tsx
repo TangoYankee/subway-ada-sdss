@@ -3,8 +3,8 @@ import { SiteMenu } from "./SiteMenu";
 
 export const Header = () => {
   return (
-    <Flex w="100%" h="75px">
-      <Flex w={80} bg="red" justifyContent="space-around" alignItems="center">
+    <Flex w="100%" h={20}>
+      <Flex w={80} justifyContent="space-around" alignItems="center">
         <SiteMenu />
         <Flex direction="column" alignItems={"center"}>
           <Heading>Subway ADA</Heading>

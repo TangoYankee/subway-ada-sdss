@@ -20,6 +20,7 @@ export const ResultsPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => (
     direction="column"
     padding="10px"
     bg="whiteAlpha.900"
+    overflow="scroll"
   >
     <Heading as="h2">Results</Heading>
     <Accordion>
@@ -49,7 +50,7 @@ const PhaseAccordionItem = () => {
           <AccordionIcon />
         </AccordionButton>
       </h3>
-      <AccordionPanel p={1} maxHeight="400px" overflow="scroll">
+      <AccordionPanel p={1} maxHeight="40vh" overflow="scroll">
         {Results}
       </AccordionPanel>
     </AccordionItem>

@@ -11,11 +11,11 @@ export const ContentPanel = () => {
 
   return (
     <Flex
-      h="635px"
-      w="350px"
+      height="75vh"
+      w={80}
       position="absolute"
-      top="83px"
-      left="6px"
+      top={24}
+      left={1.5}
       zIndex="1"
       display={contentPanel === ContentPanels.Map ? "none" : "flex"}
     >
