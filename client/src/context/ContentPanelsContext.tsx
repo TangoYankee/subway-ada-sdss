@@ -8,5 +8,5 @@ export type ContentPanelsContextType = {
 
 export const ContentPanelsContext = createContext<ContentPanelsContextType>({
   contentPanel: ContentPanels.Map,
-  setContentPanel: () => {},
+  setContentPanel: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 });

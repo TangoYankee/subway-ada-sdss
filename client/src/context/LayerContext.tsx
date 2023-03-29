@@ -10,5 +10,5 @@ export type LayerContextType = {
 };
 export const LayerContext = createContext<LayerContextType>({
   loadedSources: new Set([subwayStationsSourceId, subwayRoutesSourceId]),
-  addToLoadedSources: () => {},
+  addToLoadedSources: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 });
