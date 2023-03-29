@@ -4,7 +4,7 @@ export const AboutPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => (
   <Flex
     h="100%"
     w="100%"
-    bg="gray.100"
+    bg="whiteAlpha.900"
     display={shouldDisplay ? "flex" : "none"}
     direction="column"
     padding="10px"
