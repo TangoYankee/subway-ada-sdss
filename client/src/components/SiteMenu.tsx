@@ -15,12 +15,6 @@ import { ContentPanels } from "../types.d";
 export const SiteMenu = () => {
   const { contentPanel, setContentPanel } = useContext(ContentPanelsContext);
 
-  const seeChange = (value: ContentPanels) => {
-    console.log("see the change is", value);
-    console.log(typeof value);
-    setContentPanel(value);
-  };
-
   return (
     <Box zIndex={2}>
       <Menu>
@@ -31,7 +25,10 @@ export const SiteMenu = () => {
           variant="outline"
         />
         <MenuList>
-          <MenuOptionGroup defaultValue={contentPanel} onChange={seeChange}>
+          <MenuOptionGroup
+            defaultValue={contentPanel}
+            onChange={setContentPanel}
+          >
             <MenuItemOption value={ContentPanels.Map}>Map</MenuItemOption>
             <MenuItemOption value={ContentPanels.About}>About</MenuItemOption>
             <MenuItemOption value={ContentPanels.Data}>Data</MenuItemOption>
