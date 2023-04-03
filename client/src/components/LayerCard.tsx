@@ -1,5 +1,17 @@
-import { Card, CardBody, Checkbox, Flex } from "@chakra-ui/react";
-import { ChangeEvent } from "react";
+import {
+  Box,
+  Card,
+  CardBody,
+  Checkbox,
+  Flex,
+  Slider,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderTrack,
+  Text,
+  Tooltip,
+} from "@chakra-ui/react";
+import { ChangeEvent, useState } from "react";
 import { useMap } from "react-map-gl";
 
 interface LayerCardProps {
@@ -9,6 +21,7 @@ interface LayerCardProps {
   children: React.ReactNode;
 }
 
+const DEFAULT_WEIGHT = 50;
 export const LayerCard = ({
   children,
   addToLoadedSources,
@@ -16,6 +29,12 @@ export const LayerCard = ({
   layerId,
 }: LayerCardProps) => {
   const { sdssMap } = useMap();
+  const [sliderValue, setSliderValue] = useState(DEFAULT_WEIGHT);
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  const setIncludeData = () => {
+    null;
+  };
 
   const setLayerVisibility = (e: ChangeEvent<HTMLInputElement>) => {
     const map = sdssMap.getMap();
@@ -38,12 +57,42 @@ export const LayerCard = ({
       <CardBody>
         <Flex direction="column">
           {children}
-          <Checkbox
-            onChange={setLayerVisibility}
-            defaultChecked={isSourceLoaded}
-          >
-            Show
-          </Checkbox>
+          <Flex>
+            <Flex direction="column" flex={1}>
+              <Checkbox onChange={setIncludeData}>Weighting</Checkbox>
+              <Box width="90%">
+                <Slider
+                  defaultValue={DEFAULT_WEIGHT}
+                  min={0}
+                  max={100}
+                  onChange={setSliderValue}
+                  onMouseEnter={() => setShowTooltip(true)}
+                  onMouseLeave={() => setShowTooltip(false)}
+                >
+                  <SliderTrack>
+                    <SliderFilledTrack />
+                  </SliderTrack>
+                  <Tooltip
+                    hasArrow
+                    placement="top"
+                    isOpen={showTooltip}
+                    label={`${sliderValue / 100}`}
+                  >
+                    <SliderThumb />
+                  </Tooltip>
+                </Slider>
+              </Box>
+            </Flex>
+            <Flex direction="column" flex={1}>
+              <Checkbox
+                onChange={setLayerVisibility}
+                defaultChecked={isSourceLoaded}
+              >
+                Display
+              </Checkbox>
+              <Text>Symbols TBD</Text>
+            </Flex>
+          </Flex>
         </Flex>
       </CardBody>
     </Card>

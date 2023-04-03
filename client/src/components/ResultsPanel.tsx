@@ -19,7 +19,6 @@ export const ResultsPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => (
     display={shouldDisplay ? "flex" : "none"}
     direction="column"
     padding="10px"
-    bg="whiteAlpha.900"
     overflow="scroll"
   >
     <Heading as="h2">Results</Heading>
