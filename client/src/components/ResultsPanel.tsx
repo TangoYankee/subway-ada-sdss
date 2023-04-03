@@ -23,7 +23,7 @@ export const ResultsPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => (
     overflow="scroll"
   >
     <Heading as="h2">Results</Heading>
-    <Accordion>
+    <Accordion allowToggle>
       <PhaseAccordionItem />
       <PhaseAccordionItem />
       <PhaseAccordionItem />
