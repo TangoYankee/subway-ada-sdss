@@ -11,8 +11,14 @@ export const ContentPanel = () => {
 
   return (
     <Flex
-      height="75vh"
-      w={80}
+      height={{
+        base: "70vh",
+        md: "48rem",
+      }}
+      w={{
+        base: "96vw",
+        md: 96,
+      }}
       position="absolute"
       top={24}
       left={1.5}
