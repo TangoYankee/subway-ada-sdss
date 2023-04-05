@@ -1,4 +1,7 @@
 from rest_framework import viewsets
+from rest_framework.parsers import JSONParser
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from ada_stations.serializers import (
     BusRouteSerializer,
     BusStopSerializer,
@@ -80,3 +83,10 @@ class SubwayStationViewSet(viewsets.ModelViewSet):
 class TractDemographicViewSet(viewsets.ModelViewSet):
     queryset = TractDemographic.objects.all()
     serializer_class = TractDemographicSerializer
+
+class RankingView(APIView):
+    def get(self, request):
+        stations = SubwayStation.objects.all()[:5]
+        for station in stations:
+            print(station.geom)
+        return Response({"message": "hello, world"})
