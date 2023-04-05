@@ -15,3 +15,5 @@ build/
 tests/report/
 venv/
 process-venv/
+
+.vscode
