@@ -90,30 +90,6 @@ class School(models.Model):
 
 
 class SubwayEntrance(models.Model):
-    line = models.CharField(max_length=80)
-    station_name = models.CharField(max_length=80)
-    route_1 = models.CharField(max_length=80, blank=True, null=True)
-    route_2 = models.CharField(max_length=80, blank=True, null=True)
-    route_3 = models.CharField(max_length=80, blank=True, null=True)
-    route_4 = models.CharField(max_length=80, blank=True, null=True)
-    route_5 = models.CharField(max_length=80, blank=True, null=True)
-    route_6 = models.CharField(max_length=80, blank=True, null=True)
-    route_7 = models.CharField(max_length=80, blank=True, null=True)
-    route_8 = models.CharField(max_length=80, blank=True, null=True)
-    route_9 = models.CharField(max_length=80, blank=True, null=True)
-    route_10 = models.CharField(max_length=80, blank=True, null=True)
-    route_11 = models.CharField(max_length=80, blank=True, null=True)
-    entrance_type = models.CharField(max_length=80)
-    entry = models.CharField(max_length=80)
-    exit_only = models.CharField(max_length=80, blank=True, null=True)
-    ada = models.CharField(max_length=80)
-    ada_notes = models.CharField(max_length=80, blank=True, null=True)
-    free_cross = models.CharField(max_length=80)
-    corner = models.CharField(max_length=80)
-    geom = models.PointField(srid=4326)
-
-
-class SubwayEntrance(models.Model):
     line = models.CharField(max_length=254)
     station_name = models.CharField(max_length=254)
     route_1 = models.CharField(max_length=254, blank=True, null=True)
