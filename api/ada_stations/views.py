@@ -95,13 +95,10 @@ class RankingView(APIView):
         
         total_weight = sum(factor_weights.values())
         proportional_weights = { key: value / total_weight for(key, value) in factor_weights.items() }
-        print(proportional_weights)
 
         stations = SubwayStation.objects.all()[:5]
-        # stations = SubwayStation.objects.all()
-        # hospitals = Hospital.objects.all()[:5]
         rankings = [None] * len(stations)
-        counts = [None] * len(stations)
+        counts = {}
         for index, station in enumerate(stations):
             hospital_count = Hospital.objects.filter(geom__distance_lte=(station.geom,station_buffer)).count()
             school_count = School.objects.filter(geom__distance_lte=(station.geom,station_buffer)).count()
@@ -111,12 +108,29 @@ class RankingView(APIView):
                 "school_count" : school_count,
             }
             count = {
-                "station_id": station.id,
-                "hospital_count": hospital_count,
-                "school_count" : school_count,
+                "hospitals": hospital_count,
+                "schools" : school_count,
             }
-            counts[index] = count
+            counts[station.id] = count
 
             rankings[index] = ranking
+
+        max_counts = {}
+        for count in counts.values():
+            for key, value in count.items():
+                max_counts[key] = max([value, max_counts.get(key, 0)])
+        
+        scores = {}
+        for station_id, factor_counts in counts.items():
+            score = 0
+            for factor, count in factor_counts.items():
+                print('factor', factor)
+                print('count', count)
+                print('max_counts[factor]', max_counts[factor])
+                score += (count / max_counts[factor]) * proportional_weights[factor] 
+
+            print('score', score)
+            scores[station_id] = score
+        print( 'scores', scores)
 
         return Response(rankings)
