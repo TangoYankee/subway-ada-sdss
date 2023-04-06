@@ -89,6 +89,10 @@ class RankingView(APIView):
     def get(self, request):
         station_buffer = 500
         batch_size = 80
+        model_map = {
+            "schools": School,
+            "hospitals": Hospital,
+        }
         factor_weights = {
             "schools": 100,
             "hospitals": 100,
@@ -100,12 +104,10 @@ class RankingView(APIView):
         stations = SubwayStation.objects.all()[:5]
         counts = {}
         for index, station in enumerate(stations):
-            hospital_count = Hospital.objects.filter(geom__distance_lte=(station.geom,station_buffer)).count()
-            school_count = School.objects.filter(geom__distance_lte=(station.geom,station_buffer)).count()
-            count = {
-                "hospitals": hospital_count,
-                "schools" : school_count,
-            }
+            count = {}
+            for factor, model in model_map.items():
+                factor_count = model.objects.filter(geom__distance_lte=(station.geom,station_buffer)).count()
+                count[factor] = factor_count
             counts[station.id] = count
 
 
