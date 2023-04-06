@@ -88,6 +88,7 @@ class TractDemographicViewSet(viewsets.ModelViewSet):
 class RankingView(APIView):
     def get(self, request):
         station_buffer = 500
+        batch_size = 80
         factor_weights = {
             "schools": 100,
             "hospitals": 100,
@@ -97,40 +98,43 @@ class RankingView(APIView):
         proportional_weights = { key: value / total_weight for(key, value) in factor_weights.items() }
 
         stations = SubwayStation.objects.all()[:5]
-        rankings = [None] * len(stations)
         counts = {}
         for index, station in enumerate(stations):
             hospital_count = Hospital.objects.filter(geom__distance_lte=(station.geom,station_buffer)).count()
             school_count = School.objects.filter(geom__distance_lte=(station.geom,station_buffer)).count()
-            ranking = {
-                "station_id": station.id,
-                "hospital_count": hospital_count,
-                "school_count" : school_count,
-            }
             count = {
                 "hospitals": hospital_count,
                 "schools" : school_count,
             }
             counts[station.id] = count
 
-            rankings[index] = ranking
 
         max_counts = {}
         for count in counts.values():
             for key, value in count.items():
                 max_counts[key] = max([value, max_counts.get(key, 0)])
         
+
         scores = {}
         for station_id, factor_counts in counts.items():
             score = 0
             for factor, count in factor_counts.items():
-                print('factor', factor)
-                print('count', count)
-                print('max_counts[factor]', max_counts[factor])
                 score += (count / max_counts[factor]) * proportional_weights[factor] 
-
-            print('score', score)
             scores[station_id] = score
-        print( 'scores', scores)
+        
+
+        ranked_scores = sorted(scores.items(), key=lambda x:x[1], reverse=True)
+        rankings = [None] * len(ranked_scores)
+        for index, data in enumerate(ranked_scores):
+            id, score = data 
+            ranking = index + 1
+            batch = ranking // batch_size + 1
+            rankings[index] = {
+                "station_id": id,
+                "score": score,
+                "ranking": ranking,
+                "batch": batch
+            }
+
 
         return Response(rankings)
