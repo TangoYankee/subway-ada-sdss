@@ -91,16 +91,17 @@ class RankingView(APIView):
         stations = SubwayStation.objects.all()[:5]
         # stations = SubwayStation.objects.all()
         # hospitals = Hospital.objects.all()[:5]
-        for station in stations:
+        rankings = []
+        for index, station in enumerate(stations):
+            print("station db id", station.id)
             print("complex:", station.complex_nm)
-            hospitals = Hospital.objects.filter(geom__distance_lte=(station.geom, 500))
-            print("num hospitals: ", len(hospitals))
-            schools = School.objects.filter(geom__distance_lte=(station.geom, 500))
-            print("num schools: ", len( schools ))
-            # for school in schools:
-            #     print("school", school.location_name)
-            # print( hospitals[0] )
-        # for hospital in hospitals:
-        #     print(hospital.facility_name)
+            hospital_count = Hospital.objects.filter(geom__distance_lte=(station.geom,station_buffer)).count()
+            print("num hospitals: ", hospital_count)
+            school_count = School.objects.filter(geom__distance_lte=(station.geom,station_buffer)).count()
+            print("num schools: ", school_count)
+            ranking = {
+                "station_id": station.id
+            }
+            rankings.append(ranking)
 
-        return Response({"message": "hello, world"})
+        return Response(rankings)
