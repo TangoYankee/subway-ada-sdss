@@ -91,12 +91,18 @@ class RankingView(APIView):
         station_buffer = 500
         batch_size = 80
         model_map = {
+            "parks": Park,
             "schools": School,
             "hospitals": Hospital,
+            "bus_stops": BusStop,
+            "bus_stops_express": BusStopExpress,
         }
         factor_weights = {
-            "schools": 100,
+            "parks": 60,
+            "schools": 40,
             "hospitals": 100,
+            "bus_stops": 50,
+            "bus_stops_express": 75
         }
 
         total_weight = sum(factor_weights.values())
