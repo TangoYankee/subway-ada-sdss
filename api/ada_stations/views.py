@@ -88,20 +88,35 @@ class TractDemographicViewSet(viewsets.ModelViewSet):
 class RankingView(APIView):
     def get(self, request):
         station_buffer = 500
+        factor_weights = {
+            "schools": 100,
+            "hospitals": 100,
+        }
+        
+        total_weight = sum(factor_weights.values())
+        proportional_weights = { key: value / total_weight for(key, value) in factor_weights.items() }
+        print(proportional_weights)
+
         stations = SubwayStation.objects.all()[:5]
         # stations = SubwayStation.objects.all()
         # hospitals = Hospital.objects.all()[:5]
-        rankings = []
+        rankings = [None] * len(stations)
+        counts = [None] * len(stations)
         for index, station in enumerate(stations):
-            print("station db id", station.id)
-            print("complex:", station.complex_nm)
             hospital_count = Hospital.objects.filter(geom__distance_lte=(station.geom,station_buffer)).count()
-            print("num hospitals: ", hospital_count)
             school_count = School.objects.filter(geom__distance_lte=(station.geom,station_buffer)).count()
-            print("num schools: ", school_count)
             ranking = {
-                "station_id": station.id
+                "station_id": station.id,
+                "hospital_count": hospital_count,
+                "school_count" : school_count,
             }
-            rankings.append(ranking)
+            count = {
+                "station_id": station.id,
+                "hospital_count": hospital_count,
+                "school_count" : school_count,
+            }
+            counts[index] = count
+
+            rankings[index] = ranking
 
         return Response(rankings)
