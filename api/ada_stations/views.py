@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.contrib.gis.measure import D
 from ada_stations.serializers import (
     BusRouteSerializer,
     BusStopSerializer,
@@ -86,7 +87,20 @@ class TractDemographicViewSet(viewsets.ModelViewSet):
 
 class RankingView(APIView):
     def get(self, request):
+        station_buffer = 500
         stations = SubwayStation.objects.all()[:5]
+        # stations = SubwayStation.objects.all()
+        # hospitals = Hospital.objects.all()[:5]
         for station in stations:
-            print(station.geom)
+            print("complex:", station.complex_nm)
+            hospitals = Hospital.objects.filter(geom__distance_lte=(station.geom, 500))
+            print("num hospitals: ", len(hospitals))
+            schools = School.objects.filter(geom__distance_lte=(station.geom, 500))
+            print("num schools: ", len( schools ))
+            # for school in schools:
+            #     print("school", school.location_name)
+            # print( hospitals[0] )
+        # for hospital in hospitals:
+        #     print(hospital.facility_name)
+
         return Response({"message": "hello, world"})
