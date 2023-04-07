@@ -116,7 +116,8 @@ class RankingView(APIView):
             key: value / total_weight for (key, value) in factor_weights.items()
         }
 
-        stations = SubwayStation.objects.all()[:5]
+        stations = SubwayStationADA.objects.all().filter(ada_status_code__gte=3)[:25]
+
         counts = {}
         for index, station in enumerate(stations):
             count = {}
