@@ -1,0 +1,490 @@
+name,line,ada_status,lon,lat,complex_id,gtfs_stop_id
+1st Ave,L,ADA Access Under Construction,c(-73.9816808748913, 40.7309749758007),119,L06
+103rd St - Corona Plaza,7,No Access - No Plans for Funding,c(-73.8626999983041, 40.7498650005555),450,706
+103rd St,1,No Access - No Plans for Funding,c(-73.9683789996082, 40.7994460003348),309,119
+103rd St,4-6,No Access - Under Consideration,c(-73.9474780015222, 40.7906000000845),395,624
+103rd St,A-B-C,No Access - Under Consideration,c(-73.9613700826762, 40.7960607399045),156,A18
+104th St,A,No Access - Under Consideration,c(-73.83768300061, 40.6817110010912),193,A63
+104th-102nd Sts,J-Z,No Access - No Plans for Funding,c(-73.8444350002968, 40.6951659982337),82,J14
+110th St,4-6,No Access - Under Consideration,c(-73.9442499968716, 40.7950200001131),394,623
+111th St,7,No Access - No Plans for Funding,c(-73.8553339983488, 40.7517299994171),449,705
+111th St,A,No Access - No Plans for Funding,c(-73.8321629984539, 40.6843310000124),194,A64
+111th St,J,No Access - No Plans for Funding,c(-73.836793384547, 40.6971148106965),81,J13
+116th St - Columbia University,1,No Access - Under Consideration,c(-73.9641099975775, 40.8077220012309),307,117
+116th St,2-3,No Access - No Plans for Funding,c(-73.949625000969, 40.802097999133),440,226
+116th St,4-6,No Access - No Plans for Funding,c(-73.9416169983714, 40.7986290002001),393,622
+116th St,A-B-C,No Access - No Plans for Funding,c(-73.9547977805731, 40.8050581334421),154,A16
+121st St,J-Z,No Access - No Plans for Funding,c(-73.8283490001795, 40.7004819985153),80,J12
+125th St,1,No Access - Under Consideration,c(-73.9583720009704, 40.8155809999789),306,116
+125th St,2-3,No Access - No Plans for Funding,c(-73.9454950001141, 40.8077539991828),439,225
+125th St,4-5-6,Full ADA Access,c(-73.9375940005573, 40.8041380005872),392,621
+125th St,A-B-C-D,Full ADA Access,c(-73.9522479973477, 40.8110716729946),153,A15
+135th St,2-3,Full ADA Access,c(-73.9407700010671, 40.8142290003391),438,224
+135th St,A-B-C,No Access - No Plans for Funding,c(-73.9475348087921, 40.8179055592127),152,A14
+137th St - City College,1,No Access - Under Consideration,c(-73.9536760008787, 40.8220079996847),305,115
+138th St - Grand Concourse,4-5,No Access - No Plans for Funding,c(-73.9298489993561, 40.8132239995891),391,416
+Union Sq - 14th St,4-5-6,No Access - No Plans for Funding,c(-73.9899509988188, 40.7346730009961),602,635
+Union Sq - 14th St,N-Q-R-W,Full ADA Access,c(-73.9905388618164, 40.7358722669981),602,R20
+14th St,1-2-3,No Access - Under Consideration,c(-74.000201000635, 40.7378259997281),601,132
+14th St,A-C-E,Full ADA Access,c(-74.0016899993703, 40.7408930001933),618,A31
+14th St,F-M,No Access - Under Consideration,c(-73.9962089992136, 40.7382279996951),601,D19
+145th St,1,No Access - Under Consideration,c(-73.9503599987971, 40.8265509996219),304,114
+145th St,3,No Access - No Plans for Funding,c(-73.936244998733, 40.8204209996928),437,302
+145th St,A-B-C-D,No Access - No Plans for Funding,c(-73.9440879282311, 40.8247663608719),151,A12
+149th St - Grand Concourse,2 5,ADA Access Under Construction,c(-73.9267224743861, 40.8183301440974),603,222
+149th St - Grand Concourse,4,ADA Access Under Construction,c(-73.9273847542618, 40.8183034437232),603,415
+15th St - Prospect Park,F-G,No Access - No Plans for Funding,c(-73.9797358059287, 40.6600356881002),241,F25
+155th St,B-D,No Access - No Plans for Funding,c(-73.9382089981162, 40.8301349999812),220,D12
+155th St,A-C,No Access - No Plans for Funding,c(-73.9415140008221, 40.8305179992925),150,A11
+157th St,1,No Access - Under Consideration,c(-73.9448899990105, 40.8340410001399),303,113
+161st St - Yankee Stadium,4,Full ADA Access,c(-73.9256919950573, 40.8282303274217),604,414
+161st St - Yankee Stadium,B-D,Full ADA Access,c(-73.9256509977548, 40.8279049988458),604,D11
+163rd St - Amsterdam Av,A-C,No Access - No Plans for Funding,c(-73.9398920018834, 40.836012999231),149,A10
+167th St,4,No Access - No Plans for Funding,c(-73.9213999978443, 40.8355369993367),388,413
+167th St,B-D,No Access - No Plans for Funding,c(-73.9184320008225, 40.833768998628),218,D10
+168th St,1,No Access - No Plans for Funding,c(-73.9401329990726, 40.8405559991485),605,112
+168th St,A-C,Full ADA Access,c(-73.9395609998543, 40.8407189999079),605,A09
+169th St,F,No Access - No Plans for Funding,c(-73.7934741992772, 40.710517502784),255,F02
+170th St,4,No Access - Under Consideration,c(-73.9177909974593, 40.84007499993),387,412
+170th St,B-D,No Access - Under Consideration,c(-73.9133999984698, 40.8393059996416),217,D09
+174th St,2 5,No Access - No Plans for Funding,c(-73.8876935981289, 40.8371955501706),428,215
+174th-175th Sts,B-D,No Access - Under Consideration,c(-73.9101360005008, 40.8458999998341),216,D08
+175th St,A,Full ADA Access,c(-73.939703997616, 40.847391000724),147,A07
+176th St,4,No Access - No Plans for Funding,c(-73.9117939988447, 40.8484800012369),385,410
+18th Ave,D,No Access - No Plans for Funding,c(-74.001592592394, 40.6077357317174),66,B19
+18th Ave,F,No Access - Under Consideration,c(-73.976970999658, 40.6297546663858),245,F30
+18th Ave,N,No Access - No Plans for Funding,c(-73.9904539986599, 40.62068699768),74,N05
+18th St,1-2,No Access - No Plans for Funding,c(-73.9978710006041, 40.7410399998021),321,131
+181st St,1,No Access - Under Consideration,c(-73.9335959996056, 40.8495049997407),301,111
+181st St,A,No Access - No Plans for Funding,c(-73.9379690020501, 40.8516949997446),146,A06
+182nd-183rd Sts,B-D,No Access - Under Consideration,c(-73.9007409999897, 40.8560929988186),214,D06
+183rd St,4,No Access - No Plans for Funding,c(-73.9038790015153, 40.8584070004084),383,408
+190th St,A,No Access - No Plans for Funding,c(-73.9341799996433, 40.8590219989248),145,A05
+191st St,1,No Access - No Plans for Funding,c(-73.9294119974204, 40.8552250017584),300,110
+Lower East Side - 2nd Ave,F,No Access - No Plans for Funding,c(-73.9899380000343, 40.7234016657491),232,F14
+20th Ave,D,No Access - No Plans for Funding,c(-73.9981743215757, 40.6046769981693),67,B20
+20th Ave,N,No Access - Under Consideration,c(-73.9845219984611, 40.617108999866),75,N06
+207th St,1,No Access - No Plans for Funding,c(-73.9188190013231, 40.8646140005259),298,108
+21st St - Queensbridge,F,Full ADA Access,c(-73.9419376145745, 40.7537392708755),221,B04
+21st St,G,No Access - No Plans for Funding,c(-73.9495999997552, 40.7441286664954),282,G24
+215th St,1,No Access - No Plans for Funding,c(-73.9152789995436, 40.8694439994605),297,107
+219th St,2-5,No Access - No Plans for Funding,c(-73.8625097078866, 40.8838879746253),420,207
+225th St,2-5,No Access - No Plans for Funding,c(-73.8602146177274, 40.8880282586379),419,206
+23rd St,1-2,No Access - No Plans for Funding,c(-73.9956570016487, 40.7440809998975),320,130
+23rd St,4-6,Full ADA Access,c(-73.9865990020789, 40.7398640004746),405,634
+23rd St,A-C-E,No Access - No Plans for Funding,c(-73.998041001172, 40.7459059994),165,A30
+23rd St,F-M,No Access - No Plans for Funding,c(-73.9927650047139, 40.742954317826),228,D18
+23rd St,N-Q-R-W,No Access - No Plans for Funding,c(-73.9893440010291, 40.74130266729),14,R19
+231st St,1,Full ADA Access,c(-73.9048340010787, 40.8788559981793),295,104
+233rd St,2-5,Full ADA Access,c(-73.8573623952154, 40.8931432413838),418,205
+238th St,1,No Access - No Plans for Funding,c(-73.9008700001852, 40.8846670006497),294,103
+25th Ave,D,No Access - No Plans for Funding,c(-73.9868290001148, 40.5977036669586),69,B22
+25th St,D-N-R,No Access - No Plans for Funding,c(-73.998090999743, 40.6603966669232),31,R35
+28th St,1-2,No Access - No Plans for Funding,c(-73.9933650013432, 40.7472149991822),319,129
+28th St,4-6,Partial ADA Access soutbound only,c(-73.9842640011041, 40.743069999259),404,633
+28th St,N-Q-R-W,No Access - No Plans for Funding,c(-73.9886980012874, 40.7454539997995),13,R18
+3rd Ave - 138th St,6,No Access - No Plans for Funding,c(-73.9261380001413, 40.8104760011726),377,619
+3rd Ave - 149th St,2-5,Full ADA Access,c(-73.9177915276098, 40.81602925251),434,221
+3rd Ave,L,No Access - No Plans for Funding,c(-73.9857500011209, 40.7326909997166),118,L05
+30th Ave,N-W,No Access - No Plans for Funding,c(-73.9214790001739, 40.766778666733),3,R04
+33rd St,4-6,No Access - No Plans for Funding,c(-73.9820760014895, 40.7460809990914),403,632
+33rd St,7,No Access - No Plans for Funding,c(-73.9309969995384, 40.7445869998399),460,716
+34th St - Hudson Yards,7,Full ADA Access,c(-74.002197094422, 40.755446359616),471,726
+Herald Sq - 34th St,B-D-F-M,Full ADA Access,c(-73.9877718907292, 40.7497893999001),607,D17
+Herald Sq - 34th St,N-Q-R-W,Full ADA Access,c(-73.9879368338264, 40.7496445600944),607,R17
+34th St - Penn Station,1-2-3,Full ADA Access,c(-73.9910569991398, 40.7503730000395),318,128
+34th St - Penn Station,A-C-E,Full ADA Access,c(-73.9933909997058, 40.7522870007759),164,A28
+36th Ave,N-W,No Access - No Plans for Funding,c(-73.929861999118, 40.7564420005104),5,R06
+36th St,D-N-R,No Access - Under Consideration,c(-74.0035489995181, 40.6551436663389),32,R36
+36th St,E-M-R,No Access - Under Consideration,c(-73.9290181846154, 40.7519600440108),272,G20
+39th Ave,N-W,No Access - No Plans for Funding,c(-73.932851376796, 40.7527630614084),6,R08
+4th Av - 9th St,F-G,No Access - Under Consideration,c(-73.989778999389, 40.6702716672849),608,F23
+40th St,7,No Access - No Plans for Funding,c(-73.9240159984882, 40.7437810014913),459,715
+42nd St - Bryant Pk,B-D-F-M,No Access - No Plans for Funding,c(-73.9845909990471, 40.7541840013125),609,D16
+42nd St - Port Authority Bus Term,A-C-E,Full ADA Access,c(-73.9897350008586, 40.7573079985515),611,A27
+45th St,N-R,No Access - No Plans for Funding,c(-74.0100060007494, 40.6489386666128),33,R39
+46th St,7,No Access - No Plans for Funding,c(-73.9184350010397, 40.7431320006038),458,714
+46th St,E-M-R,No Access - Under Consideration,c(-73.9135217499554, 40.7563169526081),270,G18
+47th-50th Sts - Rockefeller Ctr,B-D-F-M,Full ADA Access,c(-73.981331002277, 40.7586410015981),225,D15
+49th St,N-Q-R-W,Partial ADA Access northbound only,c(-73.984209565911, 40.7598019738707),10,R15
+5th Ave - Bryant Pk,7,No Access - No Plans for Funding,c(-73.9819629985671, 40.7538210006482),609,724
+5th Ave - 53rd St,E-M,No Access - No Plans for Funding,c(-73.9752485052734, 40.7600868323133),276,F12
+5th Ave - 59th St,N-R-W,No Access - No Plans for Funding,c(-73.9733470004705, 40.7648109997553),8,R13
+50th St,1-2,No Access - No Plans for Funding,c(-73.9838489998663, 40.7617279996142),316,126
+50th St,A-C-E,Partial ADA Acccess southbound only,c(-73.9859840002641, 40.76245599926),162,A25
+50th St,D,No Access - No Plans for Funding,c(-73.9946587805514, 40.6362608909614),61,B14
+51st St,4-6,Full ADA Access,c(-73.9719200006998, 40.7571069998932),612,630
+52nd St,7,No Access - No Plans for Funding,c(-73.9125489989125, 40.7441490010216),457,713
+53rd St,N-R,No Access - No Plans for Funding,c(-74.0140339998632, 40.6450686673598),34,R40
+55th St,D,No Access - No Plans for Funding,c(-73.9953488259574, 40.6314787609374),62,B15
+57th St,N-Q-R-W,ADA Access Under Construction,c(-73.9807297337213, 40.7645655250183),9,R14
+57th St,F,No Access - No Plans for Funding,c(-73.9773680008517, 40.7640850008171),224,B10
+59th St - Columbus Circle,1-2,Full ADA Access,c(-73.9819290023271, 40.7682470006369),614,125
+59th St - Columbus Circle,A-B-C-D,Full ADA Access,c(-73.981648723014, 40.7682495317761),614,A24
+Lexington Ave - 59th St,4-5-6,No Access - No Plans for Funding,c(-73.9679670004732, 40.7625260003046),613,629
+59th St,N-R,ADA Access Under Construction,c(-74.0178809995399, 40.6413616662838),35,R41
+6th Ave,L,No Access - Under Consideration,c(-73.9977507887478, 40.7377414698105),601,L02
+62nd St,D,ADA Access Under Construction,c(-73.9968572499486, 40.6262244629222),615,B16
+63rd Dr - Rego Park,E-M-R,No Access - Under Consideration,c(-73.861618200972, 40.7297639724224),263,G10
+65th St,E-M-R,No Access - Under Consideration,c(-73.8987883783301, 40.7497195293568),268,G15
+66th St - Lincoln Ctr,1-2,Full ADA Access,c(-73.9822089999578, 40.7734400005204),314,124
+67th Ave,E-M-R,No Access - Under Consideration,c(-73.8528604843491, 40.726505475813),262,G09
+68th St - Hunter College,4-6,ADA Access Under Construction,c(-73.9638700015804, 40.7681410004968),399,628
+69th St,7,No Access - No Plans for Funding,c(-73.8964029993185, 40.7463249994103),455,711
+7th Ave,B-D-E,No Access - No Plans for Funding,c(-73.9816978234448, 40.7629701524563),277,D14
+7th Ave,B-Q,No Access - No Plans for Funding,c(-73.9728527919102, 40.6771021798329),41,D25
+7th Ave,F-G,No Access - Under Consideration,c(-73.9802511790094, 40.6662446900199),240,F24
+71st St,D,No Access - No Plans for Funding,c(-73.9988409485069, 40.6192587097727),64,B17
+72nd St,1-2-3,Full ADA Access,c(-73.9819700015958, 40.7784530006861),313,123
+72nd St,A-B-C,No Access - No Plans for Funding,c(-73.976336575218, 40.7755193972926),160,A22
+72nd St,Q,Full ADA Access,c(-73.9583617868225, 40.768802510149),477,Q03
+74th St - Broadway,7,Full ADA Access,c(-73.8912051289911, 40.7468675738291),616,710
+75th Ave,E-F,No Access - No Plans for Funding,c(-73.8369236938716, 40.7180446534874),260,F07
+75th St - Eldert Ln,J-Z,No Access - No Plans for Funding,c(-73.8672879994496, 40.6912900012467),85,J17
+77th St,4-6,No Access - No Plans for Funding,c(-73.9598739988605, 40.7736200007461),398,627
+77th St,R,No Access - Under Consideration,c(-74.0255099996266, 40.6297416668869),37,R43
+79th St,1-2,No Access - No Plans for Funding,c(-73.9799170005613, 40.7839339995903),312,122
+79th St,D,No Access - No Plans for Funding,c(-74.0005828743151, 40.6131589256952),65,B18
+8th Ave,L,Full ADA Access,c(-74.0025780010476, 40.739776666382),618,L01
+8th Ave,N,ADA Access Under Construction,c(-74.0115159977216, 40.6349709996472),71,N02
+8th St - NYU,N-Q-R-W,No Access - No Plans for Funding,c(-73.9925079984915, 40.7304649985399),16,R21
+80th St,A,No Access - Under Consideration,c(-73.8589920020633, 40.6793710011543),190,A59
+81st St,A-B-C,No Access - No Plans for Funding,c(-73.9720979493721, 40.7813460841821),159,A21
+82nd St - Jackson Hts,7,No Access - No Plans for Funding,c(-73.8836970007188, 40.7476589995591),453,709
+85th St - Forest Pky,J,No Access - No Plans for Funding,c(-73.8600870000687, 40.692426999661),84,J16
+86th St,1-2,No Access - No Plans for Funding,c(-73.9762179985933, 40.7886440007389),311,121
+86th St,4-5-6,No Access - Under Consideration,c(-73.9555889998513, 40.7794919982095),397,626
+86th St,A-B-C,No Access - Under Consideration,c(-73.9688284942967, 40.7858230467856),158,A20
+Gravesend - 86th St,N,No Access - Under Consideration,c(-73.9781889993627, 40.5924650008886),79,N10
+86th St,Q,Full ADA Access,c(-73.9517709096492, 40.7778610433316),476,Q04
+86th St,R,ADA Access Under Construction,c(-74.0283979999864, 40.6226866671502),38,R44
+88th St,A,No Access - Under Consideration,c(-73.8514700002609, 40.679843001355),191,A60
+9th Ave,D,No Access - No Plans for Funding,c(-73.994448744512, 40.6464840772664),59,B12
+4th Av - 9th St,D-N-R,No Access - Under Consideration,c(-73.9883019997451, 40.6708466668428),608,R33
+90th St - Elmhurst Av,7,No Access - No Plans for Funding,c(-73.8766129998698, 40.7484080006091),452,708
+96th St,1-2-3,Full ADA Access,c(-73.972322999157, 40.7939190012147),310,120
+96th St,4-6,No Access - Under Consideration,c(-73.9510700015425, 40.7856719999861),396,625
+96th St,A-B-C,No Access - Under Consideration,c(-73.9646024568717, 40.7916187976701),157,A19
+96th St,Q,Full ADA Access,c(-73.9470660219183, 40.7842366501776),475,Q05
+Alabama Ave,J,No Access - No Plans for Funding,c(-73.8985260015965, 40.6769980000038),91,J24
+Allerton Ave,2-5,No Access - No Plans for Funding,c(-73.8672342285163, 40.8654833779393),423,210
+Annadale,SIR,No Access - Under Consideration,c(-74.178217, 40.5404599999997),515,S17
+Aqueduct - North Conduit Av,A,No Access - No Plans for Funding,c(-73.8340579994872, 40.6682340016998),197,H02
+Aqueduct Racetrack,A,Full ADA Access,c(-73.8359189996516, 40.6720969991728),196,H01
+Arthur Kill,SIR,Full ADA Access,c(-74.24192597155, 40.5166427187032),523,S11
+Astor Pl,4-6,No Access - No Plans for Funding,c(-73.9910699986197, 40.7300540002898),407,636
+Astoria - Ditmars Blvd,N-W,No Access - No Plans for Funding,c(-73.9120340001031, 40.7750356665237),1,R01
+Astoria Blvd,N-W,ADA Access Under Construction,c(-73.9180950010924, 40.7700369994909),2,R03
+Atlantic Av - Barclay's Center,2-3-4-5,Full ADA Access,c(-73.9775499353939, 40.6844201652676),617,235
+Atlantic Av - Barclay's Center,B-Q,Full ADA Access,c(-73.9767834396317, 40.6844883234537),617,D24
+Atlantic Av - Barclay's Center,D-N-Q-R,Full ADA Access,c(-73.9788099995677, 40.6836656672794),617,R31
+Atlantic Ave,L,No Access - No Plans for Funding,c(-73.9030969995401, 40.6753446664081),133,L24
+Ave H,Q,Partial ADA Acccess southbound only,c(-73.961517939425, 40.6292083775897),48,D32
+Ave I,F,No Access - Under Consideration,c(-73.9760693317092, 40.6250174401914),246,F31
+Ave J,Q,No Access - No Plans for Funding,c(-73.9606931624693, 40.6250228199152),49,D33
+Ave M,Q,No Access - No Plans for Funding,c(-73.9592431052215, 40.6173977444437),50,D34
+Ave N,F,No Access - Under Consideration,c(-73.9740485087314, 40.6143567119088),248,F33
+Ave P,F,No Access - No Plans for Funding,c(-73.9730028152875, 40.6088428089499),249,F34
+Ave U,Q,No Access - No Plans for Funding,c(-73.955811223163, 40.5993089509548),52,D37
+Ave U,F,No Access - Under Consideration,c(-73.9733764197488, 40.5959248255175),251,F36
+Ave U,N,No Access - Under Consideration,c(-73.9790840009943, 40.5972359999204),78,N09
+Ave X,F,No Access - Under Consideration,c(-73.9742659996891, 40.5894496666253),252,F38
+Bay 50th St,D,No Access - No Plans for Funding,c(-73.9837650004595, 40.5888406665193),70,B23
+Bay Pky,D,Full ADA Access,c(-73.9936762000529, 40.6019504615723),68,B21
+Bay Pky,F,No Access - Under Consideration,c(-73.9752569782215, 40.6207316231679),247,F32
+Bay Pky,N,No Access - Under Consideration,c(-73.9817800106929, 40.61145578989),76,N07
+Bay Ridge - 95th St,R,ADA Access Under Construction,c(-74.0308760008576, 40.6166216672595),39,R45
+Bay Ridge Ave,R,No Access - No Plans for Funding,c(-74.0233769995073, 40.6349666668238),36,R42
+Bay Terrace,SIR,No Access - Under Consideration,c(-74.136907, 40.5563999999997),512,S20
+Baychester Ave,5,No Access - No Plans for Funding,c(-73.8385909980215, 40.8786630003731),443,502
+Beach 105th St,A,No Access - No Plans for Funding,c(-73.8275807503453, 40.5832684381029),202,H14
+Beach 25th St,A,No Access - No Plans for Funding,c(-73.7613529976207, 40.6000660010588),208,H10
+Beach 36th St,A,No Access - No Plans for Funding,c(-73.7681749993969, 40.5953980016688),207,H09
+Beach 44th St,A,No Access - No Plans for Funding,c(-73.7760129999951, 40.5929429990862),206,H08
+Beach 60th St,A,No Access - No Plans for Funding,c(-73.7885219980118, 40.5923740012123),205,H07
+Beach 67th St,A,No Access - Under Consideration,c(-73.7969239998421, 40.5909270007813),204,H06
+Beach 90th St,A,No Access - No Plans for Funding,c(-73.8136514041963, 40.5880915645732),200,H12
+Beach 98th St,A,No Access - No Plans for Funding,c(-73.8205205895952, 40.5853856913328),201,H13
+Bedford - Nostrand Aves,G,No Access - Under Consideration,c(-73.9535220006402, 40.6896270015844),289,G33
+Bedford Ave,L,ADA Access Under Construction,c(-73.9566649980652, 40.717173998589),120,L08
+Bedford Park Blvd - Lehman College,4,No Access - Under Consideration,c(-73.8900640006948, 40.8734119998012),380,405
+Bedford Park Blvd,B-D,ADA Access Under Construction,c(-73.8871379988957, 40.8732439986165),211,D03
+Bergen St,2-3,No Access - No Plans for Funding,c(-73.9749991511681, 40.6808621368296),339,236
+Bergen St,F-G,No Access - No Plans for Funding,c(-73.9907564957357, 40.6861105472598),236,F20
+Beverly Rd,Q,No Access - No Plans for Funding,c(-73.9643577962313, 40.6439045986042),45,D29
+Beverly Rd,2-5,No Access - No Plans for Funding,c(-73.948847983817, 40.6451235189437),357,245
+Bleecker St,4-6,Full ADA Access,c(-73.9946590000633, 40.7259146668266),619,637
+Borough Hall,2-3,Full ADA Access,c(-73.9899979996069, 40.6932189996111),620,232
+Borough Hall,4-5,Partial ADA Access northbound only,c(-73.9901510009054, 40.692403999991),620,423
+Bowery,J-Z,No Access - No Plans for Funding,c(-73.9938069065424, 40.7202468831473),103,M19
+Bowling Green,4-5,Full ADA Access,c(-74.0140079980343, 40.7049139992808),414,420
+Briarwood - Van Wyck Blvd,E-F,No Access - No Plans for Funding,c(-73.8206926363744, 40.7091618153695),258,F05
+Brighton Beach,B-Q,No Access - Under Consideration,c(-73.961353785988, 40.5777101966424),55,D40
+Broad Channel,A,No Access - No Plans for Funding,c(-73.8158326878296, 40.6084021806968),199,H04
+Broad St,J-Z,ADA Access Under Construction,c(-74.0110559999175, 40.706476001106),107,M23
+Broadway,G,No Access - No Plans for Funding,c(-73.9503122560662, 40.7061265762742),286,G30
+Broadway Junction,A-C,No Access - Under Consideration,c(-73.9053160005534, 40.6783336660802),621,A51
+Broadway Junction,J-Z,No Access - Under Consideration,c(-73.9042899974641, 40.6793660014737),621,J27
+Broadway Junction,L,No Access - Under Consideration,c(-73.9031175792068, 40.6784562484287),621,L22
+Broadway,N-W,No Access - No Plans for Funding,c(-73.9258229991991, 40.7614319988005),4,R05
+Broadway - Lafayette St,B-D-F-M,Full ADA Access,c(-73.9962039987605, 40.725296998738),619,D21
+Bronx Park East,2-5,No Access - No Plans for Funding,c(-73.868356091781, 40.8487686663389),425,212
+Brook Ave,6,No Access - Under Consideration,c(-73.9192399990943, 40.807565999877),376,618
+Brooklyn Bridge - City Hall,4-5-6,Full ADA Access,c(-74.0041310005885, 40.7130649994331),622,640
+Buhre Ave,6,No Access - No Plans for Funding,c(-73.8325690000374, 40.8468099988855),361,602
+Burke Ave,2-5,No Access - No Plans for Funding,c(-73.867053617476, 40.8712588025477),422,209
+Burnside Ave,4,No Access - No Plans for Funding,c(-73.9076840015997, 40.8534530015569),384,409
+Bushwick - Aberdeen,L,No Access - No Plans for Funding,c(-73.905261763051, 40.6828606255118),131,L21
+Canal St,1-2,No Access - No Plans for Funding,c(-74.0062770001748, 40.7228539977878),325,135
+Canal St,4-6,Full ADA Access,c(-74.0001929992733, 40.7188030010771),623,639
+Canal St - Holland Tunnel,A-C-E,No Access - No Plans for Funding,c(-74.0052290023424, 40.7208240000712),169,A34
+Canal St,J-Z,No Access - No Plans for Funding,c(-73.9998263854594, 40.7181738769739),623,M20
+Canal St,N-Q,No Access - No Plans for Funding,c(-74.0010547130603, 40.7188142635871),623,Q01
+Canal St,R-W,No Access - No Plans for Funding,c(-74.0018260000577, 40.719465001059),623,R23
+Canarsie - Rockaway Pkwy,L,ADA Access Under Construction,c(-73.9018500001729, 40.6466536673953),138,L29
+Carroll St,F-G,No Access - No Plans for Funding,c(-73.9949469799884, 40.6802733517018),237,F21
+Castle Hill Ave,6,No Access - No Plans for Funding,c(-73.8512219996147, 40.8342549982546),365,607
+Cathedral Pkwy (110th St),A-B-C,No Access - No Plans for Funding,c(-73.9580667066136, 40.800581558115),155,A17
+Cathedral Pkwy (110th St),1,No Access - Under Consideration,c(-73.9668470005456, 40.8039669996148),308,118
+Central Ave,M,No Access - No Plans for Funding,c(-73.9272429990284, 40.6978730001183),114,M10
+Central Park North (110th St),2-3,No Access - No Plans for Funding,c(-73.9518220017691, 40.7990749997732),441,227
+Chambers St,1-2-3,Full ADA Access,c(-74.0092660017011, 40.7154780001133),327,137
+Chambers St,A-C,No Access - No Plans for Funding,c(-74.0085847357013, 40.714111000774),624,A36
+Chambers St,J-Z,ADA Access Under Construction,c(-74.0034067303134, 40.7132337896267),622,M21
+Chauncey St,J-Z,No Access - Under Consideration,c(-73.9103835703338, 40.682851300878),93,J28
+Christopher St - Sheridan Sq,1-2,No Access - No Plans for Funding,c(-74.0029059985524, 40.7334220010422),323,133
+Church Ave,2-5,Full ADA Access,c(-73.9494551403533, 40.6508606878022),356,244
+Church Ave,B-Q,No Access - Under Consideration,c(-73.9628824619211, 40.6504932464648),44,D28
+Church Ave,F-G,Full ADA Access,c(-73.9797211622908, 40.64427200013),243,F27
+City Hall,R-W,No Access - No Plans for Funding,c(-74.0069858178034, 40.713272331117),20,R24
+Clark St,2-3,No Access - No Plans for Funding,c(-73.9930859982196, 40.6974659999647),334,231
+Classon Ave,G,No Access - Under Consideration,c(-73.9599900013721, 40.6888890002646),290,G34
+Cleveland St,J,No Access - No Plans for Funding,c(-73.8851940021643, 40.6797779989612),89,J22
+Clifton,SIR,No Access - Under Consideration,c(-74.071402, 40.6213189999997),504,S28
+Clinton - Washington Aves,A-C,No Access - No Plans for Funding,c(-73.9658379985728, 40.6832629991264),177,A44
+Clinton - Washington Aves,G,No Access - No Plans for Funding,c(-73.9667959986695, 40.6880940010605),291,G35
+Coney Island - Stillwell Av,D-F-N-Q,Full ADA Access,c(-73.9812359981396, 40.5772810000675),58,D43
+Cortelyou Rd,Q,No Access - No Plans for Funding,c(-73.9637900550549, 40.6409401651401),46,D30
+Cortlandt St,R-W,Full ADA Access,c(-74.0111319647327, 40.7105129841524),624,R25
+Court Sq,7,Full ADA Access,c(-73.9452640003968, 40.7470229988964),606,719
+Court Sq - 23rd St,E-M,No Access - No Plans for Funding,c(-73.9460547026633, 40.7477681214143),606,F09
+Long Island City - Court Sq,G,ADA Access Under Construction,c(-73.9438155959784, 40.7463050335714),606,G22
+Court St,N-R,No Access - No Plans for Funding,c(-73.9918183090113, 40.694196480777),620,R28
+Crescent St,J-Z,No Access - Under Consideration,c(-73.8739292521578, 40.6831526570774),87,J20
+Crown Hts - Utica Ave,3-4,Full ADA Access,c(-73.9329325608185, 40.6689783110781),345,250
+Cypress Ave,6,No Access - Under Consideration,c(-73.9140419999475, 40.8053680007636),375,617
+Cypress Hills,J,No Access - No Plans for Funding,c(-73.87332199883, 40.6896160008388),86,J19
+DeKalb Ave,B-D-N-Q-R,Full ADA Access,c(-73.9817709444095, 40.6906481199698),26,R30
+DeKalb Ave,L,No Access - No Plans for Funding,c(-73.9182320021972, 40.7036929996164),127,L16
+Delancey St - Essex St,F,No Access - Under Consideration,c(-73.9880780680772, 40.7186807421945),625,F15
+Ditmas Ave,F,No Access - No Plans for Funding,c(-73.9781719996516, 40.6361186666629),244,F29
+Dongan Hills,SIR,Full ADA Access,c(-74.09609, 40.5888489999996),507,S25
+Dyckman St,1,Partial ADA Access Southbound Only,c(-73.9255360000647, 40.860531001388),299,109
+Dyckman St,A,No Access - No Plans for Funding,c(-73.9272709996072, 40.8654909989689),144,A03
+E 105th St,L,No Access - No Plans for Funding,c(-73.8995476938872, 40.650468785447),137,L28
+E 143rd St - St Mary's St,6,No Access - Under Consideration,c(-73.9076569993649, 40.8087190009014),374,616
+E 149th St,6,No Access - Under Consideration,c(-73.9040979987595, 40.812117998272),373,615
+E 180th St,2-5,Full ADA Access,c(-73.8733460951088, 40.8418630412186),426,213
+East Broadway,F,No Access - No Plans for Funding,c(-73.990177001222, 40.7138550010204),234,F16
+Eastchester - Dyre Ave,5,No Access - No Plans for Funding,c(-73.8308340021742, 40.8882999990101),442,501
+Eastern Pkwy - Bklyn Museum,2-3-4,ADA Access Under Construction,c(-73.9642220374842, 40.6720322354592),341,238
+Elder Ave,6,No Access - No Plans for Funding,c(-73.8791589987478, 40.8285840010893),369,611
+Elmhurst Ave,E-M-R,No Access - Under Consideration,c(-73.8820347465864, 40.7423700797217),266,G13
+Eltingville,SIR,No Access - No Plans for Funding,c(-74.16457, 40.5446009999996),514,S18
+Delancey St - Essex St,J-M-Z,No Access - Under Consideration,c(-73.9874094020297, 40.7183060561862),625,M18
+Euclid Ave,A-C,Full ADA Access,c(-73.8721060009968, 40.6753769982394),188,A55
+Far Rockaway - Mott Ave,A,Full ADA Access,c(-73.7554049992473, 40.6039950016875),209,H11
+Brooklyn College - Flatbush Ave,2-5,Full ADA Access,c(-73.9475412073441, 40.6328424070074),359,247
+Flushing - Main St,7,Full ADA Access,c(-73.8300300026251, 40.7595999991501),447,701
+Flushing Ave,G,No Access - No Plans for Funding,c(-73.9502340010257, 40.7003766662215),287,G31
+Flushing Ave,J-M,Full ADA Access,c(-73.9413773483837, 40.7004044029811),98,M12
+Fordham Rd,4,Full ADA Access,c(-73.901033999217, 40.8628029998894),382,407
+Fordham Rd,B-D,No Access - No Plans for Funding,c(-73.897749001024, 40.8612959986835),213,D05
+Forest Ave,M,No Access - No Plans for Funding,c(-73.9030750000595, 40.7044120008781),110,M05
+Forest Hills - 71st Av,E-F-M-R,Full ADA Access,c(-73.8445167201267, 40.7215943095359),261,G08
+Ft Hamilton Pkwy,D,No Access - No Plans for Funding,c(-73.9942022375285, 40.6409127114447),60,B13
+Ft Hamilton Pkwy,F-G,No Access - No Plans for Funding,c(-73.9757759991747, 40.6507816680342),242,F26
+Ft Hamilton Pkwy,N,No Access - No Plans for Funding,c(-74.0053510004628, 40.6313856672244),72,N03
+Franklin Ave,2-3-4-5,No Access - No Plans for Funding,c(-73.9580997367769, 40.6707651534489),626,239
+Franklin Ave,A-C,Full ADA Access,c(-73.9568480001461, 40.6813796665874),627,A45
+Franklin St,1-2,No Access - No Plans for Funding,c(-74.0068860027711, 40.7193180013021),326,136
+Freeman St,2-5,No Access - No Plans for Funding,c(-73.8917522534946, 40.8299874463841),429,216
+Fresh Pond Rd,M,No Access - No Plans for Funding,c(-73.8958980017196, 40.7062259982305),109,M04
+Fulton St,2-3,Full ADA Access,c(-74.006570999702, 40.7094159992587),628,229
+Fulton St,4-5,Full ADA Access,c(-74.0095089985646, 40.7103679988221),628,418
+Fulton St,A-C,Full ADA Access,c(-74.0076230932399, 40.7101621653019),628,A38
+Fulton St,G,No Access - No Plans for Funding,c(-73.9753749983315, 40.6871189995077),292,G36
+Fulton St,J-Z,Full ADA Access,c(-74.0079380011039, 40.7100226665842),628,M22
+Gates Ave,J-Z,No Access - Under Consideration,c(-73.9221560015075, 40.6895839990139),95,J30
+Graham Ave,L,No Access - No Plans for Funding,c(-73.9439439986904, 40.7145759983636),122,L11
+Grand Army Plaza,2-3-4,No Access - No Plans for Funding,c(-73.9709563319228, 40.6752946951032),340,237
+Grand Ave - Newtown,E-M-R,No Access - Under Consideration,c(-73.8772208566918, 40.7368134181971),265,G12
+Grand Central - 42nd St,4-5-6,Full ADA Access,c(-73.9767132992584, 40.7518074298163),610,631
+Grand Central - 42nd St,7,Full ADA Access,c(-73.9760410011151, 40.7514310002869),610,723
+Grand St,B-D,No Access - No Plans for Funding,c(-73.9937529991359, 40.7182669995499),231,D22
+Grand St,L,No Access - Under Consideration,c(-73.9404969987464, 40.7115760006482),123,L12
+Grant Ave,A,No Access - No Plans for Funding,c(-73.865049998777, 40.6770440005448),189,A57
+Grant City,SIR,No Access - Under Consideration,c(-74.109704, 40.5789649999996),509,S23
+Grasmere,SIR,No Access - Under Consideration,c(-74.084087, 40.6031169999997),505,S27
+Great Kills,SIR,Full ADA Access,c(-74.151399, 40.5512309999997),513,S19
+Greenpoint Ave,G,ADA Access Under Construction,c(-73.9544250014623, 40.7312669997146),283,G26
+Gun Hill Rd,2-5,Full ADA Access,c(-73.866134105387, 40.877839385172),421,208
+Gun Hill Rd,5,ADA Access Under Construction,c(-73.8463840015176, 40.8695259996268),444,503
+Halsey St,J,No Access - Under Consideration,c(-73.9166388842194, 40.6864152707043),94,J29
+Halsey St,L,No Access - No Plans for Funding,c(-73.9039340011863, 40.6955180011488),129,L19
+Harlem - 148 St,3,No Access - No Plans for Funding,c(-73.9364700000556, 40.8238800008046),436,301
+Hewes St,J-M,No Access - No Plans for Funding,c(-73.9534880003846, 40.706889998054),100,M14
+High St,A-C,No Access - No Plans for Funding,c(-73.9905310006546, 40.6993369997788),173,A40
+Houston St,1-2,No Access - No Plans for Funding,c(-74.0053670018058, 40.7282510007302),324,134
+Howard Beach - JFK Airport,A,Full ADA Access,c(-73.8303010007103, 40.6604760000496),198,H03
+Hoyt - Schermerhorn Sts,A-C-G,No Access - No Plans for Funding,c(-73.9850362403414, 40.6884084758064),175,A42
+Hoyt St,2-3,No Access - No Plans for Funding,c(-73.9850637957565, 40.6905441853547),336,233
+Huguenot,SIR,No Access - Under Consideration,c(-74.191794, 40.5336739999996),516,S16
+Hunters Point Ave,7,No Access - No Plans for Funding,c(-73.9489160009391, 40.7422159998632),463,720
+Hunts Point Ave,6,Full ADA Access,c(-73.8905490001734, 40.8209479985231),371,613
+Intervale Ave,2-5,No Access - No Plans for Funding,c(-73.8966173846165, 40.8221421311708),431,218
+Inwood - 207th St,A,Full ADA Access,c(-73.9198990010047, 40.8680719999974),143,A02
+Jackson Ave,2-5,No Access - No Plans for Funding,c(-73.9077019387083, 40.816437466864),433,220
+Jackson Hts - Roosevelt Av,E-F-M-R,Full ADA Access,c(-73.891298665197, 40.7465396911589),616,G14
+Jamaica - 179th St,F,Full ADA Access,c(-73.7838170017645, 40.712645666744),254,F01
+Jamaica - Van Wyck,E,Full ADA Access,c(-73.8170128713541, 40.7028985528731),280,G07
+Jamaica Ctr - Parsons / Archer,E-J-Z,Full ADA Access,c(-73.8010963229892, 40.7020673762119),278,G05
+Jay St - MetroTech,A-C-F,Full ADA Access,c(-73.9872181526732, 40.6924706368471),636,A41
+Jay St - MetroTech,N-R,Full ADA Access,c(-73.9860566785461, 40.6922553964532),636,R29
+Jefferson Av,SIR,No Access - Under Consideration,c(-74.103338, 40.5835909999997),508,S24
+Jefferson St,L,No Access - Under Consideration,c(-73.9229130000312, 40.7066066659887),126,L15
+Junction Blvd,7,Full ADA Access,c(-73.8695270010352, 40.7491449994884),451,707
+Junius St,3-4,No Access - Under Consideration,c(-73.9024486418356, 40.6635890018172),349,254
+Kew Gardens - Union Tpke,E-F,Full ADA Access,c(-73.8303702709878, 40.714034819571),259,F06
+Kings Hwy,B-Q,Full ADA Access,c(-73.9576087353808, 40.608638645396),51,D35
+Kings Hwy,F,No Access - Under Consideration,c(-73.9723553085244, 40.6032584051283),250,F35
+Kings Hwy,N,No Access - No Plans for Funding,c(-73.9803730022934, 40.6040589998049),77,N08
+Kingsbridge Rd,4,No Access - No Plans for Funding,c(-73.8971740010174, 40.8677600008858),381,406
+Kingsbridge Rd,B-D,Full ADA Access,c(-73.8935090000331, 40.8669779999994),212,D04
+Kingston - Throop Aves,A-C,No Access - No Plans for Funding,c(-73.9408589987126, 40.679918999416),180,A47
+Kingston Ave,3-4,No Access - No Plans for Funding,c(-73.9421597839296, 40.6694814486498),344,249
+Knickerbocker Ave,M,No Access - No Plans for Funding,c(-73.9197200018862, 40.6986600012381),113,M09
+Kosciuszko St,J,No Access - Under Consideration,c(-73.9285089992741, 40.693172001292),96,J31
+Lafayette Ave,A-C,No Access - No Plans for Funding,c(-73.9739459984941, 40.6861130002057),176,A43
+Lexington Ave - 53rd St,E-M,Full ADA Access,c(-73.969072374902, 40.7574683078286),612,F11
+Lexington Ave - 59th St,N-R-W,No Access - No Plans for Funding,c(-73.9673750171144, 40.7627088553946),613,R11
+Lexington Ave - 63rd St,F-Q,Full ADA Access,c(-73.9660896441325, 40.7646180944237),223,B08
+Liberty Ave,A-C,No Access - No Plans for Funding,c(-73.8965480010393, 40.6745419998709),185,A52
+Livonia Ave,L,No Access - Under Consideration,c(-73.9005623722606, 40.6640572709464),135,L26
+Longwood Ave,6,No Access - No Plans for Funding,c(-73.8964349989741, 40.8161039999724),372,614
+Lorimer St,J-M,No Access - No Plans for Funding,c(-73.947354998842, 40.7038440000421),99,M13
+Lorimer St,L,No Access - Under Consideration,c(-73.9502479999697, 40.7140720006472),629,L10
+Marble Hill - 225th St,1,No Access - No Plans for Funding,c(-73.9098309992355, 40.8745609994179),296,106
+Marcy Ave,J-M-Z,Full ADA Access,c(-73.9578320007573, 40.7083830000179),101,M16
+Metropolitan Ave,G,No Access - Under Consideration,c(-73.9514239994525, 40.7127740007343),629,G29
+Mets - Willets Point,7,No Access - No Plans for Funding,c(-73.8456249984179, 40.7546219988126),448,702
+Middle Village - Metropolitan Ave,M,Full ADA Access,c(-73.8895772297809, 40.7114313050582),108,M01
+Middletown Rd,6,No Access - No Plans for Funding,c(-73.8363219975594, 40.8438630012838),362,603
+Montrose Ave,L,No Access - Under Consideration,c(-73.939792847135, 40.7073910643846),124,L13
+Morgan Ave,L,No Access - Under Consideration,c(-73.9331470002421, 40.7061516668073),125,L14
+Morris Park,5,No Access - No Plans for Funding,c(-73.8604950011725, 40.8543639996643),446,505
+Morrison Av - Soundview,6,No Access - Under Consideration,c(-73.8745159992949, 40.8295210015675),368,610
+Mosholu Pkwy,4,No Access - Under Consideration,c(-73.8846549998873, 40.8797499994723),379,402
+Mt Eden Ave,4,No Access - No Plans for Funding,c(-73.9146849986034, 40.8444340009268),386,411
+Myrtle-Willoughby Aves,G,No Access - No Plans for Funding,c(-73.9490669989016, 40.6946189990377),288,G32
+Myrtle - Wyckoff Aves,L,Full ADA Access,c(-73.9109757182647, 40.6994710624271),630,L17
+Myrtle - Wyckoff Aves,M,Full ADA Access,c(-73.912178999396, 40.6994540009084),630,M08
+Myrtle Ave,J-M-Z,No Access - Under Consideration,c(-73.9356230012996, 40.6971950005145),97,M11
+Nassau Ave,G,No Access - No Plans for Funding,c(-73.9511830001652, 40.7244799978083),284,G28
+Neck Rd,Q,No Access - Under Consideration,c(-73.9550782749376, 40.595321691117),53,D38
+Neptune Ave,F,No Access - Under Consideration,c(-73.9745927281881, 40.5807387584915),253,F39
+Nereid Ave (238 St),2-5,No Access - No Plans for Funding,c(-73.8543153107622, 40.8982865155753),417,204
+Nevins St,2-3-4-5,No Access - No Plans for Funding,c(-73.9804067987458, 40.6883105801902),337,234
+New Dorp,SIR,No Access - Under Consideration,c(-74.11721, 40.5734799999997),510,S22
+New Lots Ave,3-4,No Access - Under Consideration,c(-73.8841107080033, 40.6663149325969),352,257
+New Lots Ave,L,No Access - No Plans for Funding,c(-73.8992779605714, 40.6589147736853),136,L27
+New Utrecht Ave,N,ADA Access Under Construction,c(-73.9963530002597, 40.6248416672589),615,N04
+Newkirk Ave,2-5,No Access - No Plans for Funding,c(-73.9482999082241, 40.6399912427531),358,246
+Newkirk Ave,B-Q,No Access - No Plans for Funding,c(-73.9626948683726, 40.6351419373379),47,D31
+Northern Blvd,E-M-R,No Access - Under Consideration,c(-73.9060650805236, 40.7528248292361),269,G16
+Norwood - 205th St,D,No Access - No Plans for Funding,c(-73.8788549991869, 40.8748110001118),210,D01
+Norwood Ave,J-Z,No Access - Under Consideration,c(-73.8796259991078, 40.6815200004568),88,J21
+Nostrand Ave,3-4,No Access - No Plans for Funding,c(-73.9504262489579, 40.6699381509305),343,248
+Nostrand Ave,A-C,No Access - No Plans for Funding,c(-73.9504260009968, 40.6804380000623),179,A46
+Oakwood Heights,SIR,No Access - Under Consideration,c(-74.12632, 40.5651099999996),511,S21
+Ocean Pkwy,Q,No Access - Under Consideration,c(-73.9685009997518, 40.5763116670809),56,D41
+Old Town,SIR,No Access - Under Consideration,c(-74.087368, 40.5966119999997),506,S26
+Ozone Park - Lefferts Blvd,A,Full ADA Access,c(-73.8257979990661, 40.6859509987836),195,A65
+Park Pl,2-3,No Access - No Plans for Funding,c(-74.0088109999736, 40.7130509990777),624,228
+Parkchester,6,No Access - Under Consideration,c(-73.860816001084, 40.8332259992786),366,608
+Parkside Ave,Q,No Access - No Plans for Funding,c(-73.9614534398765, 40.6550730416372),43,D27
+Parsons Blvd,F,No Access - No Plans for Funding,c(-73.8032890002189, 40.7075719996157),256,F03
+Pelham Bay Park,6,Full ADA Access,c(-73.8281210005929, 40.8524619995166),360,601
+Pelham Pkwy,2-5,Full ADA Access,c(-73.8674806785004, 40.8571924091606),424,211
+Pelham Pkwy,5,No Access - No Plans for Funding,c(-73.8553590004356, 40.8589849998201),445,504
+Pennsylvania Ave,3-4,No Access - Under Consideration,c(-73.8948859115406, 40.6647144514357),350,255
+Pleasant Plains,SIR,No Access - Under Consideration,c(-74.217847, 40.5224099999996),518,S14
+President St,2-5,No Access - No Plans for Funding,c(-73.9505892002221, 40.6678836035368),353,241
+Prince St,N-Q-R-W,No Access - No Plans for Funding,c(-73.9977020004599, 40.7243286659757),17,R22
+Prince's Bay,SIR,No Access - Under Consideration,c(-74.200064, 40.5255069999997),517,S15
+Prospect Ave,2-5,No Access - No Plans for Funding,c(-73.9017777873092, 40.8194872648384),432,219
+Prospect Ave,D-N-R,No Access - No Plans for Funding,c(-73.9928720006742, 40.6654136671298),30,R34
+Prospect Park,B-Q,Full ADA Access,c(-73.9620313042661, 40.6616334551018),42,D26
+Queens Plz,E-M-R,Full ADA Access,c(-73.9371382396569, 40.7489177198632),273,G21
+Queensboro Plz,7,No Access - Under Consideration,c(-73.9401635351909, 40.7506356510148),461,R09
+Ralph Ave,A-C,No Access - No Plans for Funding,c(-73.9207859993331, 40.6788220008734),182,A49
+Rector St,1,No Access - No Plans for Funding,c(-74.0137830011974, 40.7075129995218),329,139
+Rector St,R-W,No Access - No Plans for Funding,c(-74.0129745625379, 40.7077447562945),22,R26
+Richmond Valley,SIR,No Access - No Plans for Funding,c(-74.229141, 40.5196309999996),519,S13
+Rockaway Ave,3-4,No Access - No Plans for Funding,c(-73.9089583358445, 40.6626174881522),348,253
+Rockaway Ave,A-C,No Access - No Plans for Funding,c(-73.9119459972662, 40.6783399998835),183,A50
+Rockaway Blvd,A,No Access - Under Consideration,c(-73.8438529979573, 40.6804289995884),192,A61
+Rockaway Park - Beach 116 St,A,Full ADA Access,c(-73.8355900870124, 40.5809558655735),203,H15
+Roosevelt Island - Main St,F,Full ADA Access,c(-73.9532349997887, 40.7591719996711),222,B06
+Saratoga Ave,3-4,No Access - No Plans for Funding,c(-73.9163302500795, 40.6615297898075),347,252
+Seneca Ave,M,No Access - No Plans for Funding,c(-73.9075819988542, 40.702918998949),111,M06
+Sheepshead Bay,B-Q,No Access - Under Consideration,c(-73.9540579125791, 40.5865475470754),54,D39
+Shepherd Ave,A-C,No Access - No Plans for Funding,c(-73.8807499974727, 40.6741300014559),187,A54
+Simpson St,2-5,Full ADA Access,c(-73.893066395079, 40.8239768412374),430,217
+Smith - 9th Sts,F-G,No Access - Under Consideration,c(-73.9958917279093, 40.6736410609041),238,F22
+South Ferry,1,Full ADA Access,c(-74.0131689591926, 40.7017305075745),635,142
+Spring St,4-6,No Access - No Plans for Funding,c(-73.9971410000667, 40.7223009999937),409,638
+Spring St,A-C-E,No Access - No Plans for Funding,c(-74.0037389984376, 40.7262270012931),168,A33
+St George,SIR,Full ADA Access,c(-74.073643, 40.6437479999996),501,S31
+St Lawrence Ave,6,No Access - Under Consideration,c(-73.8676179992367, 40.8315090005233),367,609
+Stapleton,SIR,No Access - Under Consideration,c(-74.075162, 40.6279149999997),503,S29
+Steinway St,E-M-R,No Access - Under Consideration,c(-73.9205264716827, 40.7569873591257),271,G19
+Sterling St,2-5,No Access - No Plans for Funding,c(-73.9507289112494, 40.6627729934283),354,242
+Sutphin Blvd - Archer Av,E-J-Z,Full ADA Access,c(-73.8080047196383, 40.700382424235),279,G06
+Sutphin Blvd,F,No Access - No Plans for Funding,c(-73.8108329989723, 40.7054179990676),257,F04
+Sutter Ave - Rutland Road,3-4,No Access - No Plans for Funding,c(-73.92252118536, 40.6647667887749),346,251
+Sutter Ave,L,No Access - No Plans for Funding,c(-73.9019160004208, 40.669145000614),134,L25
+Times Sq - 42nd St,1-2-3,Full ADA Access,c(-73.9874950005188, 40.7552899999568),611,127
+Times Sq - 42nd St,7,Full ADA Access,c(-73.9876909982515, 40.7554770019825),611,725
+Times Sq - 42nd St,N-Q-R-W,Full ADA Access,c(-73.9867680015398, 40.7546119985154),611,R16
+Tompkinsville,SIR,No Access - Under Consideration,c(-74.074835, 40.6369489999997),502,S30
+Tottenville,SIR,Full ADA Access,c(-74.251961, 40.5127639999996),522,S09
+Tremont Ave,B-D,No Access - Under Consideration,c(-73.9052270012235, 40.8504099995102),215,D07
+Union Sq - 14th St,L,Full ADA Access,c(-73.9906697690182, 40.7347633121792),602,L03
+Union St,D-N-R,No Access - No Plans for Funding,c(-73.9831099990967, 40.677315667351),28,R32
+Utica Ave,A-C,Full ADA Access,c(-73.9307289991403, 40.6793639995055),181,A48
+Van Cortlandt Park - 242nd St,1,No Access - No Plans for Funding,c(-73.8985830004965, 40.8892480001148),293,101
+Van Siclen Ave,3-4,No Access - Under Consideration,c(-73.8894049173011, 40.6655179630596),351,256
+Van Siclen Ave,A-C,No Access - No Plans for Funding,c(-73.8903580002471, 40.672709999061),186,A53
+Van Siclen Ave,J-Z,No Access - No Plans for Funding,c(-73.8916577270245, 40.6780282144778),90,J23
+Vernon Blvd - Jackson Ave,7,No Access - No Plans for Funding,c(-73.9535809987525, 40.7426259996975),464,721
+W 4th St - Washington Sq (Upper),A-C-E,Full ADA Access,c(-74.0004950022543, 40.7323379977433),167,A32
+W 4th St - Washington Sq (Lower),B-D-F-M,Full ADA Access,c(-74.0003081475597, 40.7322544933679),167,D20
+W 8th St - NY Aquarium,F-Q,No Access - No Plans for Funding,c(-73.9759578741382, 40.5760338181036),57,D42
+Wakefield - 241st St,2,No Access - No Plans for Funding,c(-73.8506199987954, 40.9031250005412),416,201
+Wall St,2-3,No Access - No Plans for Funding,c(-74.0090999984426, 40.7068209997534),333,230
+Wall St,4-5,No Access - No Plans for Funding,c(-74.0118619986011, 40.707557000866),413,419
+West Farms Sq - E Tremont Av,2-5,No Access - No Plans for Funding,c(-73.8799612787718, 40.840207632418),427,214
+Westchester Sq - E Tremont Ave,6,ADA Access Under Construction,c(-73.8429519992501, 40.8398920010139),363,604
+Whitehall St,R-W,No Access - No Plans for Funding,c(-74.0130072374272, 40.7031423735991),635,R27
+Whitlock Ave,6,No Access - No Plans for Funding,c(-73.8862829985325, 40.826525000559),370,612
+Wilson Ave,L,Partial ADA Access northbound only,c(-73.9039586049186, 40.6888665424602),130,L20
+Winthrop St,2-5,No Access - No Plans for Funding,c(-73.9500793459099, 40.6566593137608),355,243
+Woodhaven Blvd,J-Z,ADA Access Under Construction,c(-73.8520519974079, 40.693703998801),83,J15
+Woodhaven Blvd - Queens Mall,E-M-R,No Access - Under Consideration,c(-73.8694320861235, 40.7330973738097),264,G11
+Woodlawn,4,No Access - Under Consideration,c(-73.8787509999093, 40.8860370002533),378,401
+Woodside - 61st St,7,Full ADA Access,c(-73.9029840017301, 40.7456300011384),456,712
+World Trade Center,E,Full ADA Access,c(-74.009744615177, 40.7125639268082),624,E01
+Cortlandt St,1,Full ADA Access,c(-74.0121880011229, 40.7118350008202),328,138
+York St,F,No Access - No Plans for Funding,c(-73.9868849999367, 40.6997426676916),235,F18
+Zerega Ave,6,No Access - No Plans for Funding,c(-73.8470359987544, 40.8364880006082),364,606

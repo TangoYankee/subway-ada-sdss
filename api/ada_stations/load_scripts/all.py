@@ -9,6 +9,7 @@ from . import (
     subwayentrances,
     subwayroutes,
     subwaystations,
+    subwaystationsada,
     tractdemographics,
 )
 
@@ -25,4 +26,5 @@ def run():
     subwayentrances.run()
     subwayroutes.run()
     subwaystations.run()
+    subwaystationsada.run()
     tractdemographics.run()

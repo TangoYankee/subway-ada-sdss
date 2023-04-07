@@ -27,7 +27,9 @@ from ada_stations.views import (
     SubwayEntranceViewSet,
     SubwayRouteViewSet,
     SubwayStationViewSet,
+    SubwayStationADAViewSet,
     TractDemographicViewSet,
+    RankingView,
 )
 
 router = routers.DefaultRouter()
@@ -41,6 +43,11 @@ router.register("schools", SchoolViewSet)
 router.register("subway-entrances", SubwayEntranceViewSet)
 router.register("subway-routes", SubwayRouteViewSet)
 router.register("subway-stations", SubwayStationViewSet)
+router.register("subway-stations-ada", SubwayStationADAViewSet)
 router.register("tract-demographics", TractDemographicViewSet)
 
-urlpatterns = [path("admin/", admin.site.urls), path("api/v1/", include(router.urls))]
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("api/v1/", include(router.urls)),
+    path("api/v1/rankings", RankingView.as_view(), name="rankings"),
+]

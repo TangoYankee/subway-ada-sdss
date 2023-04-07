@@ -140,6 +140,18 @@ class SubwayStation(models.Model):
         return f"{self.complex_nm}-{self.trains}"
 
 
+class SubwayStationADA(models.Model):
+    name = models.CharField(max_length=80)
+    lines = models.CharField(max_length=80)
+    complex_id = models.CharField(max_length=80)
+    gtfs_stop_id = models.CharField(max_length=80)
+    ada_status_code = models.IntegerField()
+    geom = models.PointField(srid=4326)
+
+    def __str__(self):
+        return f"{self.name}: {self.lines}"
+
+
 class TractDemographic(models.Model):
     geoid = models.CharField(max_length=80)
     total = models.IntegerField()
