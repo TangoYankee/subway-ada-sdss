@@ -102,7 +102,7 @@ class RankingView(APIView):
             "schools": 40,
             "hospitals": 100,
             "bus_stops": 50,
-            "bus_stops_express": 75
+            "bus_stops_express": 75,
         }
 
         total_weight = sum(factor_weights.values())
