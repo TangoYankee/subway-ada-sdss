@@ -27,6 +27,7 @@ from ada_stations.views import (
     SubwayEntranceViewSet,
     SubwayRouteViewSet,
     SubwayStationViewSet,
+    SubwayStationADAViewSet,
     TractDemographicViewSet,
     RankingView,
 )
@@ -42,6 +43,7 @@ router.register("schools", SchoolViewSet)
 router.register("subway-entrances", SubwayEntranceViewSet)
 router.register("subway-routes", SubwayRouteViewSet)
 router.register("subway-stations", SubwayStationViewSet)
+router.register("subway-stations-ada", SubwayStationADAViewSet)
 router.register("tract-demographics", TractDemographicViewSet)
 
 urlpatterns = [

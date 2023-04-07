@@ -14,6 +14,7 @@ from ada_stations.serializers import (
     SubwayEntranceSerializer,
     SubwayRouteSerializer,
     SubwayStationSerializer,
+    SubwayStationADASerializer,
     TractDemographicSerializer,
 )
 from ada_stations.models import (
@@ -27,6 +28,7 @@ from ada_stations.models import (
     SubwayEntrance,
     SubwayRoute,
     SubwayStation,
+    SubwayStationADA,
     TractDemographic,
 )
 
@@ -80,6 +82,10 @@ class SubwayStationViewSet(viewsets.ModelViewSet):
     queryset = SubwayStation.objects.all()
     serializer_class = SubwayStationSerializer
 
+
+class SubwayStationADAViewSet(viewsets.ModelViewSet):
+    queryset = SubwayStationADA.objects.all()
+    serializer_class = SubwayStationADASerializer
 
 class TractDemographicViewSet(viewsets.ModelViewSet):
     queryset = TractDemographic.objects.all()
