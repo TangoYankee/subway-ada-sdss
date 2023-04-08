@@ -87,6 +87,7 @@ class SubwayStationADAViewSet(viewsets.ModelViewSet):
     queryset = SubwayStationADA.objects.all()
     serializer_class = SubwayStationADASerializer
 
+
 class TractDemographicViewSet(viewsets.ModelViewSet):
     queryset = TractDemographic.objects.all()
     serializer_class = TractDemographicSerializer
@@ -103,20 +104,24 @@ class RankingView(APIView):
             "bus_stops": BusStop,
             "bus_stops_express": BusStopExpress,
         }
+
+        query_string = request.GET
         factor_weights = {
-            "parks": 60,
-            "schools": 40,
-            "hospitals": 100,
-            "bus_stops": 50,
-            "bus_stops_express": 75,
+            "parks": int(query_string.get("parks") or 0),
+            "schools": int(query_string.get("schools") or 0),
+            "hospitals": int(query_string.get("hospitals") or 0),
+            "bus_stops": int(query_string.get("bus_stops") or 0),
+            "bus_stops_express": int(query_string.get("bus_stops_express") or 0),
         }
 
         total_weight = sum(factor_weights.values())
+        # Use 1 as fallback for total factor weights, to prevent division by 0
+        total_weight = total_weight if total_weight > 0 else 1
         proportional_weights = {
             key: value / total_weight for (key, value) in factor_weights.items()
         }
 
-        stations = SubwayStationADA.objects.all().filter(ada_status_code__gte=3)[:25]
+        stations = SubwayStationADA.objects.all().filter(ada_status_code__gte=3)[:2]
 
         counts = {}
         for index, station in enumerate(stations):
@@ -131,7 +136,8 @@ class RankingView(APIView):
         max_counts = {}
         for count in counts.values():
             for key, value in count.items():
-                max_counts[key] = max([value, max_counts.get(key, 0)])
+                # Use 1 for fallback of max, as a hack to prevent division by zero errors
+                max_counts[key] = max([value, max_counts.get(key, 1)])
 
         scores = {}
         for station_id, factor_counts in counts.items():
