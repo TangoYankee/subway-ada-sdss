@@ -1,25 +1,16 @@
 import { Button } from "@chakra-ui/react";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { RankingsContext } from "../context/RankingsContext";
-import { FactorWeightings } from "../types";
-
-const buildQueryString = (factorWeights: FactorWeightings) =>
-  Object.values(factorWeights)
-    .filter((factorWeight) => factorWeight.shouldWeight)
-    .map((factorWeight) => `${factorWeight.id}=${factorWeight.weight}&`)
-    .toString()
-    .slice(0, -1); // remove the trailing ampersand
 
 export const RankStationBtn = () => {
   const { factorWeights, isRankingsProcessing, getRankings } =
     useContext(RankingsContext);
-  const [queryString, setQueryString] = useState(
-    buildQueryString(factorWeights)
-  );
 
-  useEffect(() => {
-    setQueryString(buildQueryString(factorWeights));
-  }, [factorWeights]);
+  const queryString = Object.values(factorWeights)
+    .filter((factorWeight) => factorWeight.shouldWeight)
+    .map((factorWeight) => `${factorWeight.id}=${factorWeight.weight}&`)
+    .toString()
+    .slice(0, -1); // remove the trailing ampersand
 
   return (
     <Button

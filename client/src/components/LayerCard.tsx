@@ -72,6 +72,7 @@ export const LayerCard = ({
                   value={weight}
                   min={0}
                   max={100}
+                  // TODO: debounce updating the weight
                   onChange={updateWeight}
                   onMouseEnter={() => setShowTooltip(true)}
                   onMouseLeave={() => setShowTooltip(false)}
