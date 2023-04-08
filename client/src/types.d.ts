@@ -11,6 +11,14 @@ export enum ContentPanels {
   Results = "RESULTS",
 }
 
+export type FactorWeighting = {
+  id: string;
+  shouldWeight: boolean;
+  weight: number;
+};
+
+export type FactorWeightings = Record<string, FactorWeighting> | null;
+
 export type Ranking = {
   id: string;
   name: string;

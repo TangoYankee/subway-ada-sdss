@@ -17,24 +17,29 @@ import { useMap } from "react-map-gl";
 interface LayerCardProps {
   addToLoadedSources: () => void;
   isSourceLoaded: boolean;
+  shouldWeight: boolean;
+  weight: number;
+  updateShouldWeight: (shouldWeight: boolean) => void;
+  updateWeight: (Weighting: number) => void;
   layerId: string;
   children: React.ReactNode;
 }
 
-const DEFAULT_WEIGHT = 50;
 export const LayerCard = ({
   children,
   addToLoadedSources,
+  shouldWeight,
+  weight,
+  updateShouldWeight,
+  updateWeight,
   isSourceLoaded,
   layerId,
 }: LayerCardProps) => {
   const { sdssMap } = useMap();
-  const [sliderValue, setSliderValue] = useState(DEFAULT_WEIGHT);
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const setIncludeData = () => {
-    null;
-  };
+  const setShouldWeight = (e: ChangeEvent<HTMLInputElement>) =>
+    updateShouldWeight(e.target.checked);
 
   const setLayerVisibility = (e: ChangeEvent<HTMLInputElement>) => {
     const map = sdssMap.getMap();
@@ -59,13 +64,15 @@ export const LayerCard = ({
           {children}
           <Flex>
             <Flex direction="column" flex={1}>
-              <Checkbox onChange={setIncludeData}>Weighting</Checkbox>
+              <Checkbox onChange={setShouldWeight} isChecked={shouldWeight}>
+                Weighting
+              </Checkbox>
               <Box width="90%">
                 <Slider
-                  defaultValue={DEFAULT_WEIGHT}
+                  value={weight}
                   min={0}
                   max={100}
-                  onChange={setSliderValue}
+                  onChange={updateWeight}
                   onMouseEnter={() => setShowTooltip(true)}
                   onMouseLeave={() => setShowTooltip(false)}
                 >
@@ -76,7 +83,7 @@ export const LayerCard = ({
                     hasArrow
                     placement="top"
                     isOpen={showTooltip}
-                    label={`${sliderValue / 100}`}
+                    label={`${weight / 100}`}
                   >
                     <SliderThumb />
                   </Tooltip>
