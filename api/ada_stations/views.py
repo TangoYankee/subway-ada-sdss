@@ -1,8 +1,10 @@
+import json
 from rest_framework import viewsets
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.gis.measure import D
+from django.forms.models import model_to_dict
 from ada_stations.serializers import (
     BusRouteSerializer,
     BusStopSerializer,
@@ -121,9 +123,10 @@ class RankingView(APIView):
             key: value / total_weight for (key, value) in factor_weights.items()
         }
 
-        stations = SubwayStationADA.objects.all().filter(ada_status_code__gte=3)[:2]
+        stations = SubwayStationADA.objects.all().filter(ada_status_code__gte=3)
 
         counts = {}
+        meta_data = {}
         for index, station in enumerate(stations):
             count = {}
             for factor, model in model_map.items():
@@ -132,6 +135,12 @@ class RankingView(APIView):
                 ).count()
                 count[factor] = factor_count
             counts[station.id] = count
+            meta_data[station.id] = {
+                "id": station.id,
+                "name": station.name,
+                "lines": station.lines,
+                "ada_status_code": station.ada_status_code,
+            }
 
         max_counts = {}
         for count in counts.values():
@@ -147,16 +156,17 @@ class RankingView(APIView):
             scores[station_id] = score
 
         ranked_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-        rankings = [None] * len(ranked_scores)
+        rankings = {}
         for index, data in enumerate(ranked_scores):
             id, score = data
             ranking = index + 1
             batch = ranking // batch_size + 1
-            rankings[index] = {
-                "station_id": id,
+            rankings[id] = {
+                **meta_data[id],
                 "score": score,
                 "ranking": ranking,
                 "batch": batch,
+                **counts[id],
             }
 
         return Response(rankings)

@@ -24,4 +24,4 @@ bus_stops_express=${BUS_STOPS_EXPRESS}"
 # Query string with all parameters missing
 # QUERY_STRING=""
 
-curl http://${DOMAIN}/api/v1/rankings?${QUERY_STRING}
+time curl http://${DOMAIN}/api/v1/rankings?${QUERY_STRING}
