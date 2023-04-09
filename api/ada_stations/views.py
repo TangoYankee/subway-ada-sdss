@@ -99,7 +99,8 @@ class RankingView(APIView):
     def get(self, request):
         station_buffer = 500
         batch_size = 80
-        model_map = {
+        ada_min_code = 3
+        counted_factors_map = {
             "parks": Park,
             "schools": School,
             "hospitals": Hospital,
@@ -108,13 +109,8 @@ class RankingView(APIView):
         }
 
         query_string = request.GET
-        factor_weights = {
-            "parks": int(query_string.get("parks") or 0),
-            "schools": int(query_string.get("schools") or 0),
-            "hospitals": int(query_string.get("hospitals") or 0),
-            "bus_stops": int(query_string.get("bus_stops") or 0),
-            "bus_stops_express": int(query_string.get("bus_stops_express") or 0),
-        }
+        all_factors = list(counted_factors_map.keys())
+        factor_weights = { factor:int(query_string.get(factor) or 0) for factor in all_factors }
 
         total_weight = sum(factor_weights.values())
         # Use 1 as fallback for total factor weights, to prevent division by 0
@@ -123,18 +119,23 @@ class RankingView(APIView):
             key: value / total_weight for (key, value) in factor_weights.items()
         }
 
-        stations = SubwayStationADA.objects.all().filter(ada_status_code__gte=3)
+        stations = SubwayStationADA.objects.all().filter(
+            ada_status_code__gte=ada_min_code
+        )
 
         counts = {}
         meta_data = {}
         for index, station in enumerate(stations):
             count = {}
-            for factor, model in model_map.items():
-                factor_count = model.objects.filter(
-                    geom__distance_lte=(station.geom, station_buffer)
-                ).count()
-                count[factor] = factor_count
-            counts[station.id] = count
+            # Find totals for countable factors
+            for factor, model in counted_factors_map.items():
+                if factor_weights[factor] > 0:
+                    factor_count = model.objects.filter(
+                        geom__distance_lte=(station.geom, station_buffer)
+                    ).count()
+                    count[factor] = factor_count
+
+                counts[station.id] = count
             meta_data[station.id] = {
                 "id": station.id,
                 "name": station.name,
