@@ -16,8 +16,11 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { ChangeEvent, useContext, useState } from "react";
+import { useMap } from "react-map-gl";
+import { LayerContext } from "../context/LayerContext";
 import { RankingsContext } from "../context/RankingsContext";
 import { GROUPED_FACTORS } from "../helpers/constants";
+import { FACTOR_LAYERS } from "../helpers/MapLayers";
 import { RankStationBtn } from "./RankStationBtn";
 
 interface FactorPanelProps {
@@ -59,17 +62,22 @@ const FactorGroup = ({ groupName, factors }: FactorGroupProps) => {
   const factorControls = factors.map((factor) => (
     <Box key={factor}>
       <Heading size="xs">{factor}</Heading>
-      <Flex direction="column" flex={1}>
-        <FactorWeightControl
-          shouldWeight={factorWeights[factor].shouldWeight}
-          updateShouldWeight={(shouldWeight: boolean) =>
-            updateShouldWeight(factorWeights[factor].id, shouldWeight)
-          }
-          weight={factorWeights[factor].weight}
-          updateWeight={(weight: number) =>
-            updateFactorWeight(factorWeights[factor].id, weight)
-          }
-        />
+      <Flex>
+        <Flex direction="column" flex={1}>
+          <FactorWeightControl
+            shouldWeight={factorWeights[factor].shouldWeight}
+            updateShouldWeight={(shouldWeight: boolean) =>
+              updateShouldWeight(factorWeights[factor].id, shouldWeight)
+            }
+            weight={factorWeights[factor].weight}
+            updateWeight={(weight: number) =>
+              updateFactorWeight(factorWeights[factor].id, weight)
+            }
+          />
+        </Flex>
+        <Flex direction="column" flex={1}>
+          <FactorDisplayControl factor={factor} />
+        </Flex>
       </Flex>
     </Box>
   ));
@@ -128,5 +136,41 @@ const FactorWeightControl = ({
         </Slider>
       </Box>
     </>
+  );
+};
+
+interface FactorDisplayControlProps {
+  factor: string;
+}
+
+const FactorDisplayControl = ({ factor }: FactorDisplayControlProps) => {
+  const { sdssMap } = useMap();
+  const { loadedSources, addToLoadedSources } = useContext(LayerContext);
+
+  const sourceId = FACTOR_LAYERS[factor].SOURCE_ID;
+  const layerId = FACTOR_LAYERS[factor].LAYER_ID;
+  const isSourceLoaded = loadedSources.has(sourceId);
+
+  const setLayerVisibility = (e: ChangeEvent<HTMLInputElement>) => {
+    const map = sdssMap.getMap();
+    const isChecked = e.target.checked;
+    if (isChecked) {
+      if (!isSourceLoaded) {
+        addToLoadedSources(sourceId);
+      }
+      map.setLayoutProperty(layerId, "visibility", "visible");
+    } else {
+      if (!isChecked && isSourceLoaded) {
+        map.setLayoutProperty(layerId, "visibility", "none");
+      }
+    }
+  };
+  return (
+    <Flex direction="column" flex={1}>
+      <Checkbox onChange={setLayerVisibility} defaultChecked={isSourceLoaded}>
+        Display
+      </Checkbox>
+      <Text>Symbols TBD</Text>
+    </Flex>
   );
 };
