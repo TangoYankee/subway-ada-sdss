@@ -70,7 +70,7 @@ export const LayerCard = ({
               <Box width="90%">
                 <Slider
                   value={weight}
-                  min={0}
+                  min={1}
                   max={100}
                   // TODO: debounce updating the weight
                   onChange={updateWeight}
