@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { ContentPanelsContext } from "../context/ContentPanelsContext";
 import { ContentPanels } from "../types.d";
 import { AboutPanel } from "./AboutPanel";
-import { DataPanel } from "./DataPanel";
+import { FactorPanel } from "./FactorPanel";
 import { ResultsPanel } from "./ResultsPanel";
 
 export const ContentPanel = () => {
@@ -27,7 +27,7 @@ export const ContentPanel = () => {
       display={contentPanel === ContentPanels.Map ? "none" : "flex"}
     >
       <AboutPanel shouldDisplay={contentPanel === ContentPanels.About} />
-      <DataPanel shouldDisplay={contentPanel === ContentPanels.Data} />
+      <FactorPanel shouldDisplay={contentPanel === ContentPanels.Data} />
       <ResultsPanel shouldDisplay={contentPanel === ContentPanels.Results} />
     </Flex>
   );

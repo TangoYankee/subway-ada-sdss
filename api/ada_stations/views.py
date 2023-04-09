@@ -199,7 +199,7 @@ class RankingView(APIView):
         for index, data in enumerate(ranked_scores):
             id, score = data
             ranking = index + 1
-            batch = ranking // batch_size + 1
+            batch = ranking // batch_size
             rankings[id] = {
                 **meta_data[id],
                 "score": score,
