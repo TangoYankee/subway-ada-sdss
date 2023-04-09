@@ -22,7 +22,12 @@ import {
   subwayStationLayerId,
   subwayStationsSourceId,
 } from "../helpers/Layers";
+import { RankStationBtn } from "./RankStationBtn";
+import { RankingsContext } from "../context/RankingsContext";
+
 export const DataPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
+  const { factorWeights, updateFactorWeight, updateShouldWeight } =
+    useContext(RankingsContext);
   const { loadedSources, addToLoadedSources } = useContext(LayerContext);
   return (
     <Flex
@@ -31,11 +36,14 @@ export const DataPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
       direction="column"
       display={shouldDisplay ? "flex" : "none"}
     >
-      <Heading as="h2" padding={2.5}>
-        Data
-      </Heading>
+      <Flex justifyContent="space-around" alignItems="center">
+        <Heading as="h2" padding={2.5}>
+          Data
+        </Heading>
+        <RankStationBtn />
+      </Flex>
       <Flex direction="column" overflow="scroll">
-        <LayerCard
+        {/* <LayerCard
           layerId={subwayStationLayerId}
           isSourceLoaded={loadedSources.has(subwayStationsSourceId)}
           addToLoadedSources={() => addToLoadedSources(subwayStationsSourceId)}
@@ -48,9 +56,17 @@ export const DataPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
           addToLoadedSources={() => addToLoadedSources(subwayRoutesSourceId)}
         >
           Subway Routes
-        </LayerCard>
+        </LayerCard> */}
         <LayerCard
           layerId={hospitalsLayerId}
+          shouldWeight={factorWeights["hospitals"].shouldWeight}
+          weight={factorWeights["hospitals"].weight}
+          updateShouldWeight={(shouldWeight: boolean) =>
+            updateShouldWeight(factorWeights["hospitals"].id, shouldWeight)
+          }
+          updateWeight={(factorWeight: number) =>
+            updateFactorWeight(factorWeights["hospitals"].id, factorWeight)
+          }
           isSourceLoaded={loadedSources.has(hospitalsSourceId)}
           addToLoadedSources={() => addToLoadedSources(hospitalsSourceId)}
         >
@@ -58,6 +74,14 @@ export const DataPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
         </LayerCard>
         <LayerCard
           layerId={parksLayerId}
+          shouldWeight={factorWeights["parks"].shouldWeight}
+          weight={factorWeights["parks"].weight}
+          updateShouldWeight={(shouldWeight: boolean) =>
+            updateShouldWeight(factorWeights["parks"].id, shouldWeight)
+          }
+          updateWeight={(factorWeight: number) =>
+            updateFactorWeight(factorWeights["parks"].id, factorWeight)
+          }
           isSourceLoaded={loadedSources.has(parksSourceId)}
           addToLoadedSources={() => addToLoadedSources(parksSourceId)}
         >
@@ -65,26 +89,42 @@ export const DataPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
         </LayerCard>
         <LayerCard
           layerId={schoolsLayerId}
+          shouldWeight={factorWeights["schools"].shouldWeight}
+          weight={factorWeights["schools"].weight}
+          updateShouldWeight={(shouldWeight: boolean) =>
+            updateShouldWeight(factorWeights["schools"].id, shouldWeight)
+          }
+          updateWeight={(factorWeight: number) =>
+            updateFactorWeight(factorWeights["schools"].id, factorWeight)
+          }
           isSourceLoaded={loadedSources.has(schoolsSourceId)}
           addToLoadedSources={() => addToLoadedSources(schoolsSourceId)}
         >
           Schools
         </LayerCard>
-        <LayerCard
+        {/* <LayerCard
           layerId={busRoutesLayerId}
           isSourceLoaded={loadedSources.has(busRoutesSourceId)}
           addToLoadedSources={() => addToLoadedSources(busRoutesSourceId)}
         >
           Bus Routes
-        </LayerCard>
+        </LayerCard> */}
         <LayerCard
           layerId={busStopLayerId}
+          shouldWeight={factorWeights["bus_stops"].shouldWeight}
+          weight={factorWeights["bus_stops"].weight}
+          updateShouldWeight={(shouldWeight: boolean) =>
+            updateShouldWeight(factorWeights["bus_stops"].id, shouldWeight)
+          }
+          updateWeight={(factorWeight: number) =>
+            updateFactorWeight(factorWeights["bus_stops"].id, factorWeight)
+          }
           isSourceLoaded={loadedSources.has(busStopSourceId)}
           addToLoadedSources={() => addToLoadedSources(busStopSourceId)}
         >
           Bus Stops
         </LayerCard>
-        <LayerCard
+        {/* <LayerCard
           layerId={busRoutesExpressLayerId}
           addToLoadedSources={() =>
             addToLoadedSources(busRoutesExpressSourceId)
@@ -92,9 +132,23 @@ export const DataPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
           isSourceLoaded={loadedSources.has(busRoutesExpressSourceId)}
         >
           Express Bus Routes
-        </LayerCard>
+        </LayerCard> */}
         <LayerCard
           layerId={busStopsExpressLayerId}
+          shouldWeight={factorWeights["bus_stops_express"].shouldWeight}
+          weight={factorWeights["bus_stops_express"].weight}
+          updateShouldWeight={(shouldWeight: boolean) =>
+            updateShouldWeight(
+              factorWeights["bus_stops_express"].id,
+              shouldWeight
+            )
+          }
+          updateWeight={(factorWeight: number) =>
+            updateFactorWeight(
+              factorWeights["bus_stops_express"].id,
+              factorWeight
+            )
+          }
           addToLoadedSources={() => addToLoadedSources(busStopsExpressSourceId)}
           isSourceLoaded={loadedSources.has(busStopsExpressSourceId)}
         >
