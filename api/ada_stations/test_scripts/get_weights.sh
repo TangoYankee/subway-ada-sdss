@@ -1,7 +1,7 @@
 #!/bin/bash
 DOMAIN=localhost:8001
 
-# Factor Weights
+# Count Factor Weights
 PARKS=60
 SCHOOLS=40
 HOSPITALS=80
@@ -10,20 +10,59 @@ BUS_STOPS=50
 # Factor has weight of zero
 BUS_STOPS_EXPRESS=0
 
-# Full query string
-QUERY_STRING="parks=${PARKS}\
-&schools=${SCHOOLS}\
-&hospitals=${HOSPITALS}&\
-bus_stops=${BUS_STOPS}&\
-bus_stops_express=${BUS_STOPS_EXPRESS}"
+# Tract factor Weights
+# TOTAL=20
+TOTAL=0
+UNDER_FIVE=50
+SIXTY_FIVE_AND_OVER=80
+POVERTY_TOTAL=40
+POVERTY_UNDER_FIVE=60
+POVERTY_SIXTY_FIVE_AND_OVER=90
+UNDER_EIGHTEEN_AMBULATORY=40
+OVER_EIGHTEEN_UNDER_SIXTY_FIVE_AMBULATORY=30
+SIXTY_FIVE_AND_OVER_AMBULATORY=90
 
-# Query string with a parameter missing
+# Count factors query string
+# QUERY_STRING="parks=${PARKS}\
+# &schools=${SCHOOLS}\
+# &hospitals=${HOSPITALS}&\
+# bus_stops=${BUS_STOPS}&\
+# bus_stops_express=${BUS_STOPS_EXPRESS}"
+
+# Count factors Query string with a parameter missing
 # QUERY_STRING="parks=${PARKS}\
 # &hospitals=${HOSPITALS}&\
 # bus_stops=${BUS_STOPS}&\
 # bus_stops_express=${BUS_STOPS_EXPRESS}"
 
-#Query string with only one factor
+# Tract factors query string
+# QUERY_STRING="total=${TOTAL}\
+# &under_five=${UNDER_FIVE}\
+# &sixty_five_and_over=${SIXTY_FIVE_AND_OVER}\
+# &poverty_total=${POVERTY_TOTAL}\
+# &poverty_under_five=${POVERTY_UNDER_FIVE}\
+# &poverty_sixty_five_and_over=${POVERTY_SIXTY_FIVE_AND_OVER}\
+# &under_eighteen_ambulatory=${UNDER_EIGHTEEN_AMBULATORY}\
+# &over_eighteen_under_sixty_five_ambulatory=${OVER_EIGHTEEN_UNDER_SIXTY_FIVE_AMBULATORY}\
+# &sixty_five_and_over_ambulatory=${SIXTY_FIVE_AND_OVER_AMBULATORY}"
+
+# Tract and count factors
+QUERY_STRING="total=${TOTAL}\
+&under_five=${UNDER_FIVE}\
+&sixty_five_and_over=${SIXTY_FIVE_AND_OVER}\
+&poverty_total=${POVERTY_TOTAL}\
+&poverty_under_five=${POVERTY_UNDER_FIVE}\
+&poverty_sixty_five_and_over=${POVERTY_SIXTY_FIVE_AND_OVER}\
+&under_eighteen_ambulatory=${UNDER_EIGHTEEN_AMBULATORY}\
+&over_eighteen_under_sixty_five_ambulatory=${OVER_EIGHTEEN_UNDER_SIXTY_FIVE_AMBULATORY}\
+&sixty_five_and_over_ambulatory=${SIXTY_FIVE_AND_OVER_AMBULATORY}\
+&parks=${PARKS}\
+&schools=${SCHOOLS}\
+&hospitals=${HOSPITALS}\
+&bus_stops=${BUS_STOPS}\
+&bus_stops_express=${BUS_STOPS_EXPRESS}"
+
+# Query string with only one factor
 # QUERY_STRING="parks=${PARKS}"
 
 # Query string with all parameters missing
