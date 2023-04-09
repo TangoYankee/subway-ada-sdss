@@ -1,6 +1,8 @@
 import { FACTORS } from "./constants";
 
 export const SOURCE_ID = {
+  SUBWAY_STATIONS: "subway_stations_source",
+  SUBWAY_ROUTES: "subway_routes_source",
   PARKS: "parks_source",
   SCHOOLS: "schools_source",
   HOSPITALS: "hospitals_source",
@@ -9,7 +11,20 @@ export const SOURCE_ID = {
   TRACTS: "tracts_source",
 };
 
+export const SOURCE_ENDPOINT = {
+  [SOURCE_ID.SUBWAY_STATIONS]: "subway-stations-ada",
+  [SOURCE_ID.SUBWAY_ROUTES]: "subway-routes",
+  [SOURCE_ID.PARKS]: "parks",
+  [SOURCE_ID.SCHOOLS]: "schools",
+  [SOURCE_ID.HOSPITALS]: "hospitals",
+  [SOURCE_ID.BUS_STOPS]: "bus-stops",
+  [SOURCE_ID.BUS_STOPS_EXPRESS]: "bus-stops-express",
+  [SOURCE_ID.TRACTS]: "tract-demographics",
+};
+
 export const LAYER_ID = {
+  SUBWAY_STATION_LOCATION: "subway_station_location",
+  SUBWAY_ROUTE_LINE_COLOR: "subway_station_line_color",
   PARKS: "parks_layer",
   SCHOOLS: "schools_layer",
   HOSPITALS: "hospitals_layer",
@@ -28,6 +43,25 @@ export const LAYER_ID = {
 };
 
 export const LAYER_STYLE = {
+  [LAYER_ID.SUBWAY_STATION_LOCATION]: {
+    id: LAYER_ID.SUBWAY_STATION_LOCATION,
+    source: SOURCE_ID.SUBWAY_STATIONS,
+    type: "circle" as const,
+    paint: {
+      "circle-color": "#222834",
+      "circle-radius": 3.5,
+      "circle-opacity": 0.75,
+    },
+  },
+  [LAYER_ID.SUBWAY_ROUTE_LINE_COLOR]: {
+    id: LAYER_ID.SUBWAY_ROUTE_LINE_COLOR,
+    source: SOURCE_ID.SUBWAY_ROUTES,
+    type: "line" as const,
+    paint: {
+      "line-color": ["get", "color"] as unknown,
+      "line-opacity": 0.75,
+    },
+  },
   [LAYER_ID.PARKS]: {
     id: LAYER_ID.PARKS,
     source: SOURCE_ID.PARKS,
@@ -93,7 +127,7 @@ export const LAYER_STYLE = {
     source: SOURCE_ID.TRACTS,
     type: "fill" as const,
     paint: {
-      "fill-color": "#25855A",
+      "fill-color": "#E53E3E",
       "fill-outline-color": "#E2E8F0",
       "fill-opacity": 0.5,
     },

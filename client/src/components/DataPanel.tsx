@@ -3,10 +3,6 @@ import { LayerContext } from "../context/LayerContext";
 import { useContext } from "react";
 import { Flex, Heading } from "@chakra-ui/react";
 import {
-  busRoutesExpressLayerId,
-  busRoutesExpressSourceId,
-  busRoutesLayerId,
-  busRoutesSourceId,
   busStopLayerId,
   busStopsExpressLayerId,
   busStopsExpressSourceId,
@@ -17,10 +13,6 @@ import {
   parksSourceId,
   schoolsLayerId,
   schoolsSourceId,
-  subwayRoutesLayerId,
-  subwayRoutesSourceId,
-  subwayStationLayerId,
-  subwayStationsSourceId,
 } from "../helpers/Layers";
 import { RankStationBtn } from "./RankStationBtn";
 import { RankingsContext } from "../context/RankingsContext";
@@ -43,20 +35,6 @@ export const DataPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
         <RankStationBtn />
       </Flex>
       <Flex direction="column" overflow="scroll">
-        {/* <LayerCard
-          layerId={subwayStationLayerId}
-          isSourceLoaded={loadedSources.has(subwayStationsSourceId)}
-          addToLoadedSources={() => addToLoadedSources(subwayStationsSourceId)}
-        >
-          Subway Stations
-        </LayerCard>
-        <LayerCard
-          layerId={subwayRoutesLayerId}
-          isSourceLoaded={loadedSources.has(subwayRoutesSourceId)}
-          addToLoadedSources={() => addToLoadedSources(subwayRoutesSourceId)}
-        >
-          Subway Routes
-        </LayerCard> */}
         <LayerCard
           layerId={hospitalsLayerId}
           shouldWeight={factorWeights["hospitals"].shouldWeight}
@@ -102,13 +80,6 @@ export const DataPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
         >
           Schools
         </LayerCard>
-        {/* <LayerCard
-          layerId={busRoutesLayerId}
-          isSourceLoaded={loadedSources.has(busRoutesSourceId)}
-          addToLoadedSources={() => addToLoadedSources(busRoutesSourceId)}
-        >
-          Bus Routes
-        </LayerCard> */}
         <LayerCard
           layerId={busStopLayerId}
           shouldWeight={factorWeights["bus_stops"].shouldWeight}
@@ -124,15 +95,6 @@ export const DataPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
         >
           Bus Stops
         </LayerCard>
-        {/* <LayerCard
-          layerId={busRoutesExpressLayerId}
-          addToLoadedSources={() =>
-            addToLoadedSources(busRoutesExpressSourceId)
-          }
-          isSourceLoaded={loadedSources.has(busRoutesExpressSourceId)}
-        >
-          Express Bus Routes
-        </LayerCard> */}
         <LayerCard
           layerId={busStopsExpressLayerId}
           shouldWeight={factorWeights["bus_stops_express"].shouldWeight}

@@ -4,15 +4,12 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useState } from "react";
 import cloneDeep from "lodash.clonedeep";
 import { ContentPanel } from "../components/ContentPanel";
-import {
-  subwayRoutesSourceId,
-  subwayStationsSourceId,
-} from "../helpers/Layers";
 import { LayerContext } from "../context/LayerContext";
 import { ADAMap } from "../components/ADAMap";
 import { FactorWeightings, Rankings } from "../types";
 import { RankingsContext } from "../context/RankingsContext";
 import { API_BASE_URL, DEFAULT_FACTOR_WEIGHTS } from "../helpers/constants";
+import { SOURCE_ID } from "../helpers/MapLayers";
 
 const MapPage = () => {
   const [factorWeights, setFactorWeights] = useState<FactorWeightings>(
@@ -22,7 +19,11 @@ const MapPage = () => {
     useState<boolean>(false);
   const [rankings, setRankings] = useState<Rankings>(null);
   const [loadedSources, setLoadedSources] = useState<Set<string>>(
-    new Set([subwayStationsSourceId, subwayRoutesSourceId])
+    new Set([
+      SOURCE_ID.SUBWAY_STATIONS,
+      SOURCE_ID.SUBWAY_ROUTES,
+      SOURCE_ID.TRACTS,
+    ])
   );
 
   const addToLoadedSources = (source: string) => {
@@ -34,14 +35,12 @@ const MapPage = () => {
   const updateFactorWeight = (id: string, weight: number) => {
     const _factorWeights = cloneDeep(factorWeights);
     _factorWeights[id].weight = weight;
-    console.log("factor weight", weight);
     setFactorWeights(_factorWeights);
   };
 
   const updateShouldWeight = (id: string, shouldWeight: boolean) => {
     const _factorWeights = cloneDeep(factorWeights);
     _factorWeights[id].shouldWeight = shouldWeight;
-    console.log("should weight", shouldWeight);
     setFactorWeights(_factorWeights);
   };
 

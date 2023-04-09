@@ -3,25 +3,11 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useContext } from "react";
 import {
-  busRouteExpressLayerStyle,
-  busRouteLayerStyle,
-  busRoutesExpressSourceId,
-  busRoutesSourceId,
-  busStopExpressLayerStyle,
-  busStopLayerStyle,
-  busStopsExpressSourceId,
-  busStopSourceId,
-  hospitalsLayerStyle,
-  hospitalsSourceId,
-  parksLayerStyle,
-  parksSourceId,
-  schoolsLayerStyle,
-  schoolsSourceId,
-  subwayRoutesLayerStyle,
-  subwayRoutesSourceId,
-  subwayStationLayerStyle,
-  subwayStationsSourceId,
-} from "../helpers/Layers";
+  LAYER_ID,
+  LAYER_STYLE,
+  SOURCE_ID,
+  SOURCE_ENDPOINT,
+} from "../helpers/MapLayers";
 import { LayerContext } from "../context/LayerContext";
 import { API_BASE_URL } from "../helpers/constants";
 
@@ -39,101 +25,40 @@ export const ADAMap = () => {
       }}
       mapStyle={`https://api.maptiler.com/maps/basic/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
     >
-      {loadedSources.has(subwayStationsSourceId) ? (
+      {loadedSources.has(SOURCE_ID.SUBWAY_STATIONS) ? (
         <Source
-          id={subwayStationsSourceId}
+          id={SOURCE_ID.SUBWAY_STATIONS}
           type="geojson"
-          data={`${API_BASE_URL}/api/v1/subway-stations`}
+          data={`${API_BASE_URL}/api/v1/${
+            SOURCE_ENDPOINT[SOURCE_ID.SUBWAY_STATIONS]
+          }`}
         >
-          <Layer {...subwayStationLayerStyle} />
+          <Layer {...LAYER_STYLE[LAYER_ID.SUBWAY_STATION_LOCATION]} />
         </Source>
       ) : (
         <></>
       )}
-      {loadedSources.has(subwayRoutesSourceId) ? (
+      {loadedSources.has(SOURCE_ID.SUBWAY_ROUTES) ? (
         <Source
-          id={subwayRoutesSourceId}
+          id={SOURCE_ID.SUBWAY_ROUTES}
           type="geojson"
-          data={`${API_BASE_URL}/api/v1/subway-routes`}
+          data={`${API_BASE_URL}/api/v1/${
+            SOURCE_ENDPOINT[SOURCE_ID.SUBWAY_ROUTES]
+          }`}
         >
-          <Layer {...subwayRoutesLayerStyle} />
+          <Layer {...LAYER_STYLE[LAYER_ID.SUBWAY_ROUTE_LINE_COLOR]} />
         </Source>
       ) : (
         <></>
       )}
-      {loadedSources.has(hospitalsSourceId) ? (
+      {loadedSources.has(SOURCE_ID.TRACTS) ? (
         <Source
-          id={hospitalsSourceId}
+          id={SOURCE_ENDPOINT.TRACTS}
           type="geojson"
-          data={`${API_BASE_URL}/api/v1/hospitals`}
+          data={`${API_BASE_URL}/api/v1/${SOURCE_ENDPOINT[SOURCE_ID.TRACTS]}`}
         >
-          <Layer {...hospitalsLayerStyle} />
-        </Source>
-      ) : (
-        <></>
-      )}
-      {loadedSources.has(parksSourceId) ? (
-        <Source
-          id={parksSourceId}
-          type="geojson"
-          data={`${API_BASE_URL}/api/v1/parks`}
-        >
-          <Layer {...parksLayerStyle} />
-        </Source>
-      ) : (
-        <></>
-      )}
-      {loadedSources.has(schoolsSourceId) ? (
-        <Source
-          id={schoolsSourceId}
-          type="geojson"
-          data={`${API_BASE_URL}/api/v1/schools`}
-        >
-          <Layer {...schoolsLayerStyle} />
-        </Source>
-      ) : (
-        <></>
-      )}
-      {loadedSources.has(busRoutesSourceId) ? (
-        <Source
-          id={busRoutesSourceId}
-          type="geojson"
-          data={`${API_BASE_URL}/api/v1/bus-routes`}
-        >
-          <Layer {...busRouteLayerStyle} />
-        </Source>
-      ) : (
-        <></>
-      )}
-      {loadedSources.has(busStopSourceId) ? (
-        <Source
-          id={busStopSourceId}
-          type="geojson"
-          data={`${API_BASE_URL}/api/v1/bus-stops`}
-        >
-          <Layer {...busStopLayerStyle} />
-        </Source>
-      ) : (
-        <></>
-      )}
-      {loadedSources.has(busRoutesExpressSourceId) ? (
-        <Source
-          id={busRoutesExpressSourceId}
-          type="geojson"
-          data={`${API_BASE_URL}/api/v1/bus-routes-express`}
-        >
-          <Layer {...busRouteExpressLayerStyle} />
-        </Source>
-      ) : (
-        <></>
-      )}
-      {loadedSources.has(busStopsExpressSourceId) ? (
-        <Source
-          id={busStopsExpressSourceId}
-          type="geojson"
-          data={`${API_BASE_URL}/api/v1/bus-stops-express`}
-        >
-          <Layer {...busStopExpressLayerStyle} />
+          <Layer {...LAYER_STYLE[LAYER_ID.TOTAL]} />
+          <Layer {...LAYER_STYLE[LAYER_ID.UNDER_FIVE]} />
         </Source>
       ) : (
         <></>
