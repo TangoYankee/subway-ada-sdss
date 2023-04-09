@@ -109,14 +109,8 @@ class RankingView(APIView):
         }
 
         query_string = request.GET
-        factor_weights = {
-            # Optimistically coerce factor from string to integer
-            "parks": int(query_string.get("parks") or 0),
-            "schools": int(query_string.get("schools") or 0),
-            "hospitals": int(query_string.get("hospitals") or 0),
-            "bus_stops": int(query_string.get("bus_stops") or 0),
-            "bus_stops_express": int(query_string.get("bus_stops_express") or 0),
-        }
+        all_factors = list(counted_factors_map.keys())
+        factor_weights = { factor:int(query_string.get(factor) or 0) for factor in all_factors }
 
         total_weight = sum(factor_weights.values())
         # Use 1 as fallback for total factor weights, to prevent division by 0
