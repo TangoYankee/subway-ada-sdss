@@ -123,7 +123,7 @@ class RankingView(APIView):
             ada_status_code__gte=ada_min_code
         )
 
-        counts = {}
+        factor_totals = {}
         meta_data = {}
         for index, station in enumerate(stations):
             count = {}
@@ -135,7 +135,8 @@ class RankingView(APIView):
                     ).count()
                     count[factor] = factor_count
 
-                counts[station.id] = count
+                # TODO: separate dict to collect totals across all factor types
+                factor_totals[station.id] = count
             meta_data[station.id] = {
                 "id": station.id,
                 "name": station.name,
@@ -143,17 +144,17 @@ class RankingView(APIView):
                 "ada_status_code": station.ada_status_code,
             }
 
-        max_counts = {}
-        for count in counts.values():
+        max_factor_totals = {}
+        for count in factor_totals.values():
             for key, value in count.items():
                 # Use 1 for fallback of max, as a hack to prevent division by zero errors
-                max_counts[key] = max([value, max_counts.get(key, 1)])
+                max_factor_totals[key] = max([value, max_factor_totals.get(key, 1)])
 
         scores = {}
-        for station_id, factor_counts in counts.items():
+        for station_id, station_factor_totals in factor_totals.items():
             score = 0
-            for factor, count in factor_counts.items():
-                score += (count / max_counts[factor]) * proportional_weights[factor]
+            for factor, count in station_factor_totals.items():
+                score += (count / max_factor_totals[factor]) * proportional_weights[factor]
             scores[station_id] = score
 
         ranked_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
@@ -167,7 +168,7 @@ class RankingView(APIView):
                 "score": score,
                 "ranking": ranking,
                 "batch": batch,
-                **counts[id],
+                **factor_totals[id],
             }
 
         return Response(rankings)
