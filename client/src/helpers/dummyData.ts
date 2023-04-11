@@ -1,4 +1,4 @@
-import { Rankings, Result } from "../types.d";
+import { Rankings } from "../types.d";
 
 export const DummyRankings: Rankings = {
   "4": {

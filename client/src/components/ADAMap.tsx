@@ -1,19 +1,39 @@
 import ReactMapGL, { Source, Layer } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useContext } from "react";
 import {
   LAYER_ID,
-  LAYER_STYLE,
   SOURCE_ID,
   SOURCE_ENDPOINT,
+  SOURCED_FACTORS,
+  LAYER_PAINT,
+  LAYER_DEFAULT_VISIBILITY,
 } from "../helpers/MapLayers";
-import { LayerContext } from "../context/LayerContext";
 import { API_BASE_URL } from "../helpers/constants";
 
 export const ADAMap = () => {
-  const { loadedSources } = useContext(LayerContext);
-
+  const factorLayers = Object.entries(SOURCED_FACTORS).map(
+    ([sourceId, layerIds]) => (
+      <Source
+        key={sourceId}
+        id={sourceId}
+        type="geojson"
+        data={`${API_BASE_URL}/api/v1/${SOURCE_ENDPOINT[sourceId]}`}
+      >
+        {layerIds.map((layerId) => (
+          <Layer
+            key={layerId}
+            {...{
+              id: layerId,
+              source: sourceId,
+              layout: { visibility: LAYER_DEFAULT_VISIBILITY[layerId] },
+              ...LAYER_PAINT[layerId],
+            }}
+          />
+        ))}
+      </Source>
+    )
+  );
   return (
     <ReactMapGL
       id="sdssMap"
@@ -25,44 +45,47 @@ export const ADAMap = () => {
       }}
       mapStyle={`https://api.maptiler.com/maps/basic/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
     >
-      {loadedSources.has(SOURCE_ID.SUBWAY_STATIONS) ? (
-        <Source
-          id={SOURCE_ID.SUBWAY_STATIONS}
-          type="geojson"
-          data={`${API_BASE_URL}/api/v1/${
-            SOURCE_ENDPOINT[SOURCE_ID.SUBWAY_STATIONS]
-          }`}
-        >
-          <Layer {...LAYER_STYLE[LAYER_ID.SUBWAY_STATION_LOCATION]} />
-        </Source>
-      ) : (
-        <></>
-      )}
-      {loadedSources.has(SOURCE_ID.SUBWAY_ROUTES) ? (
-        <Source
-          id={SOURCE_ID.SUBWAY_ROUTES}
-          type="geojson"
-          data={`${API_BASE_URL}/api/v1/${
-            SOURCE_ENDPOINT[SOURCE_ID.SUBWAY_ROUTES]
-          }`}
-        >
-          <Layer {...LAYER_STYLE[LAYER_ID.SUBWAY_ROUTE_LINE_COLOR]} />
-        </Source>
-      ) : (
-        <></>
-      )}
-      {loadedSources.has(SOURCE_ID.TRACTS) ? (
-        <Source
-          id={SOURCE_ENDPOINT.TRACTS}
-          type="geojson"
-          data={`${API_BASE_URL}/api/v1/${SOURCE_ENDPOINT[SOURCE_ID.TRACTS]}`}
-        >
-          <Layer {...LAYER_STYLE[LAYER_ID.TOTAL]} />
-          <Layer {...LAYER_STYLE[LAYER_ID.UNDER_FIVE]} />
-        </Source>
-      ) : (
-        <></>
-      )}
+      {factorLayers}
+      <Source
+        id={SOURCE_ID.SUBWAY_STATIONS}
+        type="geojson"
+        data={`${API_BASE_URL}/api/v1/${
+          SOURCE_ENDPOINT[SOURCE_ID.SUBWAY_STATIONS]
+        }`}
+      >
+        <Layer
+          key={LAYER_ID.SUBWAY_STATION_LOCATION}
+          {...{
+            id: LAYER_ID.SUBWAY_STATION_LOCATION,
+            source: SOURCE_ID.SUBWAY_STATIONS,
+            layout: {
+              visibility:
+                LAYER_DEFAULT_VISIBILITY[LAYER_ID.SUBWAY_STATION_LOCATION],
+            },
+            ...LAYER_PAINT[LAYER_ID.SUBWAY_STATION_LOCATION],
+          }}
+        />
+      </Source>
+      <Source
+        id={SOURCE_ID.SUBWAY_ROUTES}
+        type="geojson"
+        data={`${API_BASE_URL}/api/v1/${
+          SOURCE_ENDPOINT[SOURCE_ID.SUBWAY_ROUTES]
+        }`}
+      >
+        <Layer
+          key={LAYER_ID.SUBWAY_ROUTE_LINE_COLOR}
+          {...{
+            id: LAYER_ID.SUBWAY_ROUTE_LINE_COLOR,
+            source: SOURCE_ID.SUBWAY_ROUTES,
+            layout: {
+              visibility:
+                LAYER_DEFAULT_VISIBILITY[LAYER_ID.SUBWAY_ROUTE_LINE_COLOR],
+            },
+            ...LAYER_PAINT[LAYER_ID.SUBWAY_ROUTE_LINE_COLOR],
+          }}
+        />
+      </Source>
     </ReactMapGL>
   );
 };

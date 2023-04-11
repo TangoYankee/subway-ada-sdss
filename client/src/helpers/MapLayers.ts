@@ -23,7 +23,7 @@ export const SOURCE_ENDPOINT = {
 };
 
 export const LAYER_ID = {
-  SUBWAY_STATION_LOCATION: "subway_station_location",
+  SUBWAY_STATION_LOCATION: "subway_station_location_layer",
   SUBWAY_ROUTE_LINE_COLOR: "subway_station_line_color",
   PARKS: "parks_layer",
   SCHOOLS: "schools_layer",
@@ -42,10 +42,35 @@ export const LAYER_ID = {
   SIXTY_FIVE_AND_OVER_AMBULATORY: "sixty_five_and_over_ambulatory_layer",
 };
 
-export const LAYER_STYLE = {
+export enum LAYER_VISIBILITY_STATE {
+  VISIBLE = "visible",
+  HIDDEN = "none",
+}
+
+export const LAYER_DEFAULT_VISIBILITY = {
+  [LAYER_ID.SUBWAY_STATION_LOCATION]: LAYER_VISIBILITY_STATE.VISIBLE,
+  [LAYER_ID.SUBWAY_ROUTE_LINE_COLOR]: LAYER_VISIBILITY_STATE.VISIBLE,
+  [LAYER_ID.PARKS]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.SCHOOLS]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.HOSPITALS]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.BUS_STOPS]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.BUS_STOPS_EXPRESS]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.TOTAL]: LAYER_VISIBILITY_STATE.VISIBLE,
+  [LAYER_ID.UNDER_FIVE]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.SIXTY_FIVE_AND_OVER]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.POVERTY_TOTAL]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.POVERTY_UNDER_FIVE]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.POVERTY_SIXTY_FIVE_AND_OVER]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.UNDER_EIGHTEEN_AMBULATORY]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.OVER_EIGHTEEN_UNDER_SIXTY_FIVE_AMBULATORY]:
+    LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.OVER_EIGHTEEN_UNDER_SIXTY_FIVE_AMBULATORY]:
+    LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.SIXTY_FIVE_AND_OVER_AMBULATORY]: LAYER_VISIBILITY_STATE.HIDDEN,
+};
+
+export const LAYER_PAINT = {
   [LAYER_ID.SUBWAY_STATION_LOCATION]: {
-    id: LAYER_ID.SUBWAY_STATION_LOCATION,
-    source: SOURCE_ID.SUBWAY_STATIONS,
     type: "circle" as const,
     paint: {
       "circle-color": "#222834",
@@ -54,8 +79,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.SUBWAY_ROUTE_LINE_COLOR]: {
-    id: LAYER_ID.SUBWAY_ROUTE_LINE_COLOR,
-    source: SOURCE_ID.SUBWAY_ROUTES,
     type: "line" as const,
     paint: {
       "line-color": ["get", "color"] as unknown,
@@ -63,8 +86,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.PARKS]: {
-    id: LAYER_ID.PARKS,
-    source: SOURCE_ID.PARKS,
     type: "fill" as const,
     paint: {
       "fill-color": "#25855A",
@@ -73,8 +94,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.SCHOOLS]: {
-    id: LAYER_ID.SCHOOLS,
-    source: SOURCE_ID.SCHOOLS,
     type: "circle" as const,
     paint: {
       "circle-color": "#ECC94B",
@@ -83,8 +102,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.HOSPITALS]: {
-    id: LAYER_ID.HOSPITALS,
-    source: SOURCE_ID.HOSPITALS,
     type: "circle" as const,
     paint: {
       "circle-color": "#E53E3E",
@@ -93,8 +110,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.BUS_STOPS]: {
-    id: LAYER_ID.BUS_STOPS,
-    source: SOURCE_ID.BUS_STOPS,
     type: "circle" as const,
     paint: {
       "circle-color": "#1A202C",
@@ -103,8 +118,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.BUS_STOPS_EXPRESS]: {
-    id: LAYER_ID.BUS_STOPS_EXPRESS,
-    source: SOURCE_ID.BUS_STOPS_EXPRESS,
     type: "circle" as const,
     paint: {
       "circle-color": "#00933C",
@@ -116,6 +129,7 @@ export const LAYER_STYLE = {
     id: LAYER_ID.TOTAL,
     source: SOURCE_ID.TRACTS,
     type: "fill" as const,
+    visibility: "none",
     paint: {
       "fill-color": "#25855A",
       "fill-outline-color": "#E2E8F0",
@@ -123,8 +137,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.UNDER_FIVE]: {
-    id: LAYER_ID.UNDER_FIVE,
-    source: SOURCE_ID.TRACTS,
     type: "fill" as const,
     paint: {
       "fill-color": "#E53E3E",
@@ -143,8 +155,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.POVERTY_TOTAL]: {
-    id: LAYER_ID.POVERTY_TOTAL,
-    source: SOURCE_ID.TRACTS,
     type: "fill" as const,
     paint: {
       "fill-color": "#25855A",
@@ -153,8 +163,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.POVERTY_UNDER_FIVE]: {
-    id: LAYER_ID.POVERTY_UNDER_FIVE,
-    source: SOURCE_ID.TRACTS,
     type: "fill" as const,
     paint: {
       "fill-color": "#25855A",
@@ -163,8 +171,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.POVERTY_SIXTY_FIVE_AND_OVER]: {
-    id: LAYER_ID.POVERTY_SIXTY_FIVE_AND_OVER,
-    source: SOURCE_ID.TRACTS,
     type: "fill" as const,
     paint: {
       "fill-color": "#25855A",
@@ -173,8 +179,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.UNDER_EIGHTEEN_AMBULATORY]: {
-    id: LAYER_ID.UNDER_EIGHTEEN_AMBULATORY,
-    source: SOURCE_ID.TRACTS,
     type: "fill" as const,
     paint: {
       "fill-color": "#25855A",
@@ -183,8 +187,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.OVER_EIGHTEEN_UNDER_SIXTY_FIVE_AMBULATORY]: {
-    id: LAYER_ID.OVER_EIGHTEEN_UNDER_SIXTY_FIVE_AMBULATORY,
-    source: SOURCE_ID.TRACTS,
     type: "fill" as const,
     paint: {
       "fill-color": "#25855A",
@@ -193,8 +195,6 @@ export const LAYER_STYLE = {
     },
   },
   [LAYER_ID.SIXTY_FIVE_AND_OVER_AMBULATORY]: {
-    id: LAYER_ID.SIXTY_FIVE_AND_OVER_AMBULATORY,
-    source: SOURCE_ID.TRACTS,
     type: "fill" as const,
     paint: {
       "fill-color": "#25855A",
@@ -205,26 +205,6 @@ export const LAYER_STYLE = {
 };
 
 export const FACTOR_LAYERS = {
-  [FACTORS.PARKS]: {
-    SOURCE_ID: SOURCE_ID.PARKS,
-    LAYER_ID: LAYER_ID.PARKS,
-  },
-  [FACTORS.SCHOOLS]: {
-    SOURCE_ID: SOURCE_ID.SCHOOLS,
-    LAYER_ID: LAYER_ID.SCHOOLS,
-  },
-  [FACTORS.HOSPITALS]: {
-    SOURCE_ID: SOURCE_ID.HOSPITALS,
-    LAYER_ID: LAYER_ID.HOSPITALS,
-  },
-  [FACTORS.BUS_STOPS]: {
-    SOURCE_ID: SOURCE_ID.BUS_STOPS,
-    LAYER_ID: LAYER_ID.BUS_STOPS,
-  },
-  [FACTORS.BUS_STOPS_EXPRESS]: {
-    SOURCE_ID: SOURCE_ID.BUS_STOPS_EXPRESS,
-    LAYER_ID: LAYER_ID.BUS_STOPS_EXPRESS,
-  },
   [FACTORS.TOTAL]: {
     SOURCE_ID: SOURCE_ID.TRACTS,
     LAYER_ID: LAYER_ID.TOTAL,
@@ -261,4 +241,37 @@ export const FACTOR_LAYERS = {
     SOURCE_ID: SOURCE_ID.TRACTS,
     LAYER_ID: LAYER_ID.SIXTY_FIVE_AND_OVER_AMBULATORY,
   },
+  [FACTORS.PARKS]: {
+    SOURCE_ID: SOURCE_ID.PARKS,
+    LAYER_ID: LAYER_ID.PARKS,
+  },
+  [FACTORS.SCHOOLS]: {
+    SOURCE_ID: SOURCE_ID.SCHOOLS,
+    LAYER_ID: LAYER_ID.SCHOOLS,
+  },
+  [FACTORS.HOSPITALS]: {
+    SOURCE_ID: SOURCE_ID.HOSPITALS,
+    LAYER_ID: LAYER_ID.HOSPITALS,
+  },
+  [FACTORS.BUS_STOPS]: {
+    SOURCE_ID: SOURCE_ID.BUS_STOPS,
+    LAYER_ID: LAYER_ID.BUS_STOPS,
+  },
+  [FACTORS.BUS_STOPS_EXPRESS]: {
+    SOURCE_ID: SOURCE_ID.BUS_STOPS_EXPRESS,
+    LAYER_ID: LAYER_ID.BUS_STOPS_EXPRESS,
+  },
 };
+
+export const SOURCED_FACTORS = Object.entries(FACTOR_LAYERS).reduce(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  (sourcedFactors: Record<string, Array<string>>, [_factor, data]) => {
+    const { SOURCE_ID: sourceId, LAYER_ID: layerId } = data;
+    const layerIds = sourcedFactors[sourceId];
+    sourcedFactors[sourceId] =
+      layerIds === undefined ? [layerId] : layerIds.concat(layerId);
+
+    return sourcedFactors;
+  },
+  {}
+);

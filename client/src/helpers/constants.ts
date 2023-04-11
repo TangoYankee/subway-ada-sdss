@@ -54,6 +54,4 @@ factors.forEach((factor) => {
   };
 });
 
-console.log(defaultFactorWeights);
-
 export const DEFAULT_FACTOR_WEIGHTS: FactorWeightings = defaultFactorWeights;

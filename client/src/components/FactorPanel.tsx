@@ -17,10 +17,13 @@ import {
 } from "@chakra-ui/react";
 import { ChangeEvent, useContext, useState } from "react";
 import { useMap } from "react-map-gl";
-import { LayerContext } from "../context/LayerContext";
 import { RankingsContext } from "../context/RankingsContext";
 import { GROUPED_FACTORS } from "../helpers/constants";
-import { FACTOR_LAYERS } from "../helpers/MapLayers";
+import {
+  FACTOR_LAYERS,
+  LAYER_DEFAULT_VISIBILITY,
+  LAYER_VISIBILITY_STATE,
+} from "../helpers/MapLayers";
 import { RankStationBtn } from "./RankStationBtn";
 
 interface FactorPanelProps {
@@ -145,29 +148,31 @@ interface FactorDisplayControlProps {
 
 const FactorDisplayControl = ({ factor }: FactorDisplayControlProps) => {
   const { sdssMap } = useMap();
-  const { loadedSources, addToLoadedSources } = useContext(LayerContext);
-
-  const sourceId = FACTOR_LAYERS[factor].SOURCE_ID;
   const layerId = FACTOR_LAYERS[factor].LAYER_ID;
-  const isSourceLoaded = loadedSources.has(sourceId);
+  const [layerVisibility, setLayerVisibility] = useState(
+    LAYER_DEFAULT_VISIBILITY[layerId] === LAYER_VISIBILITY_STATE.VISIBLE
+  );
 
-  const setLayerVisibility = (e: ChangeEvent<HTMLInputElement>) => {
+  const updateLayerVisibility = (e: ChangeEvent<HTMLInputElement>) => {
     const map = sdssMap.getMap();
     const isChecked = e.target.checked;
-    if (isChecked) {
-      if (!isSourceLoaded) {
-        addToLoadedSources(sourceId);
-      }
-      map.setLayoutProperty(layerId, "visibility", "visible");
-    } else {
-      if (!isChecked && isSourceLoaded) {
-        map.setLayoutProperty(layerId, "visibility", "none");
-      }
-    }
+    isChecked
+      ? map.setLayoutProperty(
+          layerId,
+          "visibility",
+          LAYER_VISIBILITY_STATE.VISIBLE
+        )
+      : map.setLayoutProperty(
+          layerId,
+          "visibility",
+          LAYER_VISIBILITY_STATE.HIDDEN
+        );
+    setLayerVisibility(isChecked);
   };
+
   return (
     <Flex direction="column" flex={1}>
-      <Checkbox onChange={setLayerVisibility} defaultChecked={isSourceLoaded}>
+      <Checkbox onChange={updateLayerVisibility} isChecked={layerVisibility}>
         Display
       </Checkbox>
       <Text>Symbols TBD</Text>

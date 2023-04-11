@@ -1,10 +1,15 @@
 import { createContext } from "react";
+import { LAYER_VISIBILITY_STATE } from "../helpers/MapLayers";
 
 export type LayerContextType = {
-  loadedSources: Set<string>;
-  addToLoadedSources: (loadedSources: string) => void;
+  layerVisibilities: Record<string, LAYER_VISIBILITY_STATE>;
+  updateLayerVisibility: (
+    layerId: string,
+    visibility: LAYER_VISIBILITY_STATE
+  ) => void;
 };
+
 export const LayerContext = createContext<LayerContextType>({
-  loadedSources: new Set(),
-  addToLoadedSources: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+  layerVisibilities: {},
+  updateLayerVisibility: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 });
