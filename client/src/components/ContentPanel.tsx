@@ -13,7 +13,7 @@ export const ContentPanel = () => {
     <Flex
       height={{
         base: "70vh",
-        md: "48rem",
+        md: "65vh",
       }}
       w={{
         base: "96vw",
