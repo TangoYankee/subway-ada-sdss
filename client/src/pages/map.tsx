@@ -4,12 +4,10 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useState } from "react";
 import cloneDeep from "lodash.clonedeep";
 import { ContentPanel } from "../components/ContentPanel";
-import { LayerContext } from "../context/LayerContext";
 import { ADAMap } from "../components/ADAMap";
 import { FactorWeightings, Rankings } from "../types";
 import { RankingsContext } from "../context/RankingsContext";
 import { API_BASE_URL, DEFAULT_FACTOR_WEIGHTS } from "../helpers/constants";
-import { SOURCE_ID } from "../helpers/MapLayers";
 
 const MapPage = () => {
   const [factorWeights, setFactorWeights] = useState<FactorWeightings>(
@@ -18,19 +16,6 @@ const MapPage = () => {
   const [isRankingsProcessing, setIsRankingsProcessing] =
     useState<boolean>(false);
   const [rankings, setRankings] = useState<Rankings>(null);
-  const [loadedSources, setLoadedSources] = useState<Set<string>>(
-    new Set([
-      SOURCE_ID.SUBWAY_STATIONS,
-      SOURCE_ID.SUBWAY_ROUTES,
-      SOURCE_ID.TRACTS,
-    ])
-  );
-
-  const addToLoadedSources = (source: string) => {
-    const _loadedSources = cloneDeep(loadedSources);
-    _loadedSources.add(source);
-    setLoadedSources(_loadedSources);
-  };
 
   const updateFactorWeight = (id: string, weight: number) => {
     const _factorWeights = cloneDeep(factorWeights);
@@ -67,15 +52,8 @@ const MapPage = () => {
             getRankings,
           }}
         >
-          <LayerContext.Provider
-            value={{
-              loadedSources,
-              addToLoadedSources,
-            }}
-          >
-            <ContentPanel />
-            <ADAMap />
-          </LayerContext.Provider>
+          <ContentPanel />
+          <ADAMap />
         </RankingsContext.Provider>
       </MapProvider>
     </Box>
