@@ -11,6 +11,7 @@ from ada_stations.models import (
     SubwayRoute,
     SubwayStation,
     SubwayStationADA,
+    SubwayStation500mBuffer,
     TractDemographic,
 )
 
@@ -84,11 +85,20 @@ class SubwayStationSerializer(GeoFeatureModelSerializer):
         fields = "__all__"
         geo_field = "geom"
 
+
 class SubwayStationADASerializer(GeoFeatureModelSerializer):
     class Meta:
         model = SubwayStationADA
         fields = "__all__"
         geo_field = "geom"
+
+
+class SubwayStation500BufferSerializer(GeoFeatureModelSerializer):
+    class Meta:
+        model = SubwayStation500mBuffer
+        fields = "__all__"
+        geo_field = "geom"
+
 
 class TractDemographicSerializer(GeoFeatureModelSerializer):
     class Meta:

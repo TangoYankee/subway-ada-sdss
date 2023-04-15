@@ -152,6 +152,30 @@ class SubwayStationADA(models.Model):
         return f"{self.name}: {self.lines}"
 
 
+class SubwayStation500mBuffer(models.Model):
+    name = models.CharField(max_length=80)
+    line = models.CharField(max_length=80)
+    complex_id = models.CharField(max_length=80)
+    gtfs_stop_id = models.CharField(max_length=80)
+    ada_status_code = models.IntegerField()
+    schools = models.IntegerField()
+    parks = models.IntegerField()
+    hospitals = models.IntegerField()
+    bus_stops = models.IntegerField()
+    bus_stops_express = models.IntegerField()
+    total = models.IntegerField()
+    under_five = models.IntegerField()
+    sixty_five_and_over = models.IntegerField()
+    poverty_total = models.IntegerField()
+    poverty_under_five = models.IntegerField()
+    poverty_sixty_five_and_over = models.IntegerField()
+    under_eighteen_ambulatory = models.IntegerField()
+    over_eighteen_under_sixty_five_ambulatory = models.IntegerField()
+    sixty_five_and_over_ambulatory = models.IntegerField()
+    ridership_2019 = models.FloatField(blank=True, null=True)
+    geom = models.PointField(srid=4326)
+
+
 class TractDemographic(models.Model):
     geoid = models.CharField(max_length=80)
     total = models.IntegerField()
