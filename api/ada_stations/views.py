@@ -159,24 +159,9 @@ class RankingView(APIView):
         requested_factors = (
             list(requested_counted_factors.keys()) + requested_tract_factors
         )
-        for index, station in enumerate(stations):
-            # Default totals for requested values
-            factor_totals = {factor: 0 for factor in requested_factors}
 
-            # Find totals for countable factors
-            for factor, model in requested_counted_factors.items():
-                factor_count = model.objects.filter(
-                    geom__distance_lte=(station.geom, station_buffer)
-                ).count()
-                factor_totals[factor] = factor_count
-
-            # Find sums for tract factors
-            tracts = TractDemographic.objects.all().filter(
-                geom__distance_lte=(station.geom, station_buffer)
-            )
-            for tract in tracts:
-                for tract_factor in requested_tract_factors:
-                    factor_totals[tract_factor] += getattr(tract, tract_factor)
+        for station in stations:
+            station_totals[station.id] = {factor: station[factor] for factor in requested_factors}
 
             meta_data[station.id] = {
                 "id": station.id,
@@ -184,7 +169,33 @@ class RankingView(APIView):
                 "lines": station.lines,
                 "ada_status_code": station.ada_status_code,
             }
-            station_totals[station.id] = factor_totals
+
+        # for index, station in enumerate(stations):
+        #     # Default totals for requested values
+        #     factor_totals = {factor: 0 for factor in requested_factors}
+
+        #     # Find totals for countable factors
+        #     for factor, model in requested_counted_factors.items():
+        #         factor_count = model.objects.filter(
+        #             geom__distance_lte=(station.geom, station_buffer)
+        #         ).count()
+        #         factor_totals[factor] = factor_count
+
+        #     # Find sums for tract factors
+        #     tracts = TractDemographic.objects.all().filter(
+        #         geom__distance_lte=(station.geom, station_buffer)
+        #     )
+        #     for tract in tracts:
+        #         for tract_factor in requested_tract_factors:
+        #             factor_totals[tract_factor] += getattr(tract, tract_factor)
+
+        #     meta_data[station.id] = {
+        #         "id": station.id,
+        #         "name": station.name,
+        #         "lines": station.lines,
+        #         "ada_status_code": station.ada_status_code,
+        #     }
+        #     station_totals[station.id] = factor_totals
 
         max_factor_totals = {}
         for count in station_totals.values():
