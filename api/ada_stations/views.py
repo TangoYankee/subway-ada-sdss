@@ -142,7 +142,7 @@ class RankingView(APIView):
             key: value / total_weight for (key, value) in factor_weights.items()
         }
 
-        stations = SubwayStationADA.objects.all().filter(
+        stations = SubwayStation500mBuffer.objects.all().filter(
             ada_status_code__gte=ada_min_code
         )
 
@@ -159,32 +159,18 @@ class RankingView(APIView):
         requested_factors = (
             list(requested_counted_factors.keys()) + requested_tract_factors
         )
-        for index, station in enumerate(stations):
-            # Default totals for requested values
-            factor_totals = {factor: 0 for factor in requested_factors}
 
-            # Find totals for countable factors
-            for factor, model in requested_counted_factors.items():
-                factor_count = model.objects.filter(
-                    geom__distance_lte=(station.geom, station_buffer)
-                ).count()
-                factor_totals[factor] = factor_count
-
-            # Find sums for tract factors
-            tracts = TractDemographic.objects.all().filter(
-                geom__distance_lte=(station.geom, station_buffer)
-            )
-            for tract in tracts:
-                for tract_factor in requested_tract_factors:
-                    factor_totals[tract_factor] += getattr(tract, tract_factor)
+        for station in stations:
+            station_totals[station.id] = {
+                factor: getattr(station, factor) for factor in requested_factors
+            }
 
             meta_data[station.id] = {
                 "id": station.id,
                 "name": station.name,
-                "lines": station.lines,
+                "lines": station.line,
                 "ada_status_code": station.ada_status_code,
             }
-            station_totals[station.id] = factor_totals
 
         max_factor_totals = {}
         for count in station_totals.values():
