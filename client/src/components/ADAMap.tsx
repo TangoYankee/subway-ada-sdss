@@ -10,6 +10,7 @@ import {
   LAYER_DEFAULT_VISIBILITY,
 } from "../helpers/MapLayers";
 import { API_BASE_URL } from "../helpers/constants";
+import { StationRankingDetailsPopup } from "./StationRankingDetailsPopup";
 
 export const ADAMap = () => {
   const factorLayers = Object.entries(SOURCED_FACTORS).map(
@@ -45,10 +46,12 @@ export const ADAMap = () => {
       }}
       mapStyle={`https://api.maptiler.com/maps/basic/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
     >
+      <StationRankingDetailsPopup />
       {factorLayers}
       <Source
         id={SOURCE_ID.SUBWAY_STATIONS}
         type="geojson"
+        promoteId={"complex_id"}
         data={`${API_BASE_URL}/api/v1/${
           SOURCE_ENDPOINT[SOURCE_ID.SUBWAY_STATIONS]
         }`}

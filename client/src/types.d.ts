@@ -20,7 +20,7 @@ export type FactorWeighting = {
 export type FactorWeightings = Record<string, FactorWeighting> | null;
 
 export type Ranking = {
-  id: string;
+  complex_id: string;
   name: string;
   lines: string;
   ada_status_code: number;

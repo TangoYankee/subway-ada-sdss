@@ -161,12 +161,12 @@ class RankingView(APIView):
         )
 
         for station in stations:
-            station_totals[station.id] = {
+            station_totals[station.complex_id] = {
                 factor: getattr(station, factor) for factor in requested_factors
             }
 
-            meta_data[station.id] = {
-                "id": station.id,
+            meta_data[station.complex_id] = {
+                "complex_id": station.complex_id,
                 "name": station.name,
                 "lines": station.line,
                 "ada_status_code": station.ada_status_code,
