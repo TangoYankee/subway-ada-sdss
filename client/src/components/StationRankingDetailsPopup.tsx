@@ -1,12 +1,30 @@
-import { Box, Heading, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import { Popup, useMap } from "react-map-gl";
 import { RankingsContext } from "../context/RankingsContext";
-import { FACTORS } from "../helpers/constants";
 import { LAYER_ID } from "../helpers/MapLayers";
-import { Ranking } from "../types";
+import { Ranking, SubwayStationAdaProperties } from "../types";
 
-const ADA_STATUS = ["Full", "Partial", "Construction in progress", "Under consideration", "No funding plans"]
+const ADA_STATUS = [
+  "Full",
+  "Partial",
+  "Construction in progress",
+  "Under consideration",
+  "No funding plans",
+];
+
+const RANKING_UNAVAILABLE = "Not ranked";
+
 export const StationRankingDetailsPopup = () => {
   const { sdssMap } = useMap();
   const [showPopup, setShowpopup] = useState(false);
@@ -14,7 +32,10 @@ export const StationRankingDetailsPopup = () => {
   const [latitude, setLatitude] = useState(40.74);
   const { rankings, subwayStationAdaMap } = useContext(RankingsContext);
   const [complexId, setComplexId] = useState<string | null>(null);
-  const [  ranking, setRanking ] = useState<Ranking | null>(null);
+  const [ranking, setRanking] = useState<Ranking | null>(null);
+  const [station, setStation] = useState<SubwayStationAdaProperties | null>(
+    null
+  );
 
   sdssMap.on("load", () => {
     sdssMap.on("click", LAYER_ID.SUBWAY_STATION_LOCATION, (e) => {
@@ -37,17 +58,20 @@ export const StationRankingDetailsPopup = () => {
     });
   });
 
-  useEffect(()=> {
-    if(rankings && complexId){
-      setRanking(rankings[complexId]);
+  useEffect(() => {
+    if (complexId) {
+      if (rankings) setRanking(rankings[complexId]);
+      if (subwayStationAdaMap) setStation(subwayStationAdaMap[complexId]);
+    } else {
+      setRanking(null);
+      setStation(null);
     }
-  }, [rankings, complexId])
+  }, [subwayStationAdaMap, rankings, complexId]);
 
   const onPopupClose = () => {
     setShowpopup(false);
     setComplexId(null);
-    setRanking(null);
-  }
+  };
 
   return showPopup ? (
     <Popup
@@ -55,40 +79,46 @@ export const StationRankingDetailsPopup = () => {
       latitude={latitude}
       onClose={onPopupClose}
       maxWidth="fit-content"
-    >{ranking ?
-      <TableContainer>
-        <Heading size='xs'>
-          { `${ranking.name} Station on ${ranking.lines} lines` }
-        </Heading>
-        <Table size='sm' variant='striped'>
-          <Thead>
-            <Tr>
-              <Th>Factor</Th>
-              <Th>Value</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            <Tr>
-              <Td>ADA Status</Td>
-              <Td>{ADA_STATUS[ranking.ada_status_code]}</Td>
-            </Tr>
-            <Tr>
-              <Td>Score</Td>
-              <Td>{(ranking.score*100).toFixed(0)}%</Td>
-            </Tr>
-            <Tr>
-              <Td>Ranking</Td>
-              <Td>{ranking.ranking}</Td>
-            </Tr>
-            <Tr>
-              <Td>Batch</Td>
-              <Td>{ranking.batch}</Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </TableContainer> :
-      <Box>This station is already accessible</Box>
-    }
+    >
+      {station ? (
+        <TableContainer>
+          <Heading size="xs">
+            {`${station.name} Station on ${station.lines} lines`}
+          </Heading>
+          <Table size="sm" variant="striped">
+            <Thead>
+              <Tr>
+                <Th>Factor</Th>
+                <Th>Value</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              <Tr>
+                <Td>ADA Status</Td>
+                <Td>{ADA_STATUS[station.ada_status_code]}</Td>
+              </Tr>
+              <Tr>
+                <Td>Score</Td>
+                <Td>
+                  {ranking
+                    ? `${(ranking.score * 100).toFixed(0)}%`
+                    : RANKING_UNAVAILABLE}
+                </Td>
+              </Tr>
+              <Tr>
+                <Td>Ranking</Td>
+                <Td>{ranking ? ranking.ranking : RANKING_UNAVAILABLE}</Td>
+              </Tr>
+              <Tr>
+                <Td>Batch</Td>
+                <Td>{ranking ? ranking.batch : RANKING_UNAVAILABLE}</Td>
+              </Tr>
+            </Tbody>
+          </Table>
+        </TableContainer>
+      ) : (
+        <Box>Station data unavailable</Box>
+      )}
     </Popup>
   ) : (
     <></>
