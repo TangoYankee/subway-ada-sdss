@@ -38,7 +38,7 @@ export const StationRankingDetailsPopup = () => {
   );
 
   sdssMap.on("load", () => {
-    sdssMap.on("click", LAYER_ID.SUBWAY_STATION_LOCATION, (e) => {
+    sdssMap.on("click", LAYER_ID.SUBWAY_STATION_ADA_CODE, (e) => {
       const { lat, lng } = e.lngLat;
       setLongtitude(lng);
       setLatitude(lat);
@@ -49,11 +49,11 @@ export const StationRankingDetailsPopup = () => {
       setShowpopup(true);
     });
 
-    sdssMap.on("mouseenter", LAYER_ID.SUBWAY_STATION_LOCATION, () => {
+    sdssMap.on("mouseenter", LAYER_ID.SUBWAY_STATION_ADA_CODE, () => {
       sdssMap.getCanvas().style.cursor = "pointer";
     });
 
-    sdssMap.on("mouseleave", LAYER_ID.SUBWAY_STATION_LOCATION, () => {
+    sdssMap.on("mouseleave", LAYER_ID.SUBWAY_STATION_ADA_CODE, () => {
       sdssMap.getCanvas().style.cursor = "";
     });
   });

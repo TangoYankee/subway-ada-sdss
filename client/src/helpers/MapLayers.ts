@@ -23,8 +23,8 @@ export const SOURCE_ENDPOINT = {
 };
 
 export const LAYER_ID = {
-  SUBWAY_STATION_LOCATION: "subway_station_location_layer",
-  SUBWAY_ROUTE_LINE_COLOR: "subway_station_line_color",
+  SUBWAY_STATION_ADA_CODE: "subway_station_ada_code_layer",
+  SUBWAY_ROUTE_LINE_COLOR: "subway_station_line_color_layer",
   PARKS: "parks_layer",
   SCHOOLS: "schools_layer",
   HOSPITALS: "hospitals_layer",
@@ -48,7 +48,7 @@ export enum LAYER_VISIBILITY_STATE {
 }
 
 export const LAYER_DEFAULT_VISIBILITY = {
-  [LAYER_ID.SUBWAY_STATION_LOCATION]: LAYER_VISIBILITY_STATE.VISIBLE,
+  [LAYER_ID.SUBWAY_STATION_ADA_CODE]: LAYER_VISIBILITY_STATE.VISIBLE,
   [LAYER_ID.SUBWAY_ROUTE_LINE_COLOR]: LAYER_VISIBILITY_STATE.VISIBLE,
   [LAYER_ID.PARKS]: LAYER_VISIBILITY_STATE.HIDDEN,
   [LAYER_ID.SCHOOLS]: LAYER_VISIBILITY_STATE.HIDDEN,
@@ -70,10 +70,19 @@ export const LAYER_DEFAULT_VISIBILITY = {
 };
 
 export const LAYER_PAINT = {
-  [LAYER_ID.SUBWAY_STATION_LOCATION]: {
+  [LAYER_ID.SUBWAY_STATION_ADA_CODE]: {
     type: "circle" as const,
     paint: {
-      "circle-color": "#222834",
+      "circle-color": {
+        property: "ada_status_code",
+        stops: [
+          [0, "#2c7bb6"],
+          [1, "#abd9e9"],
+          [2, "#ffffbf"],
+          [3, "#fdae61"],
+          [4, "#d7191c"],
+        ],
+      },
       "circle-radius": 3.5,
       "circle-opacity": 0.75,
     },

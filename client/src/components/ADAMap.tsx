@@ -57,15 +57,15 @@ export const ADAMap = () => {
         }`}
       >
         <Layer
-          key={LAYER_ID.SUBWAY_STATION_LOCATION}
+          key={LAYER_ID.SUBWAY_STATION_ADA_CODE}
           {...{
-            id: LAYER_ID.SUBWAY_STATION_LOCATION,
+            id: LAYER_ID.SUBWAY_STATION_ADA_CODE,
             source: SOURCE_ID.SUBWAY_STATIONS,
             layout: {
               visibility:
-                LAYER_DEFAULT_VISIBILITY[LAYER_ID.SUBWAY_STATION_LOCATION],
+                LAYER_DEFAULT_VISIBILITY[LAYER_ID.SUBWAY_STATION_ADA_CODE],
             },
-            ...LAYER_PAINT[LAYER_ID.SUBWAY_STATION_LOCATION],
+            ...LAYER_PAINT[LAYER_ID.SUBWAY_STATION_ADA_CODE],
           }}
         />
       </Source>
