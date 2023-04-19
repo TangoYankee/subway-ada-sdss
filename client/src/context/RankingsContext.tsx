@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { DEFAULT_FACTOR_WEIGHTS } from "../helpers/constants";
-import { FactorWeightings, Rankings } from "../types.d";
+import { FactorWeightings, Rankings, SubwayStationAdaMap } from "../types.d";
 
 export type RankingsContextType = {
   factorWeights: FactorWeightings;
@@ -10,6 +10,7 @@ export type RankingsContextType = {
   setIsRankingsProcessing: (isProcessing: boolean) => void;
   rankings: Rankings;
   getRankings: (queryString: string) => void;
+  subwayStationAdaMap: SubwayStationAdaMap | null;
 };
 
 export const RankingsContext = createContext<RankingsContextType>({
@@ -20,4 +21,5 @@ export const RankingsContext = createContext<RankingsContextType>({
   setIsRankingsProcessing: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   rankings: null,
   getRankings: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+  subwayStationAdaMap: null,
 });

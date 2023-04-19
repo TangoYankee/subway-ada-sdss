@@ -1,3 +1,5 @@
+import { Point } from '@types/geojson';
+
 export type Result = {
   id: string;
   rank: number;
@@ -33,5 +35,31 @@ export type Ranking = {
   bus_stops: number;
   bus_stops_express: number;
 };
+
+export type ComplexID = string;
+
+export type SubwayStationAdaProperties = {
+    name: string,
+    lines: string,
+    complex_id: string,
+    gtfs_stop_id: string,
+    ada_status_code: number,
+}
+
+export type SubwayStationAdaMap = Record<ComplexID, SubwayStationAdaProperties>;
+
+export type SubwayStationAda = {
+  id: number,
+  type: "Feature",
+  geometry: Point,
+  properties: SubwayStationAdaProperties,
+}
+
+export type SubwayStationAdaFeatures = Array<SubwayStationAda>;
+ 
+export type SubwayStationAdaCollection = {
+  type: "FeatureCollection",
+  features: SubwayStationAdaFeatures
+}
 
 export type Rankings = Record<string, Ranking> | null;

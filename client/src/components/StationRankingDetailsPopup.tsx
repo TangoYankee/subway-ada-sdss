@@ -2,7 +2,7 @@ import { Box, Heading, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@
 import { useContext, useEffect, useState } from "react";
 import { Popup, useMap } from "react-map-gl";
 import { RankingsContext } from "../context/RankingsContext";
-import { FACTORS, FACTORS_LIST, FACTOR_DISPLAY } from "../helpers/constants";
+import { FACTORS } from "../helpers/constants";
 import { LAYER_ID } from "../helpers/MapLayers";
 import { Ranking } from "../types";
 
@@ -12,7 +12,7 @@ export const StationRankingDetailsPopup = () => {
   const [showPopup, setShowpopup] = useState(false);
   const [longitude, setLongtitude] = useState(-74.0);
   const [latitude, setLatitude] = useState(40.74);
-  const { rankings } = useContext(RankingsContext);
+  const { rankings, subwayStationAdaMap } = useContext(RankingsContext);
   const [complexId, setComplexId] = useState<string | null>(null);
   const [  ranking, setRanking ] = useState<Ranking | null>(null);
 
