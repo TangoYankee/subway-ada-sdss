@@ -64,7 +64,7 @@ const FactorGroup = ({ groupName, factors }: FactorGroupProps) => {
     useContext(RankingsContext);
   const factorControls = factors.map((factor) => (
     <Box key={factor}>
-      <Heading size="xs">{FACTOR_DISPLAY[ factor ]}</Heading>
+      <Heading size="xs">{FACTOR_DISPLAY[factor]}</Heading>
       <Flex>
         <Flex direction="column" flex={1}>
           <FactorWeightControl

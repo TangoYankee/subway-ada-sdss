@@ -8,7 +8,10 @@ import { ADAMap } from "../components/ADAMap";
 import { FactorWeightings, Rankings, SubwayStationAdaMap } from "../types";
 import { RankingsContext } from "../context/RankingsContext";
 import { API_BASE_URL, DEFAULT_FACTOR_WEIGHTS } from "../helpers/constants";
-import { getSubwayStationAdaCollection, parseSubwayStationAdaMap } from "../helpers/utils";
+import {
+  getSubwayStationAdaCollection,
+  parseSubwayStationAdaMap,
+} from "../helpers/utils";
 
 const MapPage = () => {
   const [factorWeights, setFactorWeights] = useState<FactorWeightings>(
@@ -18,7 +21,8 @@ const MapPage = () => {
   const [isRankingsProcessing, setIsRankingsProcessing] =
     useState<boolean>(false);
   const [rankings, setRankings] = useState<Rankings>(null);
-  const [subwayStationAdaMap, setSubwayStationAdaMap] = useState<SubwayStationAdaMap>(null);
+  const [subwayStationAdaMap, setSubwayStationAdaMap] =
+    useState<SubwayStationAdaMap>(null);
 
   const updateFactorWeight = (id: string, weight: number) => {
     const _factorWeights = cloneDeep(factorWeights);
@@ -44,8 +48,10 @@ const MapPage = () => {
   useEffect(() => {
     (async () => {
       const subwayStationAdaCollection = await getSubwayStationAdaCollection();
-      if(subwayStationAdaCollection !== null) 
-        setSubwayStationAdaMap(parseSubwayStationAdaMap(subwayStationAdaCollection));
+      if (subwayStationAdaCollection !== null)
+        setSubwayStationAdaMap(
+          parseSubwayStationAdaMap(subwayStationAdaCollection)
+        );
     })();
   }, []);
 
@@ -63,7 +69,7 @@ const MapPage = () => {
             getRankings,
             subwayStationAdaMap,
             complexId,
-            setComplexId
+            setComplexId,
           }}
         >
           <ContentPanel />

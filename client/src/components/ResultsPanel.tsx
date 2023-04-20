@@ -97,9 +97,9 @@ const PhaseAccordionItem = ({
     <Card
       key={`${result.complex_id}-${i}`}
       backgroundColor={result.complex_id === complexId ? "orange.100" : ""}
-      borderWidth={result.complex_id === complexId ? "2px": ""}
-      borderStyle={result.complex_id === complexId ? "solid": ""}
-      borderColor={result.complex_id === complexId ? "orange.600": ""}
+      borderWidth={result.complex_id === complexId ? "2px" : ""}
+      borderStyle={result.complex_id === complexId ? "solid" : ""}
+      borderColor={result.complex_id === complexId ? "orange.600" : ""}
     >
       <CardBody
         p="1"

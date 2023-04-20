@@ -63,7 +63,7 @@ export const StationRankingDetailsPopup = () => {
       if (rankings) _ranking = rankings[complexId];
       if (subwayStationAdaMap) _station = subwayStationAdaMap[complexId];
     }
-    
+
     setShowpopup(complexId ? true : false);
     setRanking(_ranking);
     setStation(_station);
@@ -76,7 +76,6 @@ export const StationRankingDetailsPopup = () => {
   }, [subwayStationAdaMap, rankings, complexId]);
 
   const onPopupClose = () => {
-    
     setShowpopup(false);
     setComplexId(null);
   };
@@ -119,7 +118,7 @@ export const StationRankingDetailsPopup = () => {
               </Tr>
               <Tr>
                 <Td>Phase</Td>
-                <Td>{ranking ? ranking.batch+1 : RANKING_UNAVAILABLE}</Td>
+                <Td>{ranking ? ranking.batch + 1 : RANKING_UNAVAILABLE}</Td>
               </Tr>
             </Tbody>
           </Table>

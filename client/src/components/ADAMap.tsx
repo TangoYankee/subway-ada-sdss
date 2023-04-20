@@ -15,16 +15,16 @@ import { useContext, useEffect } from "react";
 import { RankingsContext } from "../context/RankingsContext";
 
 export const ADAMap = () => {
-  const { sdssMap} = useMap();
-  const { subwayStationAdaMap, complexId} = useContext(RankingsContext);
+  const { sdssMap } = useMap();
+  const { subwayStationAdaMap, complexId } = useContext(RankingsContext);
 
   useEffect(() => {
-    if(sdssMap && subwayStationAdaMap && complexId) {
+    if (sdssMap && subwayStationAdaMap && complexId) {
       const { lat, lng } = subwayStationAdaMap[complexId];
-      sdssMap.easeTo({center: [lng, lat]});
+      sdssMap.easeTo({ center: [lng, lat] });
     }
   }, [subwayStationAdaMap, sdssMap, complexId]);
-  
+
   const factorLayers = Object.entries(SOURCED_FACTORS).map(
     ([sourceId, layerIds]) => (
       <Source
