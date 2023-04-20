@@ -24,14 +24,15 @@ const ADA_STATUS = [
 ];
 
 const RANKING_UNAVAILABLE = "Not ranked";
-
+const CENTER_LNG = -74;
+const CENTER_LAT = 40.74;
 export const StationRankingDetailsPopup = () => {
   const { sdssMap } = useMap();
   const [showPopup, setShowpopup] = useState(false);
-  const [longitude, setLongtitude] = useState(-74.0);
-  const [latitude, setLatitude] = useState(40.74);
-  const { rankings, subwayStationAdaMap } = useContext(RankingsContext);
-  const [complexId, setComplexId] = useState<string | null>(null);
+  const [longitude, setLongitude] = useState(CENTER_LNG);
+  const [latitude, setLatitude] = useState(CENTER_LAT);
+  const { rankings, subwayStationAdaMap, complexId, setComplexId } =
+    useContext(RankingsContext);
   const [ranking, setRanking] = useState<Ranking | null>(null);
   const [station, setStation] = useState<SubwayStationAdaProperties | null>(
     null
@@ -39,9 +40,6 @@ export const StationRankingDetailsPopup = () => {
 
   sdssMap.on("load", () => {
     sdssMap.on("click", LAYER_ID.SUBWAY_STATION_ADA_CODE, (e) => {
-      const { lat, lng } = e.lngLat;
-      setLongtitude(lng);
-      setLatitude(lat);
       const feature = e.features[0];
       if (feature?.id) {
         setComplexId(feature.id as string);
@@ -59,16 +57,26 @@ export const StationRankingDetailsPopup = () => {
   });
 
   useEffect(() => {
+    let _ranking = null;
+    let _station = null;
     if (complexId) {
-      if (rankings) setRanking(rankings[complexId]);
-      if (subwayStationAdaMap) setStation(subwayStationAdaMap[complexId]);
-    } else {
-      setRanking(null);
-      setStation(null);
+      if (rankings) _ranking = rankings[complexId];
+      if (subwayStationAdaMap) _station = subwayStationAdaMap[complexId];
     }
+    
+    setShowpopup(complexId ? true : false);
+    setRanking(_ranking);
+    setStation(_station);
+
+    const _latitude = _station ? _station.lat : CENTER_LAT;
+    setLatitude(_latitude);
+
+    const _longitude = _station ? _station.lng : CENTER_LNG;
+    setLongitude(_longitude);
   }, [subwayStationAdaMap, rankings, complexId]);
 
   const onPopupClose = () => {
+    
     setShowpopup(false);
     setComplexId(null);
   };
@@ -110,8 +118,8 @@ export const StationRankingDetailsPopup = () => {
                 <Td>{ranking ? ranking.ranking : RANKING_UNAVAILABLE}</Td>
               </Tr>
               <Tr>
-                <Td>Batch</Td>
-                <Td>{ranking ? ranking.batch : RANKING_UNAVAILABLE}</Td>
+                <Td>Phase</Td>
+                <Td>{ranking ? ranking.batch+1 : RANKING_UNAVAILABLE}</Td>
               </Tr>
             </Tbody>
           </Table>

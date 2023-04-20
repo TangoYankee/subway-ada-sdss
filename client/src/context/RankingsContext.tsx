@@ -11,6 +11,8 @@ export type RankingsContextType = {
   rankings: Rankings;
   getRankings: (queryString: string) => void;
   subwayStationAdaMap: SubwayStationAdaMap | null;
+  complexId: string | null;
+  setComplexId: (complexId: string) => void;
 };
 
 export const RankingsContext = createContext<RankingsContextType>({
@@ -22,4 +24,6 @@ export const RankingsContext = createContext<RankingsContextType>({
   rankings: null,
   getRankings: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   subwayStationAdaMap: null,
+  complexId: null,
+  setComplexId: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 });

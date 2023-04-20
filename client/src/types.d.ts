@@ -46,7 +46,11 @@ export type SubwayStationAdaProperties = {
     ada_status_code: number,
 }
 
-export type SubwayStationAdaMap = Record<ComplexID, SubwayStationAdaProperties>;
+export type SubwayStationAdaGeoProperties = SubwayStationAdaProperties & {
+  lat: number,
+  lng: number
+}
+export type SubwayStationAdaMap = Record<ComplexID, SubwayStationAdaGeoProperties>;
 
 export type SubwayStationAda = {
   id: number,

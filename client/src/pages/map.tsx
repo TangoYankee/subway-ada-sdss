@@ -14,6 +14,7 @@ const MapPage = () => {
   const [factorWeights, setFactorWeights] = useState<FactorWeightings>(
     DEFAULT_FACTOR_WEIGHTS
   );
+  const [complexId, setComplexId] = useState<string | null>(null);
   const [isRankingsProcessing, setIsRankingsProcessing] =
     useState<boolean>(false);
   const [rankings, setRankings] = useState<Rankings>(null);
@@ -61,6 +62,8 @@ const MapPage = () => {
             rankings,
             getRankings,
             subwayStationAdaMap,
+            complexId,
+            setComplexId
           }}
         >
           <ContentPanel />

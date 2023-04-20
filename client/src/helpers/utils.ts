@@ -26,9 +26,15 @@ export const parseSubwayStationAdaMap = (
       subwayStationAdaMap: SubwayStationAdaMap,
       subwayStationAda: SubwayStationAda
     ) => {
-      const { properties } = subwayStationAda;
+      const { properties, geometry: { coordinates: [lng, lat]}} = subwayStationAda;
+
       const complexId = properties.complex_id;
-      subwayStationAdaMap[complexId] = properties;
+      const geoProperties = {
+        ...properties,
+        lat,
+        lng
+      }
+      subwayStationAdaMap[complexId] = geoProperties;
       return subwayStationAdaMap;
     },
     {}
