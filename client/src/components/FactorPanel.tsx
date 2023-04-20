@@ -18,7 +18,7 @@ import {
 import { ChangeEvent, useContext, useState } from "react";
 import { useMap } from "react-map-gl";
 import { RankingsContext } from "../context/RankingsContext";
-import { GROUPED_FACTORS } from "../helpers/constants";
+import { FACTOR_DISPLAY, GROUPED_FACTORS } from "../helpers/constants";
 import {
   FACTOR_LAYERS,
   LAYER_DEFAULT_VISIBILITY,
@@ -64,7 +64,7 @@ const FactorGroup = ({ groupName, factors }: FactorGroupProps) => {
     useContext(RankingsContext);
   const factorControls = factors.map((factor) => (
     <Box key={factor}>
-      <Heading size="xs">{factor}</Heading>
+      <Heading size="xs">{FACTOR_DISPLAY[factor]}</Heading>
       <Flex>
         <Flex direction="column" flex={1}>
           <FactorWeightControl

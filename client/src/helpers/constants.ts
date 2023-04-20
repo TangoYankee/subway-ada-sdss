@@ -21,6 +21,26 @@ export const FACTORS = {
   SIXTY_FIVE_AND_OVER_AMBULATORY: "sixty_five_and_over_ambulatory",
 };
 
+export const FACTOR_DISPLAY = {
+  [FACTORS.PARKS]: "Parks",
+  [FACTORS.SCHOOLS]: "Schools",
+  [FACTORS.HOSPITALS]: "Hospitals",
+  [FACTORS.BUS_STOPS]: "Bus stops",
+  [FACTORS.BUS_STOPS_EXPRESS]: "Bus stops, express",
+  [FACTORS.TOTAL]: "Total population",
+  [FACTORS.UNDER_FIVE]: "Population under five",
+  [FACTORS.SIXTY_FIVE_AND_OVER]: "Population sixty five and over",
+  [FACTORS.POVERTY_TOTAL]: "Total population in poverty",
+  [FACTORS.POVERTY_UNDER_FIVE]: "Population under five in poverty",
+  [FACTORS.POVERTY_SIXTY_FIVE_AND_OVER]: "Population sixty and over in poverty",
+  [FACTORS.UNDER_EIGHTEEN_AMBULATORY]:
+    "Population under 18 with ambulatory disabilities",
+  [FACTORS.OVER_EIGHTEEN_UNDER_SIXTY_FIVE_AMBULATORY]:
+    "Population over 18 and under 65 with ambulatory disabilities",
+  [FACTORS.SIXTY_FIVE_AND_OVER_AMBULATORY]:
+    "Population sixty five and over with ambulatory disabilities",
+};
+
 export const GROUPED_FACTORS = {
   Amenities: [
     FACTORS.PARKS,

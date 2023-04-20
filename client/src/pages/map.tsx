@@ -1,21 +1,28 @@
 import { Box } from "@chakra-ui/react";
 import { MapProvider } from "react-map-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cloneDeep from "lodash.clonedeep";
 import { ContentPanel } from "../components/ContentPanel";
 import { ADAMap } from "../components/ADAMap";
-import { FactorWeightings, Rankings } from "../types";
+import { FactorWeightings, Rankings, SubwayStationAdaMap } from "../types";
 import { RankingsContext } from "../context/RankingsContext";
 import { API_BASE_URL, DEFAULT_FACTOR_WEIGHTS } from "../helpers/constants";
+import {
+  getSubwayStationAdaCollection,
+  parseSubwayStationAdaMap,
+} from "../helpers/utils";
 
 const MapPage = () => {
   const [factorWeights, setFactorWeights] = useState<FactorWeightings>(
     DEFAULT_FACTOR_WEIGHTS
   );
+  const [complexId, setComplexId] = useState<string | null>(null);
   const [isRankingsProcessing, setIsRankingsProcessing] =
     useState<boolean>(false);
   const [rankings, setRankings] = useState<Rankings>(null);
+  const [subwayStationAdaMap, setSubwayStationAdaMap] =
+    useState<SubwayStationAdaMap>(null);
 
   const updateFactorWeight = (id: string, weight: number) => {
     const _factorWeights = cloneDeep(factorWeights);
@@ -38,6 +45,16 @@ const MapPage = () => {
     setIsRankingsProcessing(false);
   };
 
+  useEffect(() => {
+    (async () => {
+      const subwayStationAdaCollection = await getSubwayStationAdaCollection();
+      if (subwayStationAdaCollection !== null)
+        setSubwayStationAdaMap(
+          parseSubwayStationAdaMap(subwayStationAdaCollection)
+        );
+    })();
+  }, []);
+
   return (
     <Box height="100%" flex="1">
       <MapProvider>
@@ -50,6 +67,9 @@ const MapPage = () => {
             setIsRankingsProcessing,
             rankings,
             getRankings,
+            subwayStationAdaMap,
+            complexId,
+            setComplexId,
           }}
         >
           <ContentPanel />
