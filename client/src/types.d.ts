@@ -9,6 +9,7 @@ export type Result = {
 export enum ContentPanels {
   Map = "MAP",
   About = "ABOUT",
+  CitySearch= "CITY_SEARCH",
   Data = "DATA",
   Results = "RESULTS",
 }
