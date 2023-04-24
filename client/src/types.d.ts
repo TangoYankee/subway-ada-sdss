@@ -71,3 +71,23 @@ export type SubwayStationAdaCollection = {
 };
 
 export type Rankings = Record<string, Ranking> | null;
+
+export type Feature<T, U> = {
+  type: "Feature",
+  geometry: T,
+  properties: U,
+}
+
+export type GeoSearchProperties = {
+  id: number,
+  name: string,
+  neighborhood: string,
+  borough: string,
+  label: string,
+}
+
+export type GeaSearchFeature = Feature<Point, GeoSearchProperties>;
+
+export type GeoSearchResults = {
+  features: Array<GeaSearchFeature>
+}

@@ -1,4 +1,5 @@
 import {
+  GeoSearchResults,
   SubwayStationAda,
   SubwayStationAdaCollection,
   SubwayStationAdaMap,
@@ -44,3 +45,15 @@ export const parseSubwayStationAdaMap = (
     },
     {}
   );
+
+const GEOSEARCH_API = "https://geosearch.planninglabs.nyc/v2/autocomplete?text="
+export const getGeoSearchResults = async (searchTerm: string): Promise<GeoSearchResults | null> => {
+  let searchResults: GeoSearchResults | null = null;
+  try {
+    const response = await fetch(`${GEOSEARCH_API}${searchTerm}`);
+    searchResults = await response.json();
+  } catch {
+    console.error("unable to fetch geosearch results");
+  }
+  return searchResults;
+}
