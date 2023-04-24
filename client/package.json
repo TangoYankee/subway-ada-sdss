@@ -19,6 +19,7 @@
     "@types/geojson": "^7946.0.10",
     "framer-motion": "^6.3.0",
     "lodash.clonedeep": "^4.5.0",
+    "lodash.debounce": "^4.0.8",
     "mapbox-gl": "npm:empty-npm-package@1.0.0",
     "maplibre-gl": "^2.4.0",
     "next": "latest",
