@@ -46,8 +46,11 @@ export const parseSubwayStationAdaMap = (
     {}
   );
 
-const GEOSEARCH_API = "https://geosearch.planninglabs.nyc/v2/autocomplete?text="
-export const getGeoSearchResults = async (searchTerm: string): Promise<GeoSearchResults | null> => {
+const GEOSEARCH_API =
+  "https://geosearch.planninglabs.nyc/v2/autocomplete?text=";
+export const getGeoSearchResults = async (
+  searchTerm: string
+): Promise<GeoSearchResults | null> => {
   let searchResults: GeoSearchResults | null = null;
   try {
     const response = await fetch(`${GEOSEARCH_API}${searchTerm}`);
@@ -56,4 +59,4 @@ export const getGeoSearchResults = async (searchTerm: string): Promise<GeoSearch
     console.error("unable to fetch geosearch results");
   }
   return searchResults;
-}
+};

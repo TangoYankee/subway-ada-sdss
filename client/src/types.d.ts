@@ -9,7 +9,7 @@ export type Result = {
 export enum ContentPanels {
   Map = "MAP",
   About = "ABOUT",
-  CitySearch= "CITY_SEARCH",
+  CitySearch = "CITY_SEARCH",
   Data = "DATA",
   Results = "RESULTS",
 }
@@ -73,22 +73,27 @@ export type SubwayStationAdaCollection = {
 export type Rankings = Record<string, Ranking> | null;
 
 export type Feature<T, U> = {
-  type: "Feature",
-  geometry: T,
-  properties: U,
-}
+  type: "Feature";
+  geometry: T;
+  properties: U;
+};
 
 export type GeoSearchProperties = {
-  id: string,
-  name: string,
-  neighbourhood: string,
-  borough: string,
-  label: string,
-}
+  id: string;
+  name: string;
+  neighbourhood: string;
+  borough: string;
+  label: string;
+};
 
 export type GeoSearchFeature = Feature<Point, GeoSearchProperties>;
-export type GeoSearchFeatures = Array<GeoSearchFeature>
+export type GeoSearchFeatures = Array<GeoSearchFeature>;
 
 export type GeoSearchResults = {
-  features: GeoSearchFeatures
-}
+  features: GeoSearchFeatures;
+};
+
+export type GeoCoords = {
+  lat: number;
+  lng: number;
+};

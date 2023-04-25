@@ -1,4 +1,11 @@
-import ReactMapGL, { Source, Layer, useMap, FullscreenControl, NavigationControl, ScaleControl } from "react-map-gl";
+import ReactMapGL, {
+  Source,
+  Layer,
+  useMap,
+  FullscreenControl,
+  NavigationControl,
+  ScaleControl,
+} from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import {
@@ -13,6 +20,7 @@ import { API_BASE_URL } from "../helpers/constants";
 import { StationRankingDetailsPopup } from "./StationRankingDetailsPopup";
 import { useContext, useEffect } from "react";
 import { RankingsContext } from "../context/RankingsContext";
+import { CitySearchMarker } from "./CitySearchMarker";
 
 export const ADAMap = () => {
   const { sdssMap } = useMap();
@@ -58,9 +66,10 @@ export const ADAMap = () => {
       }}
       mapStyle={`https://api.maptiler.com/maps/basic/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
     >
-      <NavigationControl/>
+      <NavigationControl />
       <ScaleControl />
-      <FullscreenControl/>
+      <FullscreenControl />
+      <CitySearchMarker />
       <StationRankingDetailsPopup />
       {factorLayers}
       <Source

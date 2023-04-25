@@ -30,7 +30,7 @@ export const ContentPanel = () => {
       <AboutPanel shouldDisplay={contentPanel === ContentPanels.About} />
       <FactorPanel shouldDisplay={contentPanel === ContentPanels.Data} />
       <ResultsPanel shouldDisplay={contentPanel === ContentPanels.Results} />
-      <SearchPanel shouldDisplay={contentPanel === ContentPanels.CitySearch}/>
+      <SearchPanel shouldDisplay={contentPanel === ContentPanels.CitySearch} />
     </Flex>
   );
 };
