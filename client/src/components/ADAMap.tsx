@@ -21,10 +21,12 @@ import { StationRankingDetailsPopup } from "./StationRankingDetailsPopup";
 import { useContext, useEffect } from "react";
 import { RankingsContext } from "../context/RankingsContext";
 import { CitySearchMarker } from "./CitySearchMarker";
+import { CitySearchContext } from "../context/CitySearchContext";
 
 export const ADAMap = () => {
   const { sdssMap } = useMap();
   const { subwayStationAdaMap, complexId } = useContext(RankingsContext);
+  const { selectedResultGeo } = useContext(CitySearchContext);
 
   useEffect(() => {
     if (sdssMap && subwayStationAdaMap && complexId) {
@@ -32,6 +34,13 @@ export const ADAMap = () => {
       sdssMap.easeTo({ center: [lng, lat] });
     }
   }, [subwayStationAdaMap, sdssMap, complexId]);
+
+  useEffect(() => {
+    if (sdssMap && selectedResultGeo) {
+      const { lat, lng } = selectedResultGeo;
+      sdssMap.easeTo({ center: [lng, lat] });
+    }
+  }, [sdssMap, selectedResultGeo]);
 
   const factorLayers = Object.entries(SOURCED_FACTORS).map(
     ([sourceId, layerIds]) => (
