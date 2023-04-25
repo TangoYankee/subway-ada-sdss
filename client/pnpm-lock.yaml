@@ -32,6 +32,7 @@ specifiers:
   react-dom: ^18.2.0
   react-map-gl: ^7.0.21
   typescript: ^4.9.5
+  use-debounce: ^9.0.4
 
 dependencies:
   '@chakra-ui/icons': 2.0.17_n3dxrjldmk5gnycgnw7noyo5tu
@@ -51,6 +52,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-map-gl: 7.0.21_6eczaga5xxiwzxtfiyk6fioasq
+  use-debounce: 9.0.4_react@18.2.0
 
 devDependencies:
   '@types/lodash.clonedeep': 4.5.7
@@ -4270,6 +4272,15 @@ packages:
       '@types/react': 18.0.28
       react: 18.2.0
       tslib: 2.5.0
+    dev: false
+
+  /use-debounce/9.0.4_react@18.2.0:
+    resolution: {integrity: sha512-6X8H/mikbrt0XE8e+JXRtZ8yYVvKkdYRfmIhWZYsP8rcNs9hk3APV8Ua2mFkKRLcJKVdnX2/Vwrmg2GWKUQEaQ==}
+    engines: {node: '>= 10.0.0'}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /use-sidecar/1.1.2_pmekkgnqduwlme35zpnqhenc34:

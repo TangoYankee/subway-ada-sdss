@@ -81,13 +81,14 @@ export type Feature<T, U> = {
 export type GeoSearchProperties = {
   id: number,
   name: string,
-  neighborhood: string,
+  neighbourhood: string,
   borough: string,
   label: string,
 }
 
-export type GeaSearchFeature = Feature<Point, GeoSearchProperties>;
+export type GeoSearchFeature = Feature<Point, GeoSearchProperties>;
+export type GeoSearchFeatures = Array<GeoSearchFeature>
 
 export type GeoSearchResults = {
-  features: Array<GeaSearchFeature>
+  features: GeoSearchFeatures
 }

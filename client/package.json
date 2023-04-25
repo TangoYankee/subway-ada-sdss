@@ -25,7 +25,8 @@
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-map-gl": "^7.0.21"
+    "react-map-gl": "^7.0.21",
+    "use-debounce": "^9.0.4"
   },
   "devDependencies": {
     "@types/lodash.clonedeep": "^4.5.7",
