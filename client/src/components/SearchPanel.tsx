@@ -1,17 +1,26 @@
 import {Box, Center, Flex, Heading, Input, Text } from "@chakra-ui/react"
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { getGeoSearchResults } from "../helpers/utils";
 import { useDebounce } from "use-debounce";
-import { GeoSearchFeatures } from "../types";
+import { GeoSearchFeatures} from "../types";
+import { Point } from "geojson";
+
 
 export const SearchPanel = ({shouldDisplay}: { shouldDisplay: boolean}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState<GeoSearchFeatures| null>(null);
     const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
+    const [selectedResultGeo, setSelectedResultGeo] = useState<{lat: number, lng: number } | null>(null);
     
     const onChangeSearchTerm = async (e: ChangeEvent<HTMLInputElement>)=> {
         const _value = e.target.value
         setSearchTerm(_value);
+        if(_value === '') setSelectedResultGeo(null);
+    }
+
+    const updateSelectedResultGeo = (point: Point) => {
+        const {coordinates: [lng, lat]} = point;
+        setSelectedResultGeo({lat, lng});
     }
 
     useEffect(() => {
@@ -40,7 +49,7 @@ export const SearchPanel = ({shouldDisplay}: { shouldDisplay: boolean}) => {
         {
         searchResults !== null ? <Flex direction="column" padding={2} overflow="scroll" maxHeight="85%">
             {searchResults.map((result) => 
-                <Flex key={result.properties.id} direction="column" padding={0.5} border="solid" borderStyle="solid" borderWidth={1} borderRadius="5">
+                <Flex key={result.properties.id} direction="column" padding={0.5} border="solid" borderStyle="solid" borderWidth={1} borderRadius="5" onClick={() => updateSelectedResultGeo(result.geometry)}>
                     <Text>{result.properties.name}</Text>
                     <Text>{result.properties.neighbourhood}, {result.properties.borough}</Text>
                 </Flex>

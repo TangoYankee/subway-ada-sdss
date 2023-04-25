@@ -79,7 +79,7 @@ export type Feature<T, U> = {
 }
 
 export type GeoSearchProperties = {
-  id: number,
+  id: string,
   name: string,
   neighbourhood: string,
   borough: string,
