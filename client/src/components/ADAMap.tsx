@@ -1,4 +1,4 @@
-import ReactMapGL, { Source, Layer, useMap } from "react-map-gl";
+import ReactMapGL, { Source, Layer, useMap, FullscreenControl, NavigationControl, ScaleControl } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import {
@@ -58,6 +58,9 @@ export const ADAMap = () => {
       }}
       mapStyle={`https://api.maptiler.com/maps/basic/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
     >
+      <NavigationControl/>
+      <ScaleControl />
+      <FullscreenControl/>
       <StationRankingDetailsPopup />
       {factorLayers}
       <Source
