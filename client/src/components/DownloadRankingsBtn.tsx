@@ -13,7 +13,7 @@ export const DownloadRankingsBtn = () => {
   };
 
   return (
-    <Button variant="outline" colorScheme="blue" onClick={downloadRankings}>
+    <Button variant="outline" colorScheme="blue" onClick={downloadRankings} isDisabled={!rankings}>
       Download Rankings
     </Button>
   );
