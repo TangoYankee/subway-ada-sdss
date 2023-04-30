@@ -89,33 +89,6 @@ class School(models.Model):
         return self.location_name
 
 
-class SubwayEntrance(models.Model):
-    line = models.CharField(max_length=254)
-    station_name = models.CharField(max_length=254)
-    route_1 = models.CharField(max_length=254, blank=True, null=True)
-    route_2 = models.CharField(max_length=254, blank=True, null=True)
-    route_3 = models.CharField(max_length=254, blank=True, null=True)
-    route_4 = models.CharField(max_length=254, blank=True, null=True)
-    route_5 = models.CharField(max_length=254, blank=True, null=True)
-    route_6 = models.CharField(max_length=254, blank=True, null=True)
-    route_7 = models.CharField(max_length=254, blank=True, null=True)
-    route_8 = models.BigIntegerField(blank=True, null=True)
-    route_9 = models.BigIntegerField(blank=True, null=True)
-    route_10 = models.BigIntegerField(blank=True, null=True)
-    route_11 = models.BigIntegerField(blank=True, null=True)
-    entrance_type = models.CharField(max_length=254)
-    entry = models.CharField(max_length=254)
-    exit_only = models.CharField(max_length=254, blank=True, null=True)
-    ada = models.CharField(max_length=254)
-    ada_notes = models.CharField(max_length=254, blank=True, null=True)
-    free_cross = models.CharField(max_length=254, blank=True, null=True)
-    corner = models.CharField(max_length=254, blank=True, null=True)
-    geom = models.PointField(srid=4326)
-
-    def __str__(self):
-        return f"{self.station_name}-{self.corner}-{self.entrance_type}"
-
-
 class SubwayRoute(models.Model):
     route_id = models.CharField(max_length=80)
     route_shor = models.CharField(max_length=80)
@@ -129,27 +102,18 @@ class SubwayRoute(models.Model):
 
 
 class SubwayStation(models.Model):
-    complex_id = models.CharField(max_length=80)
-    complex_nm = models.CharField(max_length=80)
-    trains = models.CharField(max_length=80)
-    station_ct = models.CharField(max_length=80)
-    tot2019 = models.CharField(max_length=80)
-    geom = models.PointField(srid=4326)
-
-    def __str__(self):
-        return f"{self.complex_nm}-{self.trains}"
-
-
-class SubwayStationADA(models.Model):
     name = models.CharField(max_length=80)
     lines = models.CharField(max_length=80)
     complex_id = models.CharField(max_length=80)
     gtfs_stop_id = models.CharField(max_length=80)
     ada_status_code = models.IntegerField()
+    ridership = models.FloatField(blank=True, null=True)
+    ada_neighbor_gap = models.CharField(max_length=80, blank=True, null=True)
+    betweenness_centrality = models.CharField(max_length=80, blank=True, null=True)
     geom = models.PointField(srid=4326)
 
     def __str__(self):
-        return f"{self.name}: {self.lines}"
+        return f"{self.complex_id}-{self.lines}"
 
 
 class SubwayStation500mBuffer(models.Model):
@@ -172,7 +136,6 @@ class SubwayStation500mBuffer(models.Model):
     under_eighteen_ambulatory = models.IntegerField()
     over_eighteen_under_sixty_five_ambulatory = models.IntegerField()
     sixty_five_and_over_ambulatory = models.IntegerField()
-    ridership_2019 = models.FloatField(blank=True, null=True)
     geom = models.PointField(srid=4326)
 
 

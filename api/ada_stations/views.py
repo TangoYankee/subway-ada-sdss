@@ -13,10 +13,8 @@ from ada_stations.serializers import (
     HospitalSerializer,
     ParkSerializer,
     SchoolSerializer,
-    SubwayEntranceSerializer,
     SubwayRouteSerializer,
     SubwayStationSerializer,
-    SubwayStationADASerializer,
     SubwayStation500BufferSerializer,
     TractDemographicSerializer,
 )
@@ -28,10 +26,8 @@ from ada_stations.models import (
     Hospital,
     Park,
     School,
-    SubwayEntrance,
     SubwayRoute,
     SubwayStation,
-    SubwayStationADA,
     SubwayStation500mBuffer,
     TractDemographic,
 )
@@ -72,11 +68,6 @@ class SchoolViewSet(viewsets.ModelViewSet):
     serializer_class = SchoolSerializer
 
 
-class SubwayEntranceViewSet(viewsets.ModelViewSet):
-    queryset = SubwayEntrance.objects.all()
-    serializer_class = SubwayEntranceSerializer
-
-
 class SubwayRouteViewSet(viewsets.ModelViewSet):
     queryset = SubwayRoute.objects.all()
     serializer_class = SubwayRouteSerializer
@@ -85,11 +76,6 @@ class SubwayRouteViewSet(viewsets.ModelViewSet):
 class SubwayStationViewSet(viewsets.ModelViewSet):
     queryset = SubwayStation.objects.all()
     serializer_class = SubwayStationSerializer
-
-
-class SubwayStationADAViewSet(viewsets.ModelViewSet):
-    queryset = SubwayStationADA.objects.all()
-    serializer_class = SubwayStationADASerializer
 
 
 class SubwayStation500BufferViewSet(viewsets.ModelViewSet):
@@ -126,6 +112,12 @@ tract_factors = [
     "sixty_five_and_over_ambulatory",
 ]
 
+station_factors = [
+    "ridership",
+    "ada_neighbor_gap",
+    "betweenness_centrality",
+]
+
 
 class RankingView(APIView):
     def get(self, request):
@@ -142,7 +134,7 @@ class RankingView(APIView):
             key: value / total_weight for (key, value) in factor_weights.items()
         }
 
-        stations = SubwayStation500mBuffer.objects.all().filter(
+        stations_buffer = SubwayStation500mBuffer.objects.all().filter(
             ada_status_code__gte=ada_min_code
         )
 
@@ -160,7 +152,7 @@ class RankingView(APIView):
             list(requested_counted_factors.keys()) + requested_tract_factors
         )
 
-        for station in stations:
+        for station in stations_buffer:
             station_totals[station.complex_id] = {
                 factor: getattr(station, factor) for factor in requested_factors
             }

@@ -22,7 +22,6 @@ subwaystation500mbuffer_mapping = {
     "under_eighteen_ambulatory": "under_18_ambulatory",
     "over_eighteen_under_sixty_five_ambulatory": "over_18_under_65_ambulatory",
     "sixty_five_and_over_ambulatory": "65_and_over_ambulatory",
-    "ridership_2019": "ridership_2019",
     "geom": "POINT",
 }
 

@@ -24,10 +24,8 @@ from ada_stations.views import (
     HospitalViewSet,
     ParkViewSet,
     SchoolViewSet,
-    SubwayEntranceViewSet,
     SubwayRouteViewSet,
     SubwayStationViewSet,
-    SubwayStationADAViewSet,
     SubwayStation500BufferViewSet,
     TractDemographicViewSet,
     RankingView,
@@ -41,10 +39,8 @@ router.register("bus-stops-express", BusStopExpressViewSet)
 router.register("hospitals", HospitalViewSet)
 router.register("parks", ParkViewSet)
 router.register("schools", SchoolViewSet)
-router.register("subway-entrances", SubwayEntranceViewSet)
 router.register("subway-routes", SubwayRouteViewSet)
 router.register("subway-stations", SubwayStationViewSet)
-router.register("subway-stations-ada", SubwayStationADAViewSet)
 router.register("subway-stations-buffer", SubwayStation500BufferViewSet)
 router.register("tract-demographics", TractDemographicViewSet)
 

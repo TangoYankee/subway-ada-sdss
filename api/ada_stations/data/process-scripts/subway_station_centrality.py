@@ -2,7 +2,7 @@ import geopandas as gpd
 import pandas as pd
 import networkx as nx
 
-stations_read = gpd.read_file("./subway_station_accessibility.geojson")
+stations_read = gpd.read_file("../subway_station_accessibility.geojson")
 stations = stations_read.reindex(["complex_id", "line", "geometry"], axis=1)
 
 station_lines = stations["line"]

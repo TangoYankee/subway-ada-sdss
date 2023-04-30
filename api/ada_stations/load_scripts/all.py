@@ -6,10 +6,8 @@ from . import (
     hospitals,
     parks,
     schools,
-    subwayentrances,
     subwayroutes,
     subwaystations,
-    subwaystationsada,
     subwaystations500buffer,
     tractdemographics,
 )
@@ -24,9 +22,7 @@ def run():
     hospitals.run()
     parks.run()
     schools.run()
-    subwayentrances.run()
     subwayroutes.run()
     subwaystations.run()
-    subwaystationsada.run()
     subwaystations500buffer.run()
     tractdemographics.run()
