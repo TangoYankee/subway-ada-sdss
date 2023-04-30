@@ -1,6 +1,6 @@
 import geopandas as gpd
 
-stations = gpd.read_file("subway_station_accessibility.csv")
+stations = gpd.read_file("subway_stations_marked.csv")
 
 ada_status = stations.ada_status
 ada_unique = set()
