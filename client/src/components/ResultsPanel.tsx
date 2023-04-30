@@ -67,7 +67,7 @@ export const ResultsPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
       overflow="scroll"
     >
       <Flex justifyContent="space-around" alignItems="center">
-        <Heading as="h2">Results</Heading>
+        <Heading as="h2" p='2'>Rankings</Heading>
         <DownloadRankingsBtn />
       </Flex>
       {rankings !== null ? (

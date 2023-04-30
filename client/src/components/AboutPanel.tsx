@@ -20,7 +20,9 @@ export const AboutPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => (
     direction="column"
     padding={2.5}
   >
-    <Heading as="h2" p='2'>About</Heading>
+    <Heading as="h2" p="2">
+      About
+    </Heading>
     <Flex overflow="scroll">
       <Card>
         <CardBody>

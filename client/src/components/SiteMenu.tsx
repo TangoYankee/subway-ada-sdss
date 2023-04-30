@@ -31,9 +31,9 @@ export const SiteMenu = () => {
           >
             <MenuItemOption value={ContentPanels.Map}>Map</MenuItemOption>
             <MenuItemOption value={ContentPanels.About}>About</MenuItemOption>
-            <MenuItemOption value={ContentPanels.Data}>Data</MenuItemOption>
+            <MenuItemOption value={ContentPanels.Data}>Factors</MenuItemOption>
             <MenuItemOption value={ContentPanels.Results}>
-              Results
+              Rankings
             </MenuItemOption>
           </MenuOptionGroup>
         </MenuList>
