@@ -44,6 +44,9 @@ export type SubwayStationAdaProperties = {
   complex_id: string;
   gtfs_stop_id: string;
   ada_status_code: number;
+  betweenness_centrality: string;
+  ada_neighbor_gap: string; 
+  ridership: number;
 };
 
 export type SubwayStationAdaGeoProperties = SubwayStationAdaProperties & {

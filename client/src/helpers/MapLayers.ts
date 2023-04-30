@@ -12,7 +12,7 @@ export const SOURCE_ID = {
 };
 
 export const SOURCE_ENDPOINT = {
-  [SOURCE_ID.SUBWAY_STATIONS]: "subway-stations-ada",
+  [SOURCE_ID.SUBWAY_STATIONS]: "subway-stations",
   [SOURCE_ID.SUBWAY_ROUTES]: "subway-routes",
   [SOURCE_ID.PARKS]: "parks",
   [SOURCE_ID.SCHOOLS]: "schools",

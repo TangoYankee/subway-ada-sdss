@@ -7,7 +7,7 @@ import { API_BASE_URL } from "./constants";
 
 export const getSubwayStationAdaCollection = async () => {
   let subwayStationAdaCollection: SubwayStationAdaCollection = null;
-  const endpoint = "subway-stations-ada";
+  const endpoint = "subway-stations";
   const requestUrl = `${API_BASE_URL}/api/v1/${endpoint}`;
   try {
     const response = await fetch(requestUrl);
