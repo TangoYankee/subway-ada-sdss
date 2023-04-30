@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import { RankingsContext } from "../context/RankingsContext";
+import { DownloadRankingsBtn } from "./DownloadRankingsBtn";
 import { Ranking } from "../types";
 
 const getActivePhase = (
@@ -65,7 +66,10 @@ export const ResultsPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
       padding="10px"
       overflow="scroll"
     >
-      <Heading as="h2">Results</Heading>
+      <Flex justifyContent="space-around" alignItems="center">
+        <Heading as="h2">Results</Heading>
+        <DownloadRankingsBtn />
+      </Flex>
       {rankings !== null ? (
         <Accordion allowToggle index={accordionIndex}>
           {batchedRankings.map((batch, index) => (
