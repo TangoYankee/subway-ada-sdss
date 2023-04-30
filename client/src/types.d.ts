@@ -45,7 +45,7 @@ export type SubwayStationAdaProperties = {
   gtfs_stop_id: string;
   ada_status_code: number;
   betweenness_centrality: string;
-  ada_neighbor_gap: string; 
+  ada_neighbor_gap: string;
   ridership: number;
 };
 

@@ -18,9 +18,13 @@ import {
 import { ChangeEvent, useContext, useState } from "react";
 import { useMap } from "react-map-gl";
 import { RankingsContext } from "../context/RankingsContext";
-import { FACTOR_DISPLAY, GROUPED_FACTORS } from "../helpers/constants";
 import {
-  FACTOR_LAYERS,
+  FACTOR_DISPLAY,
+  GROUPED_FACTORS,
+  NON_FACTORS,
+} from "../helpers/constants";
+import {
+  LAYERS,
   LAYER_DEFAULT_VISIBILITY,
   LAYER_VISIBILITY_STATE,
 } from "../helpers/MapLayers";
@@ -49,9 +53,32 @@ export const FactorPanel = ({ shouldDisplay }: FactorPanelProps) => {
         <RankStationBtn />
       </Flex>
       <Flex direction="column" overflow="scroll">
+        <NetworkContextLayers />
         {factorGroups}
       </Flex>
     </Flex>
+  );
+};
+
+const NetworkContextLayers = () => {
+  return (
+    <Card>
+      <CardHeader>
+        <Heading size="md">Subway Network Context</Heading>
+      </CardHeader>
+      <CardBody>
+        <Stack divider={<StackDivider />}>
+          <Heading size="xs">Subway Station ADA Status</Heading>
+          <FactorDisplayControl
+            factor={NON_FACTORS.ADA_STATUS_CODE}
+          ></FactorDisplayControl>
+          <Heading size="xs">Subway Lines</Heading>
+          <FactorDisplayControl
+            factor={NON_FACTORS.ROUTE_LINE_COLOR}
+          ></FactorDisplayControl>
+        </Stack>
+      </CardBody>
+    </Card>
   );
 };
 
@@ -87,7 +114,7 @@ const FactorGroup = ({ groupName, factors }: FactorGroupProps) => {
   return (
     <Card>
       <CardHeader>
-        <Heading size="md">{groupName}</Heading>
+        <Heading size="md">{groupName.replace("_", " ")}</Heading>
       </CardHeader>
       <CardBody>
         <Stack divider={<StackDivider />}>{factorControls}</Stack>
@@ -121,6 +148,7 @@ const FactorWeightControl = ({
           value={weight}
           min={1}
           max={100}
+          isDisabled={!shouldWeight}
           onChange={updateWeight}
           onMouseEnter={() => setShowTooltip(true)}
           onMouseLeave={() => setShowTooltip(false)}
@@ -144,11 +172,15 @@ const FactorWeightControl = ({
 
 interface FactorDisplayControlProps {
   factor: string;
+  direction?: "column" | "row";
 }
 
-const FactorDisplayControl = ({ factor }: FactorDisplayControlProps) => {
+const FactorDisplayControl = ({
+  factor,
+  direction = "column",
+}: FactorDisplayControlProps) => {
   const { sdssMap } = useMap();
-  const layerId = FACTOR_LAYERS[factor].LAYER_ID;
+  const layerId = LAYERS[factor].LAYER_ID;
   const [layerVisibility, setLayerVisibility] = useState(
     LAYER_DEFAULT_VISIBILITY[layerId] === LAYER_VISIBILITY_STATE.VISIBLE
   );
@@ -171,7 +203,7 @@ const FactorDisplayControl = ({ factor }: FactorDisplayControlProps) => {
   };
 
   return (
-    <Flex direction="column" flex={1}>
+    <Flex direction={direction} flex={1}>
       <Checkbox onChange={updateLayerVisibility} isChecked={layerVisibility}>
         Display
       </Checkbox>

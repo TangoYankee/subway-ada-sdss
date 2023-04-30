@@ -41,8 +41,8 @@ export const StationRankingDetailsPopup = () => {
   sdssMap.on("load", () => {
     sdssMap.on("click", LAYER_ID.SUBWAY_STATION_ADA_CODE, (e) => {
       const feature = e.features[0];
-      if (feature?.id) {
-        setComplexId(feature.id as string);
+      if (feature?.properties.complex_id) {
+        setComplexId(feature.properties.complex_id as string);
       }
       setShowpopup(true);
     });

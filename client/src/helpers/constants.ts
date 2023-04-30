@@ -3,7 +3,15 @@ import { FactorWeightings } from "../types";
 const API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN ?? "localhost:8001";
 export const API_BASE_URL = `http://${API_DOMAIN}`;
 
+export const NON_FACTORS = {
+  ADA_STATUS_CODE: "ada_status_code",
+  ROUTE_LINE_COLOR: "route_line_color",
+};
+
 export const FACTORS = {
+  ADA_NEIGHBOR_GAP: "ada_neighbor_gap",
+  BETWEENNESS_CENTRALITY: "betweenness_centrality",
+  RIDERSHIP: "ridership",
   PARKS: "parks",
   SCHOOLS: "schools",
   HOSPITALS: "hospitals",
@@ -22,6 +30,9 @@ export const FACTORS = {
 };
 
 export const FACTOR_DISPLAY = {
+  [FACTORS.ADA_NEIGHBOR_GAP]: "Distance to nearest ADA station neighbor",
+  [FACTORS.BETWEENNESS_CENTRALITY]: "Betweenness centrality",
+  [FACTORS.RIDERSHIP]: "Ridership",
   [FACTORS.PARKS]: "Parks",
   [FACTORS.SCHOOLS]: "Schools",
   [FACTORS.HOSPITALS]: "Hospitals",
@@ -42,6 +53,11 @@ export const FACTOR_DISPLAY = {
 };
 
 export const GROUPED_FACTORS = {
+  Station_Traits: [
+    FACTORS.ADA_NEIGHBOR_GAP,
+    FACTORS.BETWEENNESS_CENTRALITY,
+    FACTORS.RIDERSHIP,
+  ],
   Amenities: [
     FACTORS.PARKS,
     FACTORS.SCHOOLS,

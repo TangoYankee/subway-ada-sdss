@@ -1,4 +1,4 @@
-import { FACTORS } from "./constants";
+import { FACTORS, NON_FACTORS } from "./constants";
 
 export const SOURCE_ID = {
   SUBWAY_STATIONS: "subway_stations_source",
@@ -24,6 +24,10 @@ export const SOURCE_ENDPOINT = {
 
 export const LAYER_ID = {
   SUBWAY_STATION_ADA_CODE: "subway_station_ada_code_layer",
+  SUBWAY_STATION_ADA_NEIGHBOR_GAP: "subway_station_ada_neighbor_gap_layer",
+  SUBWAY_STATION_BETWEENNESS_CENTRALITY:
+    "subway_station_betweenness_centrality",
+  SUBWAY_STATION_RIDERSHIP: "subway_station_ridership_layer",
   SUBWAY_ROUTE_LINE_COLOR: "subway_station_line_color_layer",
   PARKS: "parks_layer",
   SCHOOLS: "schools_layer",
@@ -49,6 +53,10 @@ export enum LAYER_VISIBILITY_STATE {
 
 export const LAYER_DEFAULT_VISIBILITY = {
   [LAYER_ID.SUBWAY_STATION_ADA_CODE]: LAYER_VISIBILITY_STATE.VISIBLE,
+  [LAYER_ID.SUBWAY_STATION_ADA_NEIGHBOR_GAP]: LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.SUBWAY_STATION_BETWEENNESS_CENTRALITY]:
+    LAYER_VISIBILITY_STATE.HIDDEN,
+  [LAYER_ID.SUBWAY_STATION_RIDERSHIP]: LAYER_VISIBILITY_STATE.HIDDEN,
   [LAYER_ID.SUBWAY_ROUTE_LINE_COLOR]: LAYER_VISIBILITY_STATE.VISIBLE,
   [LAYER_ID.PARKS]: LAYER_VISIBILITY_STATE.HIDDEN,
   [LAYER_ID.SCHOOLS]: LAYER_VISIBILITY_STATE.HIDDEN,
@@ -84,6 +92,30 @@ export const LAYER_PAINT = {
         ],
       },
       "circle-radius": 3.5,
+      "circle-opacity": 0.75,
+    },
+  },
+  [LAYER_ID.SUBWAY_STATION_ADA_NEIGHBOR_GAP]: {
+    type: "circle" as const,
+    paint: {
+      "circle-color": "#FF0000",
+      "circle-radius": 3,
+      "circle-opacity": 0.75,
+    },
+  },
+  [LAYER_ID.SUBWAY_STATION_BETWEENNESS_CENTRALITY]: {
+    type: "circle" as const,
+    paint: {
+      "circle-color": "#00FF00",
+      "circle-radius": 3,
+      "circle-opacity": 0.75,
+    },
+  },
+  [LAYER_ID.SUBWAY_STATION_RIDERSHIP]: {
+    type: "circle" as const,
+    paint: {
+      "circle-color": "#0000FF",
+      "circle-radius": 3,
       "circle-opacity": 0.75,
     },
   },
@@ -317,7 +349,30 @@ export const LAYER_PAINT = {
   },
 };
 
+export const NON_FACTOR_LAYERS = {
+  [NON_FACTORS.ADA_STATUS_CODE]: {
+    SOURCE_ID: SOURCE_ID.SUBWAY_STATIONS,
+    LAYER_ID: LAYER_ID.SUBWAY_STATION_ADA_CODE,
+  },
+  [NON_FACTORS.ROUTE_LINE_COLOR]: {
+    SOURCE_ID: SOURCE_ID.SUBWAY_ROUTES,
+    LAYER_ID: LAYER_ID.SUBWAY_ROUTE_LINE_COLOR,
+  },
+};
+
 export const FACTOR_LAYERS = {
+  [FACTORS.ADA_NEIGHBOR_GAP]: {
+    SOURCE_ID: SOURCE_ID.SUBWAY_STATIONS,
+    LAYER_ID: LAYER_ID.SUBWAY_STATION_ADA_NEIGHBOR_GAP,
+  },
+  [FACTORS.BETWEENNESS_CENTRALITY]: {
+    SOURCE_ID: SOURCE_ID.SUBWAY_STATIONS,
+    LAYER_ID: LAYER_ID.SUBWAY_STATION_BETWEENNESS_CENTRALITY,
+  },
+  [FACTORS.RIDERSHIP]: {
+    SOURCE_ID: SOURCE_ID.SUBWAY_STATIONS,
+    LAYER_ID: LAYER_ID.SUBWAY_STATION_RIDERSHIP,
+  },
   [FACTORS.TOTAL]: {
     SOURCE_ID: SOURCE_ID.TRACTS,
     LAYER_ID: LAYER_ID.TOTAL,
@@ -375,6 +430,24 @@ export const FACTOR_LAYERS = {
     LAYER_ID: LAYER_ID.BUS_STOPS_EXPRESS,
   },
 };
+
+export const LAYERS = {
+  ...FACTOR_LAYERS,
+  ...NON_FACTOR_LAYERS,
+};
+
+export const SOURCED_LAYERS = Object.entries(LAYERS).reduce(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  (sourcedFactors: Record<string, Array<string>>, [_factor, data]) => {
+    const { SOURCE_ID: sourceId, LAYER_ID: layerId } = data;
+    const layerIds = sourcedFactors[sourceId];
+    sourcedFactors[sourceId] =
+      layerIds === undefined ? [layerId] : layerIds.concat(layerId);
+
+    return sourcedFactors;
+  },
+  {}
+);
 
 export const SOURCED_FACTORS = Object.entries(FACTOR_LAYERS).reduce(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
