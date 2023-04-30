@@ -92,13 +92,13 @@ class TractDemographicViewSet(viewsets.ModelViewSet):
 station_buffer = 500
 batch_size = 80
 ada_min_code = 3
-counted_factors_map = {
-    "parks": Park,
-    "schools": School,
-    "hospitals": Hospital,
-    "bus_stops": BusStop,
-    "bus_stops_express": BusStopExpress,
-}
+counted_factors_map = [ 
+    "parks",
+    "schools",
+    "hospitals",
+    "bus_stops",
+    "bus_stops_express",
+ ]
 
 tract_factors = [
     "total",
@@ -112,7 +112,7 @@ tract_factors = [
     "sixty_five_and_over_ambulatory",
 ]
 
-station_factors = [
+station_trait_factors = [
     "ridership",
     "ada_neighbor_gap",
     "betweenness_centrality",
@@ -122,7 +122,7 @@ station_factors = [
 class RankingView(APIView):
     def get(self, request):
         query_string = request.GET
-        all_factors = list(counted_factors_map.keys()) + tract_factors
+        all_factors = counted_factors_map + tract_factors + station_trait_factors
         factor_weights = {
             factor: int(query_string.get(factor) or 0) for factor in all_factors
         }
@@ -134,35 +134,52 @@ class RankingView(APIView):
             key: value / total_weight for (key, value) in factor_weights.items()
         }
 
+        stations_traits = SubwayStation.objects.all().filter(
+            ada_status_code__gte=ada_min_code
+        )
+
         stations_buffer = SubwayStation500mBuffer.objects.all().filter(
             ada_status_code__gte=ada_min_code
         )
 
-        station_totals = {}
-        meta_data = {}
-        requested_tract_factors = [
-            factor for factor in tract_factors if factor_weights[factor] > 0
+        buffer_factors = counted_factors_map + tract_factors
+        requested_buffer_factors = [ 
+            factor for factor in buffer_factors if factor_weights[factor] > 0
+         ]
+        requested_trait_factors = [
+            factor for factor in station_trait_factors if factor_weights[factor] > 0
         ]
-        requested_counted_factors = {
-            factor: model
-            for factor, model in counted_factors_map.items()
-            if factor_weights[factor] > 0
-        }
-        requested_factors = (
-            list(requested_counted_factors.keys()) + requested_tract_factors
-        )
 
+        station_totals = {}
+        buffer_complex_ids = set()
         for station in stations_buffer:
+            buffer_complex_ids.add(station.complex_id)
             station_totals[station.complex_id] = {
-                factor: getattr(station, factor) for factor in requested_factors
+                factor: getattr(station, factor) for factor in requested_buffer_factors
             }
 
-            meta_data[station.complex_id] = {
-                "complex_id": station.complex_id,
+        meta_data = {}
+        trait_complex_ids = set()
+        for station in stations_traits:
+            complex_id = station.complex_id
+            trait_complex_ids.add(complex_id)
+            # print(f'trait id: {station.complex_id}')
+            buffer_factors_totals = station_totals[complex_id]
+            trait_factors_totals = { factor: float(getattr(station, factor) or 0) for factor in requested_trait_factors }
+            station_totals[complex_id] = trait_factors_totals | buffer_factors_totals
+
+            meta_data[complex_id] = {
+                "complex_id":complex_id,
                 "name": station.name,
-                "lines": station.line,
+                "lines": station.lines,
                 "ada_status_code": station.ada_status_code,
             }
+        print(f'num buffer: ${len(buffer_complex_ids)}')
+        print(f'num trait: ${len(trait_complex_ids)}')
+        print('buff diff')
+        print(buffer_complex_ids.difference(trait_complex_ids))
+        print('trait diff')
+        print(trait_complex_ids.difference(buffer_complex_ids))
 
         max_factor_totals = {}
         for count in station_totals.values():
@@ -171,26 +188,25 @@ class RankingView(APIView):
                 max_factor_totals[key] = max([value, max_factor_totals.get(key, 1)])
 
         scores = {}
-        for station_id, station_factor_totals in station_totals.items():
+        for complex_id, station_factor_totals in station_totals.items():
             score = 0
             for factor, count in station_factor_totals.items():
                 score += (count / max_factor_totals[factor]) * proportional_weights[
                     factor
                 ]
-            scores[station_id] = score
+            scores[complex_id] = score
 
         ranked_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
         rankings = {}
         for index, data in enumerate(ranked_scores):
-            id, score = data
+            complex_id, score = data
             ranking = index + 1
             batch = ranking // batch_size
-            rankings[id] = {
-                **meta_data[id],
+            rankings[complex_id] = {
+                **meta_data[complex_id],
                 "score": score,
                 "ranking": ranking,
                 "batch": batch,
-                **station_totals[id],
             }
 
         return Response(rankings)
