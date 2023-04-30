@@ -10,7 +10,7 @@ import { ContentPanelsContext } from "../context/ContentPanelsContext";
 import { ContentPanels } from "../types.d";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [contentPanel, setContentPanel] = useState(ContentPanels.Map);
+  const [contentPanel, setContentPanel] = useState(ContentPanels.About);
   return (
     <ChakraProvider theme={theme}>
       <ContentPanelsContext.Provider value={{ contentPanel, setContentPanel }}>
