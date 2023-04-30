@@ -174,12 +174,6 @@ class RankingView(APIView):
                 "lines": station.lines,
                 "ada_status_code": station.ada_status_code,
             }
-        print(f'num buffer: ${len(buffer_complex_ids)}')
-        print(f'num trait: ${len(trait_complex_ids)}')
-        print('buff diff')
-        print(buffer_complex_ids.difference(trait_complex_ids))
-        print('trait diff')
-        print(trait_complex_ids.difference(buffer_complex_ids))
 
         max_factor_totals = {}
         for count in station_totals.values():
