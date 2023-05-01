@@ -165,7 +165,7 @@ class RankingView(APIView):
             trait_complex_ids.add(complex_id)
             # print(f'trait id: {station.complex_id}')
             buffer_factors_totals = station_totals[complex_id]
-            trait_factors_totals = { factor: float(getattr(station, factor) or 0) for factor in requested_trait_factors }
+            trait_factors_totals = { factor: float(getattr(station, factor) or 0) * 1000 for factor in requested_trait_factors }
             station_totals[complex_id] = trait_factors_totals | buffer_factors_totals
 
             meta_data[complex_id] = {
