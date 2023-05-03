@@ -91,7 +91,7 @@ export const SearchPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
                 direction="column"
                 padding={2}
                 overflow="scroll"
-                height="30vh"
+                height="20vh"
                 onMouseLeave={() => setComplexId(null)}
               >
                 {stationAdaSearch.map((station) => (
@@ -124,7 +124,7 @@ export const SearchPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
                 direction="column"
                 padding={2}
                 overflow="scroll"
-                height="30vh"
+                height="20vh"
                 onMouseLeave={() => updateSelectedResultGeo(null)}
               >
                 {searchResults.map((result) => (

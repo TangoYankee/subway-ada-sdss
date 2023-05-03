@@ -34,7 +34,7 @@ export const SiteMenu = () => {
             <MenuItemOption value={ContentPanels.CitySearch}>
               City Search
             </MenuItemOption>
-            <MenuItemOption value={ContentPanels.Data}>Data</MenuItemOption>
+            <MenuItemOption value={ContentPanels.Data}>Factors</MenuItemOption>
             <MenuItemOption value={ContentPanels.Results}>
               Results
             </MenuItemOption>
