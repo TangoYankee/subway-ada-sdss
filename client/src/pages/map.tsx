@@ -5,13 +5,19 @@ import { useEffect, useState } from "react";
 import cloneDeep from "lodash.clonedeep";
 import { ContentPanel } from "../components/ContentPanel";
 import { ADAMap } from "../components/ADAMap";
-import { FactorWeightings, Rankings, SubwayStationAdaMap } from "../types";
+import {
+  FactorWeightings,
+  GeoCoords,
+  Rankings,
+  SubwayStationAdaMap,
+} from "../types";
 import { RankingsContext } from "../context/RankingsContext";
 import { API_BASE_URL, DEFAULT_FACTOR_WEIGHTS } from "../helpers/constants";
 import {
   getSubwayStationAdaCollection,
   parseSubwayStationAdaMap,
 } from "../helpers/utils";
+import { CitySearchContext } from "../context/CitySearchContext";
 
 const MapPage = () => {
   const [factorWeights, setFactorWeights] = useState<FactorWeightings>(
@@ -23,6 +29,9 @@ const MapPage = () => {
   const [rankings, setRankings] = useState<Rankings>(null);
   const [subwayStationAdaMap, setSubwayStationAdaMap] =
     useState<SubwayStationAdaMap>(null);
+  const [selectedResultGeo, setSelectedResultGeo] = useState<GeoCoords | null>(
+    null
+  );
 
   const updateFactorWeight = (id: string, weight: number) => {
     const _factorWeights = cloneDeep(factorWeights);
@@ -58,23 +67,30 @@ const MapPage = () => {
   return (
     <Box height="100%" flex="1">
       <MapProvider>
-        <RankingsContext.Provider
+        <CitySearchContext.Provider
           value={{
-            factorWeights,
-            updateFactorWeight,
-            updateShouldWeight,
-            isRankingsProcessing,
-            setIsRankingsProcessing,
-            rankings,
-            getRankings,
-            subwayStationAdaMap,
-            complexId,
-            setComplexId,
+            selectedResultGeo,
+            setSelectedResultGeo,
           }}
         >
-          <ContentPanel />
-          <ADAMap />
-        </RankingsContext.Provider>
+          <RankingsContext.Provider
+            value={{
+              factorWeights,
+              updateFactorWeight,
+              updateShouldWeight,
+              isRankingsProcessing,
+              setIsRankingsProcessing,
+              rankings,
+              getRankings,
+              subwayStationAdaMap,
+              complexId,
+              setComplexId,
+            }}
+          >
+            <ContentPanel />
+            <ADAMap />
+          </RankingsContext.Provider>
+        </CitySearchContext.Provider>
       </MapProvider>
     </Box>
   );

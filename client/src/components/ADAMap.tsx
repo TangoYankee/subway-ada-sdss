@@ -1,4 +1,11 @@
-import ReactMapGL, { Source, Layer, useMap } from "react-map-gl";
+import ReactMapGL, {
+  Source,
+  Layer,
+  useMap,
+  FullscreenControl,
+  NavigationControl,
+  ScaleControl,
+} from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import {
@@ -11,10 +18,13 @@ import { API_BASE_URL } from "../helpers/constants";
 import { StationRankingDetailsPopup } from "./StationRankingDetailsPopup";
 import { useContext, useEffect } from "react";
 import { RankingsContext } from "../context/RankingsContext";
+import { CitySearchMarker } from "./CitySearchMarker";
+import { CitySearchContext } from "../context/CitySearchContext";
 
 export const ADAMap = () => {
   const { sdssMap } = useMap();
   const { subwayStationAdaMap, complexId } = useContext(RankingsContext);
+  const { selectedResultGeo } = useContext(CitySearchContext);
 
   useEffect(() => {
     if (sdssMap && subwayStationAdaMap && complexId) {
@@ -22,6 +32,13 @@ export const ADAMap = () => {
       sdssMap.easeTo({ center: [lng, lat] });
     }
   }, [subwayStationAdaMap, sdssMap, complexId]);
+
+  useEffect(() => {
+    if (sdssMap && selectedResultGeo) {
+      const { lat, lng } = selectedResultGeo;
+      sdssMap.easeTo({ center: [lng, lat] });
+    }
+  }, [sdssMap, selectedResultGeo]);
 
   const layers = Object.entries(SOURCED_LAYERS).map(([sourceId, layerIds]) => (
     <Source
@@ -43,6 +60,7 @@ export const ADAMap = () => {
       ))}
     </Source>
   ));
+
   return (
     <ReactMapGL
       id="sdssMap"
@@ -54,6 +72,10 @@ export const ADAMap = () => {
       }}
       mapStyle={`https://api.maptiler.com/maps/basic/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
     >
+      <NavigationControl />
+      <ScaleControl />
+      <FullscreenControl />
+      <CitySearchMarker />
       <StationRankingDetailsPopup />
       {layers}
     </ReactMapGL>

@@ -38,23 +38,27 @@ export const StationRankingDetailsPopup = () => {
     null
   );
 
-  sdssMap.on("load", () => {
-    sdssMap.on("click", LAYER_ID.SUBWAY_STATION_ADA_CODE, (e) => {
-      const feature = e.features[0];
-      if (feature?.properties.complex_id) {
-        setComplexId(feature.properties.complex_id as string);
-      }
-      setShowpopup(true);
-    });
+  useEffect(() => {
+    if (sdssMap) {
+      sdssMap.on("load", () => {
+        sdssMap.on("click", LAYER_ID.SUBWAY_STATION_ADA_CODE, (e) => {
+          const feature = e.features[0];
+          if (feature?.properties.complex_id) {
+            setComplexId(feature.properties.complex_id as string);
+          }
+          setShowpopup(true);
+        });
 
-    sdssMap.on("mouseenter", LAYER_ID.SUBWAY_STATION_ADA_CODE, () => {
-      sdssMap.getCanvas().style.cursor = "pointer";
-    });
+        sdssMap.on("mouseenter", LAYER_ID.SUBWAY_STATION_ADA_CODE, () => {
+          sdssMap.getCanvas().style.cursor = "pointer";
+        });
 
-    sdssMap.on("mouseleave", LAYER_ID.SUBWAY_STATION_ADA_CODE, () => {
-      sdssMap.getCanvas().style.cursor = "";
-    });
-  });
+        sdssMap.on("mouseleave", LAYER_ID.SUBWAY_STATION_ADA_CODE, () => {
+          sdssMap.getCanvas().style.cursor = "";
+        });
+      });
+    }
+  }, [sdssMap, setComplexId]);
 
   useEffect(() => {
     let _ranking = null;

@@ -5,6 +5,7 @@ import { ContentPanels } from "../types.d";
 import { AboutPanel } from "./AboutPanel";
 import { FactorPanel } from "./FactorPanel";
 import { ResultsPanel } from "./ResultsPanel";
+import { SearchPanel } from "./SearchPanel";
 
 export const ContentPanel = () => {
   const { contentPanel } = useContext(ContentPanelsContext);
@@ -29,6 +30,7 @@ export const ContentPanel = () => {
       <AboutPanel shouldDisplay={contentPanel === ContentPanels.About} />
       <FactorPanel shouldDisplay={contentPanel === ContentPanels.Data} />
       <ResultsPanel shouldDisplay={contentPanel === ContentPanels.Results} />
+      <SearchPanel shouldDisplay={contentPanel === ContentPanels.CitySearch} />
     </Flex>
   );
 };
