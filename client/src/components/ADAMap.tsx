@@ -14,17 +14,19 @@ import {
   LAYER_DEFAULT_VISIBILITY,
   SOURCED_LAYERS,
 } from "../helpers/MapLayers";
-import { API_BASE_URL } from "../helpers/constants";
+import { API_BASE_URL, DEFAULT_BASE_MAP_STYLE } from "../helpers/constants";
 import { StationRankingDetailsPopup } from "./StationRankingDetailsPopup";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RankingsContext } from "../context/RankingsContext";
 import { CitySearchMarker } from "./CitySearchMarker";
 import { CitySearchContext } from "../context/CitySearchContext";
+import { BaseMapStyleSelector } from "./baseMapStyleSelector";
 
 export const ADAMap = () => {
   const { sdssMap } = useMap();
   const { subwayStationAdaMap, complexId } = useContext(RankingsContext);
   const { selectedResultGeo } = useContext(CitySearchContext);
+  const [baseMapStyle, setBaseMapStyle] = useState<'basic'| 'hybrid'>(DEFAULT_BASE_MAP_STYLE)
 
   useEffect(() => {
     if (sdssMap && subwayStationAdaMap && complexId) {
@@ -39,6 +41,13 @@ export const ADAMap = () => {
       sdssMap.easeTo({ center: [lng, lat] });
     }
   }, [sdssMap, selectedResultGeo]);
+
+  useEffect(() => {
+    if(sdssMap) {
+      const map = sdssMap.getMap();
+      map.setStyle(`https://api.maptiler.com/maps/${baseMapStyle}/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`)
+    }
+  }, [sdssMap, baseMapStyle]);
 
   const layers = Object.entries(SOURCED_LAYERS).map(([sourceId, layerIds]) => (
     <Source
@@ -70,8 +79,9 @@ export const ADAMap = () => {
         latitude: 40.74,
         zoom: 10,
       }}
-      mapStyle={`https://api.maptiler.com/maps/basic/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
+      mapStyle={`https://api.maptiler.com/maps/${DEFAULT_BASE_MAP_STYLE}/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
     >
+      <BaseMapStyleSelector setBaseMapStyle={setBaseMapStyle}/>
       <NavigationControl />
       <ScaleControl />
       <FullscreenControl />
