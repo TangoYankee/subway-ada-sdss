@@ -91,6 +91,13 @@ export const LAYER_PAINT = {
           [4, "#d7191c"],
         ],
       },
+      "circle-stroke-color": "#F6E05E",
+      "circle-stroke-width": [
+        "case",
+        ["boolean", ["feature-state", "highlight"], false],
+        2,
+        0,
+      ] as unknown,
       "circle-radius": 3.5,
       "circle-opacity": 0.75,
     },

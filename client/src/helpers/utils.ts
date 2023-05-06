@@ -60,3 +60,6 @@ export const getGeoSearchResults = async (
   }
   return searchResults;
 };
+
+export const uniqueArrayEntries = (arr: mapboxgl.MapboxGeoJSONFeature[]) =>
+  arr.filter((v, i, a) => a.findIndex((v2) => v2.id === v.id) === i);
