@@ -13,6 +13,8 @@ import {
   LAYER_PAINT,
   LAYER_DEFAULT_VISIBILITY,
   SOURCED_LAYERS,
+  LAYER_ID,
+  SOURCE_ID,
 } from "../helpers/MapLayers";
 import { API_BASE_URL, DEFAULT_BASE_MAP_STYLE } from "../helpers/constants";
 import { StationRankingDetailsPopup } from "./StationRankingDetailsPopup";
@@ -53,6 +55,30 @@ export const ADAMap = () => {
       );
     }
   }, [sdssMap, baseMapStyle]);
+
+  // Select ridership colors based on min and max values
+  useEffect(() => {
+    if(sdssMap) {
+      sdssMap.on('load', () => {
+        const stationFeatures = sdssMap.querySourceFeatures(SOURCE_ID.SUBWAY_STATIONS);
+        const ridership: number[] = stationFeatures.map(f => f.properties.ridership).filter(ridership => ridership !== undefined);
+        const minRidership = Math.min(...ridership);
+        const maxRidership = Math.max(...ridership);
+
+        const colorExp = [
+          'interpolate',
+          ['linear'],
+          ['get', 'ridership'],
+          minRidership,
+          '#fff5f0',
+          maxRidership,
+          '#67000d'
+        ]
+
+        sdssMap.getMap().setPaintProperty(LAYER_ID.SUBWAY_STATION_RIDERSHIP, 'circle-color', colorExp);
+      })
+    }
+  }, [sdssMap])  
 
   const layers = Object.entries(SOURCED_LAYERS).map(([sourceId, layerIds]) => (
     <Source

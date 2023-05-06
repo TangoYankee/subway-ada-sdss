@@ -114,9 +114,10 @@ export const LAYER_PAINT = {
   [LAYER_ID.SUBWAY_STATION_RIDERSHIP]: {
     type: "circle" as const,
     paint: {
-      "circle-color": "#0000FF",
       "circle-radius": 3,
-      "circle-opacity": 0.75,
+      "circle-opacity": 1,
+      "circle-stroke-color": "#222222",
+      "circle-stroke-width": 0.5
     },
   },
   [LAYER_ID.SUBWAY_ROUTE_LINE_COLOR]: {
