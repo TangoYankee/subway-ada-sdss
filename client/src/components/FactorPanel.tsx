@@ -6,6 +6,7 @@ import {
   Checkbox,
   Flex,
   Heading,
+  Skeleton,
   Slider,
   SliderFilledTrack,
   SliderThumb,
@@ -15,7 +16,7 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { useMap } from "react-map-gl";
 import { RankingsContext } from "../context/RankingsContext";
 import {
@@ -34,11 +35,22 @@ interface FactorPanelProps {
   shouldDisplay: boolean;
 }
 export const FactorPanel = ({ shouldDisplay }: FactorPanelProps) => {
+  const { sdssMap } = useMap();
+  const [layersAreLoaded, setLayersAreLoaded] = useState(false);
   const factorGroups = Object.entries(GROUPED_FACTORS).map(
     ([groupName, factors]) => (
       <FactorGroup key={groupName} groupName={groupName} factors={factors} />
     )
   );
+
+  useEffect(() => {
+    if (sdssMap) {
+      sdssMap.on("load", () => {
+        setLayersAreLoaded(true);
+      });
+    }
+  }, [sdssMap]);
+
   return (
     <Flex
       h="100%"
@@ -50,11 +62,15 @@ export const FactorPanel = ({ shouldDisplay }: FactorPanelProps) => {
         <Heading size="lg" padding={2.5}>
           Factors
         </Heading>
-        <RankStationBtn />
+        <Skeleton isLoaded={layersAreLoaded}>
+          <RankStationBtn />
+        </Skeleton>
       </Flex>
       <Flex direction="column" overflow="scroll">
-        <NetworkContextLayers />
-        {factorGroups}
+        <Skeleton isLoaded={layersAreLoaded}>
+          <NetworkContextLayers />
+          {factorGroups}
+        </Skeleton>
       </Flex>
     </Flex>
   );
