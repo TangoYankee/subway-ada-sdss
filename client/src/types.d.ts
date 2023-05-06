@@ -12,6 +12,7 @@ export enum ContentPanels {
   CitySearch = "CITY_SEARCH",
   Data = "DATA",
   Results = "RESULTS",
+  SelectedStationDetails = "SELECTED_STATION_DETAILS",
 }
 
 export type FactorWeighting = {
@@ -61,6 +62,36 @@ export type TractProperties = {
   under_eighteen_ambulatory: number;
   over_eighteen_under_sixty_five_ambulatory: number;
   sixty_five_and_over_ambulatory: number;
+};
+
+export type BusStopProperties = {
+  stop_name: string;
+  namelsad: string;
+};
+
+export type BusStopExpress = {
+  stop_name: string;
+  namelsad: string;
+};
+
+export type HospitalProperties = {
+  facility_type: string;
+  facility_name: string;
+};
+
+export type ParkProperties = {
+  signname: string;
+  acres: string;
+  location: string;
+  waterfront: string;
+  typecategory: string;
+};
+
+export type School = {
+  location_name: string;
+  location_type_description: string;
+  location_category_description: string;
+  primary_address_line_1: string;
 };
 
 export type SubwayStationAdaGeoProperties = SubwayStationAdaProperties & {

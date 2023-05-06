@@ -6,6 +6,7 @@ import { AboutPanel } from "./AboutPanel";
 import { FactorPanel } from "./FactorPanel";
 import { ResultsPanel } from "./ResultsPanel";
 import { SearchPanel } from "./SearchPanel";
+import { StationNeighborhoodPanel } from "./StationNeighborhoodPanel";
 
 export const ContentPanel = () => {
   const { contentPanel } = useContext(ContentPanelsContext);
@@ -31,6 +32,9 @@ export const ContentPanel = () => {
       <FactorPanel shouldDisplay={contentPanel === ContentPanels.Data} />
       <ResultsPanel shouldDisplay={contentPanel === ContentPanels.Results} />
       <SearchPanel shouldDisplay={contentPanel === ContentPanels.CitySearch} />
+      <StationNeighborhoodPanel
+        shouldDisplay={contentPanel === ContentPanels.SelectedStationDetails}
+      />
     </Flex>
   );
 };

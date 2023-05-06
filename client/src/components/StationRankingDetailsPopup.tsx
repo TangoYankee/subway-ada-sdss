@@ -15,7 +15,7 @@ import { RankingsContext } from "../context/RankingsContext";
 import { LAYER_ID } from "../helpers/MapLayers";
 import { Ranking, SubwayStationAdaProperties } from "../types";
 
-const ADA_STATUS = [
+export const ADA_STATUS = [
   "Full",
   "Partial",
   "Construction in progress",
@@ -23,7 +23,7 @@ const ADA_STATUS = [
   "No funding plans",
 ];
 
-const RANKING_UNAVAILABLE = "Not ranked";
+export const RANKING_UNAVAILABLE = "Not ranked";
 export const CENTER_LNG = -74;
 export const CENTER_LAT = 40.74;
 export const StationRankingDetailsPopup = () => {

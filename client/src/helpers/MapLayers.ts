@@ -149,6 +149,13 @@ export const LAYER_PAINT = {
       "circle-color": "#E53E3E",
       "circle-radius": 3,
       "circle-opacity": 0.75,
+      "circle-stroke-color": "#F6E05E",
+      "circle-stroke-width": [
+        "case",
+        ["boolean", ["feature-state", "highlight"], false],
+        2,
+        0,
+      ] as unknown,
     },
   },
   [LAYER_ID.BUS_STOPS]: {
