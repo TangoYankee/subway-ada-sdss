@@ -50,6 +50,19 @@ export type SubwayStationAdaProperties = {
   ridership: number;
 };
 
+export type TractProperties = {
+  geoid: string;
+  total: number;
+  under_five: number;
+  sixty_five_and_over: number;
+  poverty_total: number;
+  poverty_under_five: number;
+  poverty_sixty_five_and_over: number;
+  under_eighteen_ambulatory: number;
+  over_eighteen_under_sixty_five_ambulatory: number;
+  sixty_five_and_over_ambulatory: number;
+};
+
 export type SubwayStationAdaGeoProperties = SubwayStationAdaProperties & {
   lat: number;
   lng: number;

@@ -24,8 +24,8 @@ const ADA_STATUS = [
 ];
 
 const RANKING_UNAVAILABLE = "Not ranked";
-const CENTER_LNG = -74;
-const CENTER_LAT = 40.74;
+export const CENTER_LNG = -74;
+export const CENTER_LAT = 40.74;
 export const StationRankingDetailsPopup = () => {
   const { sdssMap } = useMap();
   const [showPopup, setShowpopup] = useState(false);
@@ -58,7 +58,7 @@ export const StationRankingDetailsPopup = () => {
         });
       });
     }
-  }, [sdssMap, setComplexId]);
+  }, [sdssMap, setComplexId, setShowpopup]);
 
   useEffect(() => {
     let _ranking = null;

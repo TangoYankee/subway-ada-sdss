@@ -183,7 +183,7 @@ export const LAYER_PAINT = {
         7000,
         "#006d2c",
       ] as unknown,
-      "fill-outline-color": "#E2E8F0",
+      "fill-outline-color": "#222222",
       "fill-opacity": 0.5,
     },
   },

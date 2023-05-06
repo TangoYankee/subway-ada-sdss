@@ -21,12 +21,15 @@ import { RankingsContext } from "../context/RankingsContext";
 import { CitySearchMarker } from "./CitySearchMarker";
 import { CitySearchContext } from "../context/CitySearchContext";
 import { BaseMapStyleSelector } from "./baseMapStyleSelector";
+import { TractTotalPopulationPopup } from "./TractTotalPopulationPopup";
 
 export const ADAMap = () => {
   const { sdssMap } = useMap();
   const { subwayStationAdaMap, complexId } = useContext(RankingsContext);
   const { selectedResultGeo } = useContext(CitySearchContext);
-  const [baseMapStyle, setBaseMapStyle] = useState<'basic'| 'hybrid'>(DEFAULT_BASE_MAP_STYLE)
+  const [baseMapStyle, setBaseMapStyle] = useState<"basic" | "hybrid">(
+    DEFAULT_BASE_MAP_STYLE
+  );
 
   useEffect(() => {
     if (sdssMap && subwayStationAdaMap && complexId) {
@@ -43,9 +46,11 @@ export const ADAMap = () => {
   }, [sdssMap, selectedResultGeo]);
 
   useEffect(() => {
-    if(sdssMap) {
+    if (sdssMap) {
       const map = sdssMap.getMap();
-      map.setStyle(`https://api.maptiler.com/maps/${baseMapStyle}/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`)
+      map.setStyle(
+        `https://api.maptiler.com/maps/${baseMapStyle}/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`
+      );
     }
   }, [sdssMap, baseMapStyle]);
 
@@ -81,11 +86,12 @@ export const ADAMap = () => {
       }}
       mapStyle={`https://api.maptiler.com/maps/${DEFAULT_BASE_MAP_STYLE}/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_TOKEN}`}
     >
-      <BaseMapStyleSelector setBaseMapStyle={setBaseMapStyle}/>
+      <BaseMapStyleSelector setBaseMapStyle={setBaseMapStyle} />
       <NavigationControl />
       <ScaleControl />
       <FullscreenControl />
       <CitySearchMarker />
+      <TractTotalPopulationPopup />
       <StationRankingDetailsPopup />
       {layers}
     </ReactMapGL>
