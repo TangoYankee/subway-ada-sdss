@@ -19,7 +19,7 @@ export const BaseMapStyleSelector = ({
       position="absolute"
       top={4}
       right={20}
-      zIndex="1"
+      zIndex={1}
       bg="whiteAlpha.900"
       p={1}
     >

@@ -23,8 +23,8 @@ export const ContentPanel = () => {
       position="absolute"
       top={24}
       left={1.5}
-      zIndex="1"
-      bg="whiteAlpha.900"
+      zIndex={2}
+      bg="white"
       display={contentPanel === ContentPanels.Map ? "none" : "flex"}
     >
       <AboutPanel shouldDisplay={contentPanel === ContentPanels.About} />

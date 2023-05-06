@@ -16,7 +16,7 @@ export const SiteMenu = () => {
   const { contentPanel, setContentPanel } = useContext(ContentPanelsContext);
 
   return (
-    <Box zIndex={2}>
+    <Box zIndex={3}>
       <Menu>
         <MenuButton
           as={IconButton}
