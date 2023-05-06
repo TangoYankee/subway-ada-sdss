@@ -3,6 +3,7 @@ import {
   Table,
   TableContainer,
   Tbody,
+  Td,
   Th,
   Thead,
   Tr,
@@ -57,8 +58,8 @@ export const TractTotalPopulationPopup = () => {
   const propertyRows = tractProperties ? (
     Object.entries(tractProperties).map(([property, value], index) => (
       <Tr key={index}>
-        <Th>{FACTOR_DISPLAY[property] ?? "Tract Id"}</Th>
-        <Th>{value}</Th>
+        <Td>{FACTOR_DISPLAY[property] ?? "Tract Id"}</Td>
+        <Td>{value}</Td>
       </Tr>
     ))
   ) : (
