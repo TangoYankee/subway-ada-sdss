@@ -56,20 +56,21 @@ export const ADAMap = () => {
     }
   }, [sdssMap, baseMapStyle]);
 
-  // Select ridership colors based on min and max values
   useEffect(() => {
     if (sdssMap) {
       sdssMap.on("load", () => {
         const stationFeatures = sdssMap.querySourceFeatures(
           SOURCE_ID.SUBWAY_STATIONS
         );
+
+        // Select ridership colors based on min and max values
         const ridership: number[] = stationFeatures
           .map((f) => f.properties.ridership)
           .filter((ridership) => ridership !== undefined);
         const minRidership = Math.min(...ridership);
         const maxRidership = Math.max(...ridership);
 
-        const colorExp = [
+        const ridershipColor = [
           "interpolate",
           ["linear"],
           ["get", "ridership"],
@@ -84,8 +85,65 @@ export const ADAMap = () => {
           .setPaintProperty(
             LAYER_ID.SUBWAY_STATION_RIDERSHIP,
             "circle-color",
-            colorExp
+            ridershipColor
           );
+        // End Ridership layer
+
+        // ADA Neighbor gap colors
+        const adaNeighborGap: number[] = stationFeatures.map((f) =>
+          parseFloat(f.properties.ada_neighbor_gap)
+        );
+        const minGap = Math.min(...adaNeighborGap);
+        const maxGap = Math.max(...adaNeighborGap);
+
+        const gapColor = [
+          "interpolate",
+          ["linear"],
+          ["to-number", ["get", "ada_neighbor_gap"]],
+          minGap,
+          "#fcfbfd",
+          maxGap,
+          "#3f007d",
+        ];
+
+        sdssMap
+          .getMap()
+          .setPaintProperty(
+            LAYER_ID.SUBWAY_STATION_ADA_NEIGHBOR_GAP,
+            "circle-color",
+            gapColor
+          );
+        // End Ada Nieghbor gap colors
+
+        // Betweenness Centrality
+        const standardizer = 1e6;
+        const betweennessCentrality: number[] = stationFeatures
+          .map((f) => f.properties.betweenness_centrality)
+          .filter((b) => b)
+          .map((b) => parseFloat(b));
+
+        const minBetweenness = Math.min(...betweennessCentrality);
+        const maxBetweenness = Math.max(...betweennessCentrality);
+
+        const betweennessColor = [
+          "interpolate",
+          ["linear"],
+          // ['*', ["to-number", ["get", "betweenness_centrality"]], standardizer],
+          ["to-number", ["get", "betweenness_centrality"]],
+          minBetweenness,
+          "#f7fcf5",
+          maxBetweenness,
+          "#00441b",
+        ];
+
+        sdssMap
+          .getMap()
+          .setPaintProperty(
+            LAYER_ID.SUBWAY_STATION_BETWEENNESS_CENTRALITY,
+            "circle-color",
+            betweennessColor
+          );
+        // End Betweenness Centrality
       });
     }
   }, [sdssMap]);
