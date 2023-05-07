@@ -251,7 +251,10 @@ export const StationNeighborhoodPanel = ({
               {`Amentities within ~${(0.005 * METERS_PER_DEG).toFixed(0)}m`}
             </Heading>
             <Text>
-              <i>Only amentities displayed on the map are included</i>
+              <i>
+                Only amenities displayed on the map when the station was
+                selected are included
+              </i>
             </Text>
             <Flex h="30vh" direction="column" overflow="scroll">
               {amenitiesDisplay}

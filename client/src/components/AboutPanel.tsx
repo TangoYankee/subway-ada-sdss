@@ -96,6 +96,11 @@ export const AboutPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => (
                   The &quot;Subway Station ADA Status&quot; layer needs to be
                   displayed for this to function.
                 </ListItem>
+                <ListItem>
+                  The Factor Panel can get out of sync with the map after
+                  changing the base layer. Toggling the display of a layer will
+                  bring it back in sync with the map.
+                </ListItem>
               </UnorderedList>
             </Box>
           </Stack>
