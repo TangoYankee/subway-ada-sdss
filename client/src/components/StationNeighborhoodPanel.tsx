@@ -108,10 +108,11 @@ export const StationNeighborhoodPanel = ({
       });
 
       setAccessibleNeighbor((accessibleNeighbor) => {
-        sdssMap.setFeatureState(
-          { source: SOURCE_ID.SUBWAY_STATIONS, id: accessibleNeighbor.id },
-          { highlight: false }
-        );
+        if (accessibleNeighbor)
+          sdssMap.setFeatureState(
+            { source: SOURCE_ID.SUBWAY_STATIONS, id: accessibleNeighbor.id },
+            { highlight: false }
+          );
         sdssMap.setFeatureState(
           {
             source: SOURCE_ID.SUBWAY_STATIONS,
@@ -148,26 +149,51 @@ export const StationNeighborhoodPanel = ({
               {stationDetails.name} on the {stationDetails.lines} Lines
             </Heading>
             <Text>
-              Accessiblity Status: {ADA_STATUS[stationDetails.ada_status_code]}
+              Accessiblity Status:{" "}
+              <i>{ADA_STATUS[stationDetails.ada_status_code]}</i>
             </Text>
-            <Text>Annual Ridership: {stationDetails.ridership}</Text>
             <Text>
-              Betweeness Centrality: {stationDetails.betweenness_centrality}
+              Annual Ridership: <i>{stationDetails.ridership}</i>
+            </Text>
+            <Text>
+              Betweeness Centrality:{" "}
+              <i>{stationDetails.betweenness_centrality}</i>
             </Text>
             {ranking ? (
               <>
-                <Text>Batch: {ranking.batch}</Text>
-                <Text>Ranking: {ranking.ranking}</Text>
-                <Text>Score: {ranking.score}</Text>
+                <Text>
+                  Batch: <i>{ranking.batch}</i>
+                </Text>
+                <Text>
+                  Ranking: <i>{ranking.ranking}</i>
+                </Text>
+                <Text>
+                  Score: <i>{ranking.score}</i>
+                </Text>
               </>
             ) : (
-              <Text>Rankings: {RANKING_UNAVAILABLE}</Text>
+              <Text>
+                Rankings: <i>{RANKING_UNAVAILABLE}</i>
+              </Text>
             )}
-            <Text>
-              Nearest Accessible Station: {accessibleNeighbor.properties.name}{" "}
-              on the {accessibleNeighbor.properties.lines}
-            </Text>
-            <Text>Amentities within 500m</Text>
+            {accessibleNeighbor ? (
+              <>
+                <Text>
+                  Nearest Accessible Station:{" "}
+                  <i>{`${accessibleNeighbor.properties.name} on the ${accessibleNeighbor.properties.lines}`}</i>
+                </Text>
+                <Text>
+                  <i>{`(Distance: ~${(
+                    parseFloat(stationDetails.ada_neighbor_gap) * 111111
+                  ).toFixed(0)}m)`}</i>
+                </Text>
+              </>
+            ) : (
+              <></>
+            )}
+            <Heading as="h4" size="xs">
+              {`Amentities within ~${(0.005 * 111111).toFixed(0)}m`}
+            </Heading>
             <Text>
               Hospitals:{" "}
               {/* {amentities[SOURCE_ID.HOSPITALS][0].properties.facility_name} */}
