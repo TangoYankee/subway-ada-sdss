@@ -106,6 +106,10 @@ const PhaseAccordionItem = ({
       borderWidth={result.complex_id === complexId ? "2px" : ""}
       borderStyle={result.complex_id === complexId ? "solid" : ""}
       borderColor={result.complex_id === complexId ? "orange.600" : ""}
+      _hover={{
+        cursor: "pointer",
+        backgroundColor: "orange.50",
+      }}
     >
       <CardBody
         p="1"

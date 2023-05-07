@@ -107,10 +107,12 @@ export const SearchPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
                     }
                     borderWidth={station.complex_id === complexId ? 2 : 1}
                     borderColor={
-                      station.complex_id === complexId ? "orange.600" : "black"
+                      station.complex_id === complexId
+                        ? "orange.600"
+                        : "gray.200"
                     }
                     onClick={() => setComplexId(station.complex_id)}
-                    _hover={{ cursor: "pointer", borderWidth: 2 }}
+                    _hover={{ cursor: "pointer", backgroundColor: "orange.50" }}
                   >
                     <Text>{station.name} station,</Text>
                     <Text>{station.lines} lines</Text>

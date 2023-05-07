@@ -116,7 +116,6 @@ export const ADAMap = () => {
         // End Ada Nieghbor gap colors
 
         // Betweenness Centrality
-        const standardizer = 1e6;
         const betweennessCentrality: number[] = stationFeatures
           .map((f) => f.properties.betweenness_centrality)
           .filter((b) => b)
