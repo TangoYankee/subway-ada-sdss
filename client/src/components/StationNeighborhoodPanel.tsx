@@ -69,6 +69,16 @@ export const StationNeighborhoodPanel = ({
   }, [complexId, rankings]);
 
   useEffect(() => {
+    const toggleAmenitiesHighlight = (
+      amenities: Record<string, Array<{ id: string }>>,
+      highlight: boolean
+    ) => {
+      Object.entries(amenities).forEach(([source, features]) => {
+        features.forEach((feature) => {
+          sdssMap.setFeatureState({ source, id: feature.id }, { highlight });
+        });
+      });
+    };
     if (complexId !== null && stationDetails && sdssMap) {
       const { lat, lng } = stationDetails;
       const point = turf.point([lng, lat]);
@@ -120,16 +130,6 @@ export const StationNeighborhoodPanel = ({
       // End nearest accessible station
 
       // Start amenities in buffer
-      const toggleAmenitiesHighlight = (
-        amenities: Record<string, Array<{ id: string }>>,
-        highlight: boolean
-      ) => {
-        Object.entries(amenities).forEach(([source, features]) => {
-          features.forEach((feature) => {
-            sdssMap.setFeatureState({ source, id: feature.id }, { highlight });
-          });
-        });
-      };
 
       const buffer = turf.buffer(point, 0.005, { units: "degrees" });
       const nextAmenities = {};
@@ -150,8 +150,22 @@ export const StationNeighborhoodPanel = ({
         return nextAmenities;
       });
       // End amenities in buffer
+    } else if (complexId === null && sdssMap) {
+      setAccessibleNeighbor((accessibleNeighbor) => {
+        if (accessibleNeighbor)
+          sdssMap.setFeatureState(
+            { source: SOURCE_ID.SUBWAY_STATIONS, id: accessibleNeighbor.id },
+            { highlight: false }
+          );
+        return null;
+      });
+
+      setAmenities((prevAmenities) => {
+        toggleAmenitiesHighlight(prevAmenities, false);
+        return DEFAULT_HIGHLIGHTED_AMENITIES;
+      });
     }
-  }, [sdssMap, stationDetails, complexId, setAccessibleNeighbor]);
+  }, [sdssMap, stationDetails, complexId]);
 
   const amenitiesDisplay = Object.entries(amenities).map(
     ([source, features]) => (
