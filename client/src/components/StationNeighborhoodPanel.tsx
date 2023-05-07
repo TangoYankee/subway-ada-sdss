@@ -118,13 +118,14 @@ export const StationNeighborhoodPanel = ({
             },
             { highlight: false }
           );
-        sdssMap.setFeatureState(
-          {
-            source: SOURCE_ID.SUBWAY_STATIONS,
-            id: nearestAccessibleStation.id,
-          },
-          { highlight: true }
-        );
+        if (nearestAccessibleStation)
+          sdssMap.setFeatureState(
+            {
+              source: SOURCE_ID.SUBWAY_STATIONS,
+              id: nearestAccessibleStation.id,
+            },
+            { highlight: true }
+          );
         return nearestAccessibleStation;
       });
       // End nearest accessible station
