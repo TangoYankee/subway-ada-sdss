@@ -93,3 +93,5 @@ factors.forEach((factor) => {
 });
 
 export const DEFAULT_FACTOR_WEIGHTS: FactorWeightings = defaultFactorWeights;
+
+export const METERS_PER_DEG = 111111;

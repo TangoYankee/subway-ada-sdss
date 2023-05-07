@@ -21,6 +21,7 @@ import {
 } from "../types";
 import * as turf from "@turf/turf";
 import { uniqueArrayEntries } from "../helpers/utils";
+import { METERS_PER_DEG } from "../helpers/constants";
 
 const AMENITIES = [
   SOURCE_ID.HOSPITALS,
@@ -239,7 +240,7 @@ export const StationNeighborhoodPanel = ({
                 </Text>
                 <Text>
                   <i>{`(Distance: ~${(
-                    parseFloat(stationDetails.ada_neighbor_gap) * 111111
+                    parseFloat(stationDetails.ada_neighbor_gap) * METERS_PER_DEG
                   ).toFixed(0)}m)`}</i>
                 </Text>
               </>
@@ -247,7 +248,7 @@ export const StationNeighborhoodPanel = ({
               <></>
             )}
             <Heading as="h4" size="xs">
-              {`Amentities within ~${(0.005 * 111111).toFixed(0)}m`}
+              {`Amentities within ~${(0.005 * METERS_PER_DEG).toFixed(0)}m`}
             </Heading>
             <Text>
               <i>Only amentities displayed on the map are included</i>
