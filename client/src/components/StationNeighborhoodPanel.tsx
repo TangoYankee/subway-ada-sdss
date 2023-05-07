@@ -1,4 +1,11 @@
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  ListItem,
+  OrderedList,
+  Text,
+} from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import { RankingsContext } from "../context/RankingsContext";
 import {
@@ -15,6 +22,21 @@ import {
 import * as turf from "@turf/turf";
 import { uniqueArrayEntries } from "../helpers/utils";
 
+const AMENITIES = [
+  SOURCE_ID.HOSPITALS,
+  SOURCE_ID.PARKS,
+  SOURCE_ID.BUS_STOPS,
+  SOURCE_ID.BUS_STOPS_EXPRESS,
+  SOURCE_ID.SCHOOLS,
+];
+const DEFAULT_HIGHLIGHTED_AMENITIES = AMENITIES.reduce(
+  (acc, cur): Record<string, Array<unknown>> => {
+    acc[cur] = [];
+    return acc;
+  },
+  {}
+);
+
 export const StationNeighborhoodPanel = ({
   shouldDisplay,
 }: {
@@ -30,14 +52,9 @@ export const StationNeighborhoodPanel = ({
   const [ranking, setRanking] = useState<Ranking>(
     complexId && rankings ? rankings[complexId] : null
   );
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [highlightedFeatures, setHighlightedFeatures] = useState({
-    [SOURCE_ID.HOSPITALS]: [],
-  });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [amentities, setAmenities] = useState({
-    [SOURCE_ID.HOSPITALS]: [],
-  });
+  const [amenities, setAmenities] = useState<
+    Record<string, Array<{ id: string; properties: Array<unknown> }>>
+  >(DEFAULT_HIGHLIGHTED_AMENITIES);
   const [accessibleNeighbor, setAccessibleNeighbor] = useState(null);
 
   useEffect(() => {
@@ -52,10 +69,11 @@ export const StationNeighborhoodPanel = ({
   }, [complexId, rankings]);
 
   useEffect(() => {
-    if (stationDetails && sdssMap) {
+    if (complexId && stationDetails && sdssMap) {
       const { lat, lng } = stationDetails;
       const point = turf.point([lng, lat]);
-      const buffer = turf.buffer(point, 0.005, { units: "degrees" });
+
+      // Start nearest accessible station
       const _stations = sdssMap.querySourceFeatures(SOURCE_ID.SUBWAY_STATIONS);
       const stationsUnique = uniqueArrayEntries(_stations);
 
@@ -77,35 +95,6 @@ export const StationNeighborhoodPanel = ({
           // @ts-ignore
         features: stationsOtherAccessible,
       });
-      const _hospitals = sdssMap.querySourceFeatures(SOURCE_ID.HOSPITALS);
-      const hospitalsUnique = uniqueArrayEntries(_hospitals);
-      const hospitalsIntersecting = hospitalsUnique.filter((hospital) =>
-        // eslint-disable-next-line
-      // @ts-ignore
-        turf.booleanIntersects(hospital, buffer)
-      );
-      setAmenities({ [SOURCE_ID.HOSPITALS]: hospitalsIntersecting });
-      const hospitalsIntersectingIds = hospitalsIntersecting.map(
-        (hospital) => hospital.id
-      );
-
-      setHighlightedFeatures((highlightedFeatures) => {
-        const prevHospitalsIntersectingIds =
-          highlightedFeatures[SOURCE_ID.HOSPITALS];
-        prevHospitalsIntersectingIds.forEach((id) => {
-          sdssMap.setFeatureState(
-            { source: SOURCE_ID.HOSPITALS, id: id },
-            { highlight: false }
-          );
-        });
-        hospitalsIntersectingIds.forEach((id) => {
-          sdssMap.setFeatureState(
-            { source: SOURCE_ID.HOSPITALS, id: id },
-            { highlight: true }
-          );
-        });
-        return { [SOURCE_ID.HOSPITALS]: hospitalsIntersectingIds };
-      });
 
       setAccessibleNeighbor((accessibleNeighbor) => {
         if (accessibleNeighbor)
@@ -122,15 +111,60 @@ export const StationNeighborhoodPanel = ({
         );
         return nearestAccessibleStation;
       });
-    }
-  }, [
-    sdssMap,
-    stationDetails,
-    complexId,
-    setHighlightedFeatures,
-    setAccessibleNeighbor,
-  ]);
+      // End nearest accessible station
 
+      // Start amenities in buffer
+      const toggleAmenitiesHighlight = (
+        amenities: Record<string, Array<{ id: string }>>,
+        highlight: boolean
+      ) => {
+        Object.entries(amenities).forEach(([source, features]) => {
+          features.forEach((feature) => {
+            sdssMap.setFeatureState({ source, id: feature.id }, { highlight });
+          });
+        });
+      };
+
+      const buffer = turf.buffer(point, 0.005, { units: "degrees" });
+      const nextAmenities = {};
+      AMENITIES.forEach((source) => {
+        const featuresResults = sdssMap.querySourceFeatures(source);
+        const featuresUnique = uniqueArrayEntries(featuresResults);
+        const featuresIntersecting = featuresUnique.filter((feature) => {
+          // eslint-disable-next-line
+          // @ts-ignore
+          return turf.booleanIntersects(feature, buffer);
+        });
+        nextAmenities[source] = featuresIntersecting;
+      });
+
+      setAmenities((prevAmenities) => {
+        toggleAmenitiesHighlight(prevAmenities, false);
+        toggleAmenitiesHighlight(nextAmenities, true);
+        return nextAmenities;
+      });
+      // End amenities in buffer
+    }
+  }, [sdssMap, stationDetails, complexId, setAccessibleNeighbor]);
+
+  const amenitiesDisplay = Object.entries(amenities).map(
+    ([source, features]) => (
+      <>
+        <Heading as="h5" size="xs">
+          {source}
+        </Heading>
+        <OrderedList>
+          {features.map((feature, index) => (
+            <ListItem key={index}>
+              {Object.values(feature.properties).map((property: string) => (
+                <Text key={property}>{property}</Text>
+              ))}
+            </ListItem>
+          ))}
+        </OrderedList>
+      </>
+    )
+  );
   return (
     <Flex
       h="100%"
@@ -195,9 +229,11 @@ export const StationNeighborhoodPanel = ({
               {`Amentities within ~${(0.005 * 111111).toFixed(0)}m`}
             </Heading>
             <Text>
-              Hospitals:{" "}
-              {/* {amentities[SOURCE_ID.HOSPITALS][0].properties.facility_name} */}
+              <i>Only amentities displayed on the map are included</i>
             </Text>
+            <Flex h="30vh" direction="column" overflow="scroll">
+              {amenitiesDisplay}
+            </Flex>
           </Flex>
         ) : (
           <Text>Select a station to view its details</Text>
