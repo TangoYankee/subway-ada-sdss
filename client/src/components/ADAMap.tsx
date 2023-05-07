@@ -127,7 +127,6 @@ export const ADAMap = () => {
         const betweennessColor = [
           "interpolate",
           ["linear"],
-          // ['*', ["to-number", ["get", "betweenness_centrality"]], standardizer],
           ["to-number", ["get", "betweenness_centrality"]],
           minBetweenness,
           "#f7fcf5",
