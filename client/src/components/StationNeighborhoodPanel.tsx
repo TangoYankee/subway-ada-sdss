@@ -69,7 +69,7 @@ export const StationNeighborhoodPanel = ({
   }, [complexId, rankings]);
 
   useEffect(() => {
-    if (complexId && stationDetails && sdssMap) {
+    if (complexId !== null && stationDetails && sdssMap) {
       const { lat, lng } = stationDetails;
       const point = turf.point([lng, lat]);
 
@@ -89,17 +89,23 @@ export const StationNeighborhoodPanel = ({
         );
         return isOtherStation && isAccessible && hasCommonLine;
       });
-      const nearestAccessibleStation = turf.nearest(point, {
-        type: "FeatureCollection",
-        // eslint-disable-next-line
+      const nearestAccessibleStation =
+        stationsOtherAccessible.length > 0
+          ? turf.nearest(point, {
+              type: "FeatureCollection",
+              // eslint-disable-next-line
           // @ts-ignore
-        features: stationsOtherAccessible,
-      });
+              features: stationsOtherAccessible,
+            })
+          : null;
 
-      setAccessibleNeighbor((accessibleNeighbor) => {
-        if (accessibleNeighbor)
+      setAccessibleNeighbor((prevAccessibleNeighbor) => {
+        if (prevAccessibleNeighbor)
           sdssMap.setFeatureState(
-            { source: SOURCE_ID.SUBWAY_STATIONS, id: accessibleNeighbor.id },
+            {
+              source: SOURCE_ID.SUBWAY_STATIONS,
+              id: prevAccessibleNeighbor.id,
+            },
             { highlight: false }
           );
         sdssMap.setFeatureState(
@@ -149,7 +155,7 @@ export const StationNeighborhoodPanel = ({
 
   const amenitiesDisplay = Object.entries(amenities).map(
     ([source, features]) => (
-      <>
+      <Box key={source}>
         <Heading as="h5" size="xs">
           {source}
         </Heading>
@@ -162,7 +168,7 @@ export const StationNeighborhoodPanel = ({
             </ListItem>
           ))}
         </OrderedList>
-      </>
+      </Box>
     )
   );
   return (
