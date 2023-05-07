@@ -15,7 +15,8 @@ export const SearchPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
   const [stationAdaSearch, setStationAdaSearch] =
     useState<Array<SubwayStationAdaProperties> | null>(null);
   const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
-  const { subwayStationAdaMap, setComplexId } = useContext(RankingsContext);
+  const { subwayStationAdaMap, complexId, setComplexId } =
+    useContext(RankingsContext);
   const { setSelectedResultGeo } = useContext(CitySearchContext);
 
   const onChangeSearchTerm = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -92,7 +93,6 @@ export const SearchPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
                 padding={2}
                 overflow="scroll"
                 height="20vh"
-                onMouseLeave={() => setComplexId(null)}
               >
                 {stationAdaSearch.map((station) => (
                   <Flex
@@ -101,9 +101,15 @@ export const SearchPanel = ({ shouldDisplay }: { shouldDisplay: boolean }) => {
                     padding={0.5}
                     border="solid"
                     borderStyle="solid"
-                    borderWidth={1}
                     borderRadius="5"
-                    onMouseEnter={() => setComplexId(station.complex_id)}
+                    backgroundColor={
+                      station.complex_id === complexId ? "orange.100" : ""
+                    }
+                    borderWidth={station.complex_id === complexId ? 2 : 1}
+                    borderColor={
+                      station.complex_id === complexId ? "orange.600" : "black"
+                    }
+                    onClick={() => setComplexId(station.complex_id)}
                     _hover={{ cursor: "pointer", borderWidth: 2 }}
                   >
                     <Text>{station.name} station,</Text>
