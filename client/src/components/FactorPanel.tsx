@@ -223,7 +223,7 @@ const FactorDisplayControl = ({
       <Checkbox onChange={updateLayerVisibility} isChecked={layerVisibility}>
         Display
       </Checkbox>
-      <Text>Symbols TBD</Text>
+      {/* <Text>Symbols TBD</Text> */}
     </Flex>
   );
 };
