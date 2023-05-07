@@ -137,17 +137,29 @@ export const LAYER_PAINT = {
   [LAYER_ID.PARKS]: {
     type: "fill" as const,
     paint: {
-      "fill-color": "#25855A",
       "fill-outline-color": "#E2E8F0",
       "fill-opacity": 0.5,
+      "fill-color": [
+        "case",
+        ["boolean", ["feature-state", "highlight"], false],
+        "#F6E05E",
+        "#25855A",
+      ] as unknown,
     },
   },
   [LAYER_ID.SCHOOLS]: {
     type: "circle" as const,
     paint: {
-      "circle-color": "#ECC94B",
+      "circle-color": "#222222",
       "circle-radius": 3,
       "circle-opacity": 0.75,
+      "circle-stroke-color": "#F6E05E",
+      "circle-stroke-width": [
+        "case",
+        ["boolean", ["feature-state", "highlight"], false],
+        2,
+        0,
+      ] as unknown,
     },
   },
   [LAYER_ID.HOSPITALS]: {
@@ -169,8 +181,15 @@ export const LAYER_PAINT = {
     type: "circle" as const,
     paint: {
       "circle-color": "#1A202C",
-      "circle-radius": 1.5,
+      "circle-radius": 2,
       "circle-opacity": 0.5,
+      "circle-stroke-color": "#F6E05E",
+      "circle-stroke-width": [
+        "case",
+        ["boolean", ["feature-state", "highlight"], false],
+        2,
+        0,
+      ] as unknown,
     },
   },
   [LAYER_ID.BUS_STOPS_EXPRESS]: {
@@ -179,6 +198,13 @@ export const LAYER_PAINT = {
       "circle-color": "#00933C",
       "circle-radius": 2,
       "circle-opacity": 0.75,
+      "circle-stroke-color": "#F6E05E",
+      "circle-stroke-width": [
+        "case",
+        ["boolean", ["feature-state", "highlight"], false],
+        2,
+        0,
+      ] as unknown,
     },
   },
   [LAYER_ID.TOTAL]: {
