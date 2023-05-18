@@ -52,7 +52,25 @@ The application consists of a database, api, and client. Follow the steps below 
 5. Run the application
    - `npm run dev`
 
-Key 
+## Key Files
+- Data models: 
+    - [`api/ada_stations/models.py`](api/ada_stations/models.py)
+- Load scripts: 
+    - subway routes example [api/ada_stations/load_scripts/subwayroutes.py](api/ada_stations/load_scripts/subwayroutes.py)
+    - load all models [api/ada_stations/load_scripts/all.py](api/ada_stations/load_scripts/all.py)
+- API Endpoints:
+    - All views [api/ada_stations/views.py](api/ada_stations/views.py)
+    - Subway buffer view [api/ada_stations/views.py#L81](api/ada_stations/views.py#L81)
+    - Rankings view [api/ada_stations/views.py#L122](api/ada_stations/views.py#L122)
+- Rankings endpoint test script
+    - [api/ada_stations/test_scripts/get_weights.sh](api/ada_stations/test_scripts/get_weights.sh)
+- Buffer analysis
+    - [api/ada_stations/data/process-scripts/subway_station_500_buffer.py](api/ada_stations/data/process-scripts/subway_station_500_buffer.py)
+- Analysis of gap to next accessible station
+    - [api/ada_stations/data/process-scripts/subway_station_ada_gaps.ipynb](api/ada_stations/data/process-scripts/subway_station_ada_gaps.ipynb)
+- Betweenness centrality analysis
+    - [api/ada_stations/data/process-scripts/subway_station_centrality.py](api/ada_stations/data/process-scripts/subway_station_centrality.py)
+
 
 ## Miscellaneous commands
 ### Python Django env
